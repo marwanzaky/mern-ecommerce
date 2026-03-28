@@ -13,6 +13,7 @@ import {
 import { initials, stringToDate } from "@utils/stringUtils";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { TypographyMuted } from "@shadcn/components/ui/typography";
 
 type AvatarInitialsProps = React.InputHTMLAttributes<HTMLInputElement> & {
 	name: string;
@@ -28,7 +29,7 @@ export function AvatarInitials({
 			className={cn(
 				// h-10 w-10
 				"shrink-0 flex justify-center items-center w-8 h-8 rounded-full text-base",
-				"text-custom-primary-foreground bg-custom-primary-background",
+				"text-primary bg-primary/20",
 				className,
 			)}
 			{...props}
@@ -76,7 +77,7 @@ export default function Reviews({ product }: { product: IProduct }) {
 									{review.user.name}
 								</Link>
 								&ensp;
-								<span className="text-custom-grey">
+								<span className="text-muted-foreground">
 									{stringToDate(review.createdAt)}
 								</span>
 							</div>
@@ -86,7 +87,7 @@ export default function Reviews({ product }: { product: IProduct }) {
 								value={review.rating}
 								displayTotal={false}
 							/>
-							<p className="text-custom-grey text-sm">{review.description}</p>
+							<TypographyMuted>{review.description}</TypographyMuted>
 						</div>
 					</div>
 				))

@@ -40,7 +40,7 @@ export default function ImageInput({
 
 			<div
 				className={cn(
-					"w-full h-[62px] rounded-xl overflow-hidden outline-none shadow-[0_0_0_1pt_#ecf0f1] focus:shadow-[0_0_0_2pt_cornflowerblue]",
+					"w-full h-[62px] rounded-xl overflow-hidden outline-hidden shadow-[0_0_0_1pt_#ecf0f1] focus:shadow-[0_0_0_2pt_cornflowerblue]",
 					className,
 				)}
 			>

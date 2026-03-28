@@ -18,7 +18,8 @@ const buttonIconVariants = cva(
 				secondary: "bg-white hover:bg-gray-200",
 			},
 			size: {
-				md: "w-[2.375rem] h-[2.375rem]",
+				md: "w-9.5 h-9.5",
+				sm: "w-8 h-8",
 			},
 		},
 		defaultVariants: {
@@ -46,6 +47,7 @@ const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
 			icon,
 			children,
 			variant,
+			size,
 			asChild = false,
 			...props
 		},
@@ -54,15 +56,17 @@ const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
 		const Comp = asChild ? Slot : "button";
 		return (
 			<Comp
-				className={cn("group", buttonIconVariants({ variant }), className)}
+				className={cn(
+					"group",
+					buttonIconVariants({ variant, size }),
+					className,
+				)}
 				ref={ref}
 				{...props}
 			>
 				<Icon
-					className={cn(
-						"group-hover:filter-custom-primary-foreground",
-						styleClass,
-					)}
+					// size={10}
+					className={cn("group-hover:filter-(--filter-primary)", styleClass)}
 					src={`icons/${icon}.svg`}
 				/>
 

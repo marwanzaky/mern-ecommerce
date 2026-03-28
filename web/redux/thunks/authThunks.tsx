@@ -2,9 +2,8 @@ import { usersService } from "@redux/services/usersService";
 import { RootState } from "@redux/store";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { UpdateUser, UpdateUserPassword } from "@shared/types/user.type";
-import { toast, ToastService } from "@shared/shadcn/hooks/use-toast";
-import { ToastAction } from "@shared/shadcn/toast";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { toast } from "sonner";
 
 export const loginAsync = createAsyncThunk(
 	"auth/login",
@@ -13,30 +12,20 @@ export const loginAsync = createAsyncThunk(
 			email: string;
 			password: string;
 			router: AppRouterInstance;
-			toast: ToastService;
 		},
 		{ rejectWithValue },
 	) => {
-		const { email, password, router, toast } = credentials;
+		const { email, password, router } = credentials;
 
 		try {
 			const data = await usersService.login(email, password);
 
-			toast({
-				title: "Welcome back!",
-				description: "You've successfully signed in.",
-				duration: 3000,
-			});
+			toast("Welcome back!", { position: "top-center" });
 
 			router.push("/");
 			return data;
 		} catch (error: any) {
-			toast({
-				title: "Sign-in failed",
-				description: error.message,
-				variant: "destructive",
-				duration: 3000,
-			});
+			toast("Sign-in failed.", { position: "top-center" });
 
 			return rejectWithValue(error.message);
 		}

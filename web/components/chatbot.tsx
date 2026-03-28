@@ -42,7 +42,7 @@ function Message({
 			>
 				<div
 					className={clsx(
-						"p-2 rounded-md shadow",
+						"p-2 rounded-md shadow-sm",
 						type === "ai" ? "border" : "bg-primary text-white",
 					)}
 				>

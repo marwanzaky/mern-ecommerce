@@ -6,7 +6,6 @@ import { useFavorites } from "@hooks/useFavorites";
 import ProductItem from "@shared/ui/productCart";
 import { TypographyH4 } from "@shared/shadcn/typography";
 import { Section } from "@shared/components/section";
-import { Button } from "@shared/shadcn/button";
 import {
 	Empty,
 	EmptyContent,
@@ -14,6 +13,7 @@ import {
 	EmptyHeader,
 	EmptyTitle,
 } from "@shared/components/empty";
+import { Button } from "@shadcn/components/ui/button";
 
 export default function Page() {
 	const router = useRouter();

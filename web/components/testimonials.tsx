@@ -4,7 +4,7 @@ import { Container } from "@shared/ui/container";
 
 export default function Testimonials() {
 	return (
-		<Section className="full-bleed bg-custom-border">
+		<Section className="full-bleed bg-border">
 			<Container>
 				<div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
 					<Testimonial

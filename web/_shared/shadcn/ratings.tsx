@@ -7,7 +7,7 @@ import { cn } from "@lib/utils";
 
 const ratingVariants = {
 	default: {
-		star: "filter-custom-primary-foreground",
+		star: "filter-(--filter-primary)",
 		emptyStar: "opacity-20",
 	},
 	destructive: {

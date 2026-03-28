@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 
 import { TypographyH1 } from "@shared/components/typography";
 import { TypographyP } from "@shared/shadcn/typography";
-import { Button } from "@shared/shadcn/button";
 
 import { createProductSlug } from "@utils/stringUtils";
+import { Button } from "@shadcn/components/ui/button";
 
 export default function Header() {
 	const router = useRouter();
@@ -38,6 +38,7 @@ export default function Header() {
 
 				<div className="flex justify-center gap-2">
 					<Button
+						size="lg"
 						onClick={() =>
 							router.push(
 								`/product/${createProductSlug(productName, productId)}`,
@@ -47,6 +48,7 @@ export default function Header() {
 						Shop now
 					</Button>
 					<Button
+						size="lg"
 						variant="ghost"
 						className="text-white"
 						onClick={() => router.push("/products")}

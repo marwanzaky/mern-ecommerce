@@ -10,10 +10,9 @@ import { handleLogin } from "@utils/authHelpers";
 
 import { InputText } from "@shared/components/inputText";
 import { Section } from "@shared/components/section";
-import { Button } from "@shared/shadcn/button";
 import { TypographyH4 } from "@shared/shadcn/typography";
-import { useToast } from "@shared/shadcn/hooks/use-toast";
 import Icon from "@shared/ui/icon";
+import { Button } from "@shadcn/components/ui/button";
 
 type Inputs = {
 	email: string;
@@ -22,7 +21,6 @@ type Inputs = {
 
 export default function Page() {
 	const router = useRouter();
-	const { toast } = useToast();
 
 	const {
 		register,
@@ -73,13 +71,13 @@ export default function Page() {
 					/>
 
 					<div className="flex flex-col gap-2">
-						<Button size="lg" type="submit">
+						<Button size="xl" type="submit">
 							Sign in
 						</Button>
 
 						<Button
 							variant="secondary"
-							size="lg"
+							size="xl"
 							type="button"
 							onClick={() => {
 								window.location.href = `${process.env.NEXT_PUBLIC_SERVER!}/auth/google`;

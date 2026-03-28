@@ -8,7 +8,7 @@ import Image from "next/image";
 const imageButtonVariants = cva(
 	[
 		"inline-flex items-center justify-center whitespace-nowrap",
-		"bg-white w-[2.375rem] h-[2.375rem] rounded-full",
+		"bg-white w-9.5 h-9.5 rounded-full",
 		"hover:bg-gray-200",
 		"transition-colors",
 	],
@@ -36,7 +36,7 @@ const ImageButton = React.forwardRef<HTMLButtonElement, ImageIconProps>(
 				{...props}
 			>
 				<Image
-					className="rounded-full !filter-none"
+					className="rounded-full filter-none!"
 					src={imgUrl}
 					width={24}
 					height={24}

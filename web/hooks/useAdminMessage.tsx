@@ -20,13 +20,13 @@ import {
 	SelectLabel,
 	SelectTrigger,
 	SelectValue,
-} from "@shared/shadcn/select";
+} from "@shadcn/components/ui/select";
 import {
 	Dialog,
 	DialogContent,
 	DialogHeader,
 	DialogTitle,
-} from "@shared/shadcn/dialog";
+} from "@shadcn/components/ui/dialog";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -37,7 +37,7 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	AlertDialogTrigger,
-} from "@shared/shadcn/alertDialog";
+} from "@shadcn/components/ui/alert-dialog";
 
 export function useAdminMessages() {
 	const { token } = useAppSelector((state) => state.authReducer);
@@ -83,7 +83,7 @@ export function useAdminMessages() {
 			header: "",
 			field: "_id",
 			type: "custom",
-			className: "w-[2.375rem]",
+			className: "w-9.5",
 			render(value, row) {
 				return (
 					<div className="flex gap-2">

@@ -10,7 +10,6 @@ import {
 import { IProduct } from "@shared/interfaces";
 import { Column } from "@shared/components/table";
 import { LogoCell } from "@shared/components/table/cells/logoCell";
-import { useToast } from "@shared/shadcn/hooks/use-toast";
 
 import { selectCartTotalStr } from "@redux/selectors/cartSelectors";
 import { paymentsService } from "@redux/services/paymentsService";
@@ -21,7 +20,6 @@ type CartItem = IProduct & { imgUrl: string; quantity: number; total: number };
 export function useCart() {
 	const dispatch = useDispatch<AppDispatch>();
 
-	const { toast } = useToast();
 	const { items } = useAppSelector((state) => state.cartReducer);
 	const cartTotalStr = useAppSelector(selectCartTotalStr);
 
@@ -73,7 +71,7 @@ export function useCart() {
 				dispatch(deleteCartItemAsync({ product: row, toast }));
 			},
 			actionIcon: "delete",
-			className: "w-[2.375rem]",
+			className: "w-9.5",
 		},
 	];
 

@@ -2,8 +2,8 @@ import { RootState } from "@redux/store";
 import { favoritesService } from "@redux/services/favoritesService";
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ToastService } from "@shared/shadcn/hooks/use-toast";
 import { IProduct } from "@shared/interfaces";
+import { toast } from "sonner";
 
 export const getFavoritesAsync = createAsyncThunk(
 	"favorites/getFavorites",
@@ -20,10 +20,7 @@ export const getFavoritesAsync = createAsyncThunk(
 
 export const postFavoritesAsync = createAsyncThunk(
 	"favorites/postFavorites",
-	async (
-		{ product, toast }: { product: IProduct; toast: ToastService },
-		{ getState, rejectWithValue },
-	) => {
+	async ({ product }: { product: IProduct }, { getState, rejectWithValue }) => {
 		const state = getState() as RootState;
 
 		try {
@@ -32,11 +29,7 @@ export const postFavoritesAsync = createAsyncThunk(
 				product._id,
 			);
 
-			toast({
-				title: "Added to favorites",
-				description: `"${product.name}" is now in your favorites.`,
-				duration: 3000,
-			});
+			toast("Added to favorites.", { position: "top-center" });
 
 			return response;
 		} catch (error: any) {
@@ -47,10 +40,7 @@ export const postFavoritesAsync = createAsyncThunk(
 
 export const removeFavoritesAsync = createAsyncThunk(
 	"favorites/removeFavorites",
-	async (
-		{ product, toast }: { product: IProduct; toast: ToastService },
-		{ getState, rejectWithValue },
-	) => {
+	async ({ product }: { product: IProduct }, { getState, rejectWithValue }) => {
 		const state = getState() as RootState;
 
 		try {
@@ -59,11 +49,7 @@ export const removeFavoritesAsync = createAsyncThunk(
 				product._id,
 			);
 
-			toast({
-				title: "Removed to favorites",
-				description: `"${product.name}" has been removed from your favorites.`,
-				duration: 3000,
-			});
+			toast("Removed to favorites.", { position: "top-center" });
 
 			return response;
 		} catch (error: any) {

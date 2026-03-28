@@ -6,7 +6,7 @@ const inputTextVariants = cva(
 	[
 		"w-full",
 		"rounded-xl bg-custom-background-foreground",
-		"outline-none shadow-[0_0_0_1pt_#ecf0f1] focus:shadow-[0_0_0_2pt_cornflowerblue] transition-shadow",
+		"outline-hidden shadow-[0_0_0_1pt_#ecf0f1] focus:shadow-[0_0_0_2pt_cornflowerblue] transition-shadow placeholder:text-[#97A5A8]",
 	],
 	{
 		variants: {

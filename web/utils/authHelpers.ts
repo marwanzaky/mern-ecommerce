@@ -6,17 +6,16 @@ import { getUserProductsAsync } from "@redux/thunks/userProductsThunks";
 import { getMeAsync, loginAsync } from "@redux/thunks/authThunks";
 import { getCartMeAsync } from "@redux/thunks/cartThunks";
 import { getFavoritesAsync } from "@redux/thunks/favoritesThunks";
-import { ToastService } from "@shared/shadcn/hooks/use-toast";
 import { setToken } from "@redux/slices/authSlice";
+import { toast } from "sonner";
 
 export const handleLogin = async (
 	email: string,
 	password: string,
 	dispatch: AppDispatch,
 	router: AppRouterInstance,
-	toast: ToastService,
 ) => {
-	await dispatch(loginAsync({ email, password, router, toast })).unwrap();
+	await dispatch(loginAsync({ email, password, router })).unwrap();
 	await dispatch(getMeAsync());
 	await dispatch(getCartMeAsync());
 	await dispatch(getFavoritesAsync());
@@ -27,7 +26,6 @@ export const handleGoogleAuth = async (
 	token: string,
 	dispatch: AppDispatch,
 	router: AppRouterInstance,
-	toast: ToastService,
 ) => {
 	dispatch(setToken(token));
 
@@ -36,11 +34,7 @@ export const handleGoogleAuth = async (
 	await dispatch(getFavoritesAsync());
 	await dispatch(getUserProductsAsync());
 
-	toast({
-		title: "Welcome back!",
-		description: "You've successfully signed in.",
-		duration: 3000,
-	});
+	toast("Welcome back!", { position: "top-center" });
 
 	router.push("/");
 };

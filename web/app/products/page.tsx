@@ -12,21 +12,23 @@ import {
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@shared/shadcn/select";
-import { Button } from "@shared/shadcn/button";
+} from "@shadcn/components/ui/select";
 import {
 	Dialog,
 	DialogContent,
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@shared/shadcn/dialog";
+} from "@shadcn/components/ui/dialog";
 import { TypographyP } from "@shared/shadcn/typography";
 import { InputCurrencyRange } from "@shared/components/InputCurrencyRange";
 import RadioWithLabel from "@shared/components/radioWithLabel";
 import { InputText } from "@shared/components/inputText";
 
 import { formatPrice } from "@utils/formatPrice";
+import { Button } from "@shadcn/components/ui/button";
+import { RadioGroup, RadioGroupItem } from "@shadcn/components/ui/radio-group";
+import { Label } from "@shadcn/components/ui/label";
 
 export default function Page() {
 	const {
@@ -118,7 +120,7 @@ export default function Page() {
 						</div>
 					</div>
 
-					<div className="flex justify-end items-center gap-4 flex-shrink-0">
+					<div className="flex justify-end items-center gap-4 shrink-0">
 						{isLoading === false && (
 							<TypographyP className="text-muted-foreground hidden sm:block">
 								Showing {data?.length} Products
@@ -212,56 +214,50 @@ export default function Page() {
 							/>
 
 							<div className="flex flex-col gap-2">
-								<RadioWithLabel
-									name="rate"
-									id="rate5"
-									value="rate5"
-									checked={draftRating === 5}
-									onChange={(e) => setDraftRating(5)}
-									label="★★★★★"
-									labelClassName="text-[1rem] text-[1rem] text-custom-primary-foreground"
-								/>
-								<RadioWithLabel
-									name="rate"
-									id="rate4"
-									value="rate4"
-									checked={draftRating === 4}
-									onChange={(e) => setDraftRating(4)}
-									label="★★★★"
-									labelClassName="text-[1rem] text-custom-primary-foreground"
-								/>
-								<RadioWithLabel
-									name="rate"
-									id="rate3"
-									value="rate3"
-									checked={draftRating === 3}
-									onChange={(e) => setDraftRating(3)}
-									label="★★★"
-									labelClassName="text-[1rem] text-custom-primary-foreground"
-								/>
-								<RadioWithLabel
-									name="rate"
-									id="rate2"
-									value="rate2"
-									checked={draftRating === 2}
-									onChange={(e) => setDraftRating(2)}
-									label="★★"
-									labelClassName="text-[1rem] text-custom-primary-foreground"
-								/>
-								<RadioWithLabel
-									name="rate"
-									id="rate1"
-									value="rate1"
-									checked={draftRating === 1}
-									onChange={(e) => setDraftRating(1)}
-									label="★"
-									labelClassName="text-[1rem] text-custom-primary-foreground"
-								/>
+								<RadioGroup
+									onValueChange={(value) => {
+										setDraftRating(parseInt(value));
+									}}
+								>
+									<div className="flex items-center gap-2">
+										<RadioGroupItem value="5" id="option-5" />
+										<Label className="text-primary" htmlFor="option-5">
+											★★★★★
+										</Label>
+									</div>
+									<div className="flex items-center gap-2">
+										<RadioGroupItem value="4" id="option-4" />
+										<Label className="text-primary" htmlFor="option-4">
+											★★★★
+										</Label>
+									</div>
+
+									<div className="flex items-center gap-2">
+										<RadioGroupItem value="3" id="option-3" />
+										<Label className="text-primary" htmlFor="option-3">
+											★★★
+										</Label>
+									</div>
+
+									<div className="flex items-center gap-2">
+										<RadioGroupItem value="2" id="option-2" />
+										<Label className="text-primary" htmlFor="option-2">
+											★★
+										</Label>
+									</div>
+
+									<div className="flex items-center gap-2">
+										<RadioGroupItem value="1" id="option-1" />
+										<Label className="text-primary" htmlFor="option-1">
+											★
+										</Label>
+									</div>
+								</RadioGroup>
 							</div>
 						</div>
 
 						<DialogFooter className="mt-4">
-							<Button variant="ghost" onClick={cancelFilters}>
+							<Button variant="outline" onClick={cancelFilters}>
 								Cancel
 							</Button>
 

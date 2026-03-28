@@ -8,7 +8,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useAppSelector } from "@redux/store";
 
 import { useMemo, useState } from "react";
-import { Button } from "@shared/shadcn/button";
 import {
 	Dialog,
 	DialogClose,
@@ -16,7 +15,7 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@shared/shadcn/dialog";
+} from "@shadcn/components/ui/dialog";
 import { InputText } from "@shared/components/inputText";
 import { Controller, useForm } from "react-hook-form";
 import {
@@ -26,14 +25,15 @@ import {
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@shared/shadcn/select";
+} from "@shadcn/components/ui/select";
 import { adminCategoriesService } from "@redux/services/adminCategoriesService";
 import { categoriesService } from "@redux/services/categoriesService";
 import ImageInput from "@app/sell/components/imageInput";
 import { LogoCell } from "@shared/components/table/cells/logoCell";
 import { Checkbox } from "@shared/shadcn/checkbox";
-import { toast } from "@shared/shadcn/hooks/use-toast";
 import { Category } from "@shared/types/category.type";
+import { toast } from "sonner";
+import { Button } from "@shadcn/components/ui/button";
 
 export default function Page() {
 	const columns: Column<Category>[] = [
@@ -53,11 +53,7 @@ export default function Page() {
 								isActive: !value,
 							});
 
-							toast({
-								title: "Category updated",
-								description: `Category "${row.name}" has been updated successfully.`,
-								duration: 3000,
-							});
+							toast("Category updated.", { position: "top-center" });
 
 							refetch();
 						}}
@@ -110,11 +106,7 @@ export default function Page() {
 					sortOrder: value,
 				});
 
-				toast({
-					title: "Category updated",
-					description: `Category "${row.name}" has been updated successfully.`,
-					duration: 3000,
-				});
+				toast("Category updated.", { position: "top-center" });
 
 				refetch();
 			},
@@ -123,7 +115,7 @@ export default function Page() {
 			header: "",
 			field: "id",
 			type: "action",
-			className: "w-[2.375rem]",
+			className: "w-9.5",
 			actionIcon: "edit",
 			action: (row) => {
 				reset({
@@ -218,7 +210,7 @@ export default function Page() {
 			</Button>
 
 			<Dialog open={open} onOpenChange={setOpen}>
-				<DialogContent className="sm:max-w-[26rem]">
+				<DialogContent className="sm:max-w-104">
 					<DialogHeader>
 						<DialogTitle>Add category</DialogTitle>
 					</DialogHeader>
@@ -328,7 +320,7 @@ export default function Page() {
 			</Dialog>
 
 			<Dialog open={editDialog} onOpenChange={setEditDialog}>
-				<DialogContent className="sm:max-w-[26rem]">
+				<DialogContent className="sm:max-w-104">
 					<DialogHeader>
 						<DialogTitle>Edit Category</DialogTitle>
 					</DialogHeader>

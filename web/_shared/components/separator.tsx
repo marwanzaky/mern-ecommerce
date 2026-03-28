@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { cva, VariantProps } from "class-variance-authority";
 
 const separatorVariants = cva(
-	["shrink-0 w-full bg-border-color h-[1px] my-1"],
+	["shrink-0 w-full bg-border-color h-px my-1"],
 	{
 		variants: {},
 		defaultVariants: {},

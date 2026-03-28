@@ -2,10 +2,11 @@ import { cn } from "@lib/utils";
 import Icon from "@shared/ui/icon";
 import { Section } from "@shared/components/section";
 import { TypographyH3 } from "@shared/shadcn/typography";
+import { TypographyMuted, TypographyP } from "@shadcn/components/ui/typography";
 
 export default function WhyChooseUs() {
 	return (
-		<Section className="lg:!pt-0 space-y-2 lg:space-y-4">
+		<Section className="lg:pt-0! space-y-2 lg:space-y-4">
 			<TypographyH3 className="text-center lg:text-left">
 				Why should you choose us?
 			</TypographyH3>
@@ -50,13 +51,13 @@ function Reason({
 			<div
 				className={cn(
 					"mx-auto lg:mx-0 mb-8 flex justify-center items-center",
-					"w-[4.375rem] h-[4.375rem]",
-					"bg-custom-background-foreground rounded-xl",
-					"group-hover:bg-custom-primary-background transition-colors",
+					"w-17.5 h-17.5",
+					"bg-secondary rounded-xl",
+					"group-hover:bg-primary/20 transition-colors",
 				)}
 			>
 				<Icon
-					className="group-hover:filter-custom-primary-foreground transition-all"
+					className="group-hover:filter-(--filter-primary) transition-all"
 					src={`icons/${icon}.svg`}
 					size={32}
 				/>
@@ -65,9 +66,9 @@ function Reason({
 			<div className="text-center font-bold mb-5 truncate lg:text-left text-sm md:text-base">
 				{title}
 			</div>
-			<div className="text-center text-custom-grey max-w-xs mx-auto lg:mx-0 lg:text-left text-sm md:text-base">
+			<TypographyMuted className="text-center max-w-xs mx-auto lg:mx-0 lg:text-left text-sm md:text-base">
 				{des}
-			</div>
+			</TypographyMuted>
 		</div>
 	);
 }

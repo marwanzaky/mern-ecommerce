@@ -7,7 +7,6 @@ import { InputCurrencyRange } from "@shared/components/InputCurrencyRange";
 import { InputText } from "@shared/components/inputText";
 import { textareaVariants } from "@shared/components/textarea";
 import { InputTags } from "@shared/components/inputTags";
-import { Button } from "@shared/shadcn/button";
 import { ImageToolbarButton } from "@shared/components/lexical/imageTooltbarButton";
 import { MyOnChangePlugin } from "@shared/components/lexical/myOnChangePlugin";
 import { LoadDescriptionPlugin } from "@shared/components/lexical/loadDescriptionPlugin";
@@ -17,7 +16,7 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@shared/shadcn/dialog";
+} from "@shadcn/components/ui/dialog";
 import {
 	Select,
 	SelectContent,
@@ -25,7 +24,7 @@ import {
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@shared/shadcn/select";
+} from "@shadcn/components/ui/select";
 import {
 	Control,
 	Controller,
@@ -49,6 +48,7 @@ import ImageInput from "./imageInput";
 
 import { useQuery } from "@tanstack/react-query";
 import { categoriesService } from "@redux/services/categoriesService";
+import { Button } from "@shadcn/components/ui/button";
 
 type ProductDialogProps = {
 	// React-form-hook
@@ -160,7 +160,7 @@ export function ProductDialog({
 										)}
 										aria-placeholder="Product Description"
 										placeholder={
-											<div className="absolute top-[1.25rem] left-[25px] text-gray-400">
+											<div className="absolute top-5 left-[25px] text-gray-400">
 												Product Description
 											</div>
 										}
@@ -255,7 +255,7 @@ export function ProductDialog({
 					<DialogFooter className="gap-2">
 						{cancelButtonText && (
 							<Button
-								variant="secondary"
+								variant="outline"
 								onClick={cancelButtonAction}
 								type="button"
 							>

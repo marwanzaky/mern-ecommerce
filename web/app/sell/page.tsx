@@ -5,7 +5,6 @@ import { Table } from "@shared/components/table";
 import { useSell } from "@hooks/useSell";
 
 import { Section } from "@shared/components/section";
-import { Button } from "@shared/shadcn/button";
 import { TypographyH4 } from "@shared/shadcn/typography";
 
 import {
@@ -15,6 +14,7 @@ import {
 	EmptyHeader,
 	EmptyTitle,
 } from "@shared/components/empty";
+import { Button } from "@shadcn/components/ui/button";
 
 export default function Page() {
 	const {
@@ -36,7 +36,7 @@ export default function Page() {
 
 					<div className="flex justify-end">
 						<Button
-							className="!mr-0"
+							className="mr-0!"
 							onClick={() => {
 								resetForm();
 								setDisplayDialog(true);

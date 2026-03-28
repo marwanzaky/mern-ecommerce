@@ -1,9 +1,10 @@
 "use client";
 
+import { Button } from "@shadcn/components/ui/button";
+import { TypographyP } from "@shadcn/components/ui/typography";
 import { Section } from "@shared/components/section";
-import { Button } from "@shared/shadcn/button";
 import { Container } from "@shared/ui/container";
-import { TypographyH2, TypographyH4, TypographyP } from "@shared/ui/typography";
+import { TypographyH2, TypographyH4 } from "@shared/ui/typography";
 import { useRouter } from "next/navigation";
 
 function Paragraph({
@@ -59,7 +60,9 @@ export default function About() {
 						</TypographyH4>
 
 						<div className="flex justify-center">
-							<Button onClick={() => router.push("/contact")}>Contact</Button>
+							<Button size="lg" onClick={() => router.push("/contact")}>
+								Contact
+							</Button>
 						</div>
 					</div>
 				</div>

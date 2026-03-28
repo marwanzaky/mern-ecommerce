@@ -3,7 +3,7 @@ import { usersService } from "@redux/services/usersService";
 import { RootState } from "@redux/store";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ICreateProduct, IProduct, IUpdateProduct } from "@shared/interfaces";
-import { ToastService } from "@shared/shadcn/hooks/use-toast";
+import { toast } from "sonner";
 
 export const getUserProductsAsync = createAsyncThunk(
 	"userProducts/getUserProducts",
@@ -20,10 +20,7 @@ export const getUserProductsAsync = createAsyncThunk(
 
 export const postUserProductAsync = createAsyncThunk(
 	"cart/postUserProduct",
-	async (
-		{ data, toast }: { data: ICreateProduct; toast: ToastService },
-		{ getState, rejectWithValue },
-	) => {
+	async ({ data }: { data: ICreateProduct }, { getState, rejectWithValue }) => {
 		const state = getState() as RootState;
 
 		try {
@@ -32,11 +29,7 @@ export const postUserProductAsync = createAsyncThunk(
 				data,
 			);
 
-			toast({
-				title: "Product listed",
-				description: `"${data.name}" has been added successfully.`,
-				duration: 3000,
-			});
+			toast("Product added.", { position: "top-center" });
 
 			return updatedCart;
 		} catch (error: any) {
@@ -48,11 +41,7 @@ export const postUserProductAsync = createAsyncThunk(
 export const updateUserProductAsync = createAsyncThunk(
 	"userProducts/updateUserProduct",
 	async (
-		{
-			id,
-			data,
-			toast,
-		}: { id: string; data: IUpdateProduct; toast?: ToastService },
+		{ id, data }: { id: string; data: IUpdateProduct },
 		{ getState, rejectWithValue },
 	) => {
 		const state = getState() as RootState;
@@ -64,12 +53,7 @@ export const updateUserProductAsync = createAsyncThunk(
 				data,
 			);
 
-			toast &&
-				toast({
-					title: "Product updated",
-					description: `"${data.name}" has been successfully updated.`,
-					duration: 3000,
-				});
+			toast && toast("Product updated.", { position: "top-center" });
 
 			return response;
 		} catch (error: any) {
@@ -80,10 +64,7 @@ export const updateUserProductAsync = createAsyncThunk(
 
 export const removeUserProductAsync = createAsyncThunk(
 	"userProducts/removeUserProduct",
-	async (
-		{ product, toast }: { product: IProduct; toast: ToastService },
-		{ getState, rejectWithValue },
-	) => {
+	async ({ product }: { product: IProduct }, { getState, rejectWithValue }) => {
 		const state = getState() as RootState;
 
 		try {
@@ -92,11 +73,7 @@ export const removeUserProductAsync = createAsyncThunk(
 				product._id,
 			);
 
-			toast({
-				title: "Product deleted",
-				description: `"${product.name}" has been permanently removed.`,
-				duration: 3000,
-			});
+			toast("Product deleted.", { position: "top-center" });
 
 			return response;
 		} catch (error: any) {

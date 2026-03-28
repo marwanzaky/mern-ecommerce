@@ -14,7 +14,6 @@ import { IProduct } from "@shared/interfaces";
 import { InputText } from "@shared/components/inputText";
 import ProductCart from "@shared/ui/productCart";
 import { ButtonIcon } from "@shared/ui/buttonIcon";
-import { Button } from "@shared/shadcn/button";
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -22,16 +21,15 @@ import {
 	BreadcrumbList,
 	BreadcrumbPage,
 	BreadcrumbSeparator,
-} from "@shared/shadcn/breadcrumb";
+} from "@shadcn/components/ui/breadcrumb";
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
 	AccordionTrigger,
-} from "@shared/shadcn/accordion";
+} from "@shadcn/components/ui/accordion";
 import { Section } from "@shared/components/section";
-import { useToast } from "@shared/shadcn/hooks/use-toast";
-import { TypographyH4, TypographyP } from "@shared/ui/typography";
+import { TypographyH4 } from "@shared/ui/typography";
 import {
 	TypographyH3 as ShadcnTypographyH3,
 	TypographyMuted,
@@ -60,6 +58,9 @@ import { categoriesService } from "@redux/services/categoriesService";
 
 import { sendGTMEvent } from "@next/third-parties/google";
 import { stringToDate } from "@utils/stringUtils";
+import { Button } from "@shadcn/components/ui/button";
+import { TypographyP } from "@shadcn/components/ui/typography";
+import { Label } from "@shadcn/components/ui/label";
 
 function Preview({ product }: { product: IProduct }) {
 	const { isFavorite, addToFavorites, removeFromFavorites } =
@@ -73,7 +74,7 @@ function Preview({ product }: { product: IProduct }) {
 				{isFavorite ? (
 					<ButtonIcon
 						className="scale-[.85] hover:scale-100 shadow-md transition-all"
-						styleClass="filter-custom-primary-foreground"
+						styleClass="filter-(--filter-primary)"
 						icon="favorite_fill"
 						onClick={removeFromFavorites}
 					/>
@@ -137,7 +138,6 @@ function Preview({ product }: { product: IProduct }) {
 
 function Details({ product }: { product: IProduct }) {
 	const router = useRouter();
-	const { toast } = useToast();
 
 	const dispatch = useDispatch<AppDispatch>();
 
@@ -252,9 +252,11 @@ function Details({ product }: { product: IProduct }) {
 			</div>
 
 			<div className="space-y-2">
-				<label className="font-bold" htmlFor="quantity">
+				{/* <label className="font-bold" htmlFor="quantity">
 					Quantity:
-				</label>
+				</label> */}
+
+				<Label htmlFor="quantity">Quantity:</Label>
 
 				<InputText
 					className="w-28"
@@ -269,9 +271,9 @@ function Details({ product }: { product: IProduct }) {
 
 			<div className="space-y-2 flex flex-col">
 				<Button
-					size="lg"
+					size="xl"
 					onClick={() => {
-						dispatch(postCartItemAsync({ product, toast, quantity }));
+						dispatch(postCartItemAsync({ product, quantity }));
 						sendGTMEvent({
 							event: "add_to_cart",
 							value: {
@@ -293,10 +295,10 @@ function Details({ product }: { product: IProduct }) {
 				</Button>
 
 				<Button
-					size="lg"
+					size="xl"
 					variant="secondary"
 					onClick={() => {
-						dispatch(postCartItemAsync({ product, toast, quantity }));
+						dispatch(postCartItemAsync({ product, quantity }));
 
 						sendGTMEvent({
 							event: "add_to_cart",
@@ -462,7 +464,7 @@ export default function ProductDetails({ product }: { product: IProduct }) {
 			</Section>
 
 			{similarProducts && similarProducts.length > 0 && (
-				<Section className="!pt-0 space-y-2 lg:space-y-4">
+				<Section className="pt-0! space-y-2 lg:space-y-4">
 					<ShadcnTypographyH3 className="text-center lg:text-left">
 						Similar products
 					</ShadcnTypographyH3>

@@ -14,11 +14,11 @@ import { cn } from "@lib/utils";
 import Stars from "@shared/components/stars";
 import { IProduct } from "@shared/interfaces";
 import { ButtonIcon } from "@shared/ui/buttonIcon";
-import { useToast } from "@shared/shadcn/hooks/use-toast";
 import { useIsMobile } from "@shared/shadcn/hooks/use-mobile";
 
 import { formatPrice } from "@utils/formatPrice";
 import { createProductSlug } from "@utils/stringUtils";
+import { toast } from "sonner";
 
 type ProductCartProps = {
 	data: IProduct;
@@ -27,7 +27,6 @@ type ProductCartProps = {
 export default function ProductCart({ data }: ProductCartProps) {
 	const dispatch = useDispatch<AppDispatch>();
 
-	const { toast } = useToast();
 	const { isFavorite, addToFavorites, removeFromFavorites } =
 		useToggleFavorite(data);
 
@@ -42,7 +41,7 @@ export default function ProductCart({ data }: ProductCartProps) {
 				{isFavorite ? (
 					<ButtonIcon
 						className="scale-[.85] hover:scale-100 shadow-md transition-transform"
-						styleClass="filter-custom-primary-foreground"
+						styleClass="filter-(--filter-primary)"
 						icon="favorite_fill"
 						onClick={removeFromFavorites}
 					/>
@@ -67,7 +66,7 @@ export default function ProductCart({ data }: ProductCartProps) {
 			</Link>
 
 			<div className="relative p-2 md:p-4">
-				<h3 className="truncate !leading-none mb-1 text-base md:text-lg">
+				<h3 className="truncate leading-none! mb-1 text-base md:text-lg">
 					{data.name}
 				</h3>
 
@@ -81,11 +80,11 @@ export default function ProductCart({ data }: ProductCartProps) {
 				)}
 
 				<div className="flex items-center gap-x-2">
-					<div className="!leading-none text-base md:text-2xl">
+					<div className="leading-none! text-base md:text-2xl">
 						{formatPrice(data.price)}
 					</div>
 					{data.priceCompare > data.price && (
-						<div className="text-gray-500 line-through !leading-none text-sm md:text-lg">
+						<div className="text-gray-500 line-through leading-none! text-sm md:text-lg">
 							{formatPrice(data.priceCompare)}
 						</div>
 					)}
@@ -95,7 +94,9 @@ export default function ProductCart({ data }: ProductCartProps) {
 					className="absolute bottom-1 right-1 sm:bottom-4 sm:right-4"
 					icon="shopping_cart"
 					variant="primary"
-					onClick={() => dispatch(postCartItemAsync({ product: data, toast }))}
+					onClick={() => {
+						dispatch(postCartItemAsync({ product: data }));
+					}}
 				/>
 			</div>
 		</div>

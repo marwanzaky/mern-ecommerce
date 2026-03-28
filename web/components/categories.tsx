@@ -15,7 +15,7 @@ export default function Categories({
 	const router = useRouter();
 
 	return (
-		<Section className="full-bleed bg-custom-background !pb-0 space-y-2 lg:space-y-4">
+		<Section className="full-bleed bg-custom-background pb-0! space-y-2 lg:space-y-4">
 			<Container>
 				<div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 lg:gap-4">
 					{categoryTree.map((item, i) => (
@@ -37,7 +37,7 @@ export default function Categories({
 								loading="lazy"
 							/>
 
-							<div className="bg-white font-light text-lg h-12 w-32 flex items-center justify-center shadow rounded z-10">
+							<div className="bg-white font-light text-lg h-12 w-32 flex items-center justify-center shadow-sm rounded z-10">
 								{item.name}
 							</div>
 						</button>

@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import { Poppins } from "next/font/google";
+import { Poppins, Inter } from "next/font/google";
 
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -10,7 +10,6 @@ import Navigation from "@components/navigation";
 import AppStateInit from "@components/appStateInit";
 
 import { Container } from "@shared/ui/container";
-import { Toaster } from "@shared/shadcn/toaster";
 import { TooltipProvider } from "@shared/shadcn/tooltip";
 
 import AppProviders from "@redux/appProviders";
@@ -19,13 +18,16 @@ import { cn } from "@lib/utils";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Metadata, Viewport } from "next";
+import { Toaster } from "sonner";
 
-const poppins = Poppins({
-	subsets: ["latin"],
-	weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-	variable: "--font-poppins",
-	display: "swap",
-});
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+
+// const poppins = Poppins({
+// 	subsets: ["latin"],
+// 	weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+// 	variable: "--font-poppins",
+// 	display: "swap",
+// });
 
 export const metadata: Metadata = {
 	title: "Mamolio",
@@ -50,7 +52,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" className={cn("font-sans", inter.variable)}>
 			<body className={cn("min-h-screen bg-background")}>
 				<AppProviders>
 					<AppStateInit />
@@ -60,7 +62,7 @@ export default function RootLayout({
 					{/* <Chatbot /> */}
 
 					{/* Banner */}
-					<div className="h-[2.625rem] flex justify-center items-center text-center text-white bg-custom-primary-foreground leading-none">
+					<div className="h-10.5 flex justify-center items-center text-center text-white bg-primary leading-none">
 						Free shipping on orders over $50
 					</div>
 

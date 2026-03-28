@@ -21,7 +21,7 @@ import {
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
-} from "@shared/shadcn/dropdown";
+} from "@shadcn/components/ui/dropdown-menu";
 import { InputText } from "@shared/components/inputText";
 import { useIsMobile } from "@shared/shadcn/hooks/use-mobile";
 
@@ -82,7 +82,7 @@ export default function Navigation() {
 				</form>
 			</div>
 
-			<ul className="flex-[2] hidden sm:flex items-center justify-center gap-10">
+			<ul className="flex-2 hidden sm:flex items-center justify-center gap-10">
 				<NavLi href="/" name="Home" />
 				<NavLi href="/products" name="Shop" />
 				{process.env.NEXT_PUBLIC_ABOUT === "true" && !isMobile && (
@@ -110,7 +110,12 @@ export default function Navigation() {
 										<ImageButton imgUrl={user?.photoUrl || "/img/avatar.jpg"} />
 									</DropdownMenuTrigger>
 
-									<DropdownMenuContent side="bottom" align="end" sideOffset={4}>
+									<DropdownMenuContent
+										className="w-fit"
+										side="bottom"
+										align="end"
+										sideOffset={4}
+									>
 										<DropdownMenuLabel>
 											<div className="flex flex-col space-y-1">
 												<span className="truncate font-medium text-sm leading-none">
@@ -241,8 +246,8 @@ function NavLi({ href, name }: { href: string; name: string }) {
 		<li>
 			<Link
 				className={cn(
-					"pb-1.5 border-b-2 border-transparent hover:border-b-custom-primary-foreground hover:text-custom-primary-foreground transition-colors leading-none",
-					select && "font-bold text-custom-primary-foreground",
+					"pb-1.5 border-b-2 border-transparent hover:border-b-primary hover:text-custom-primary-foreground transition-colors leading-none",
+					select && "font-bold text-primary",
 				)}
 				href={href}
 			>
@@ -257,8 +262,8 @@ function Badge({ children }: { children: React.ReactNode }) {
 		<div
 			className={cn(
 				"absolute inline-flex justify-center items-center",
-				"top-[0.3125rem] -right-[0.3125rem] h-[0.875rem] w-[0.875rem]",
-				"bg-custom-primary-foreground text-white text-xs rounded-full",
+				"top-1.25 -right-1.25 h-3.5 w-3.5",
+				"bg-primary text-white text-xs rounded-full",
 			)}
 		>
 			{children}

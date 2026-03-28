@@ -18,7 +18,7 @@ export function LogoCell({ label, imgUrl, href }: LogoCellProps) {
 			</Link>
 
 			<Link
-				className="hidden sm:block hover:text-custom-primary-foreground transition-colors"
+				className="hidden sm:block hover:text-primary transition-colors"
 				href={href}
 			>
 				{label}

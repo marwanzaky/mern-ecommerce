@@ -30,6 +30,7 @@
 			"@lib/*": ["./lib/*"],
 			"@shared/*": ["./_shared/*"],
 			"@app/*": ["./app/*"],
+			"@shadcn/*": ["./shadcn/*"],
 			"@shared/types/*": ["../shared/src/*"]
 		}
 	},

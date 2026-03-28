@@ -13,7 +13,6 @@ import { IProduct } from "@shared/interfaces";
 import { Column } from "@shared/components/table";
 import { LogoCell } from "@shared/components/table/cells/logoCell";
 
-import { useToast } from "@shared/shadcn/hooks/use-toast";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -24,7 +23,7 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	AlertDialogTrigger,
-} from "@shared/shadcn/alertDialog";
+} from "@shadcn/components/ui/alert-dialog";
 import { ButtonIcon } from "@shared/ui/buttonIcon";
 import { ImageNode } from "@shared/components/lexical/nodes/imageNode";
 
@@ -55,7 +54,6 @@ export type SellInputs = {
 
 export function useSell() {
 	const router = useRouter();
-	const { toast } = useToast();
 
 	const dispatch = useDispatch<AppDispatch>();
 
@@ -140,7 +138,7 @@ export function useSell() {
 			field: "_id",
 			header: "",
 			type: "custom",
-			className: "w-[5.25rem]",
+			className: "w-21",
 			render(value, row) {
 				return (
 					<div className="flex gap-2">
@@ -160,7 +158,7 @@ export function useSell() {
 									<AlertDialogCancel>Cancel</AlertDialogCancel>
 									<AlertDialogAction
 										onClick={() => {
-											dispatch(removeUserProductAsync({ product: row, toast }));
+											dispatch(removeUserProductAsync({ product: row }));
 										}}
 									>
 										Continue
@@ -229,7 +227,6 @@ export function useSell() {
 						category,
 						stock: 1,
 					},
-					toast,
 				}),
 			);
 		}
@@ -269,7 +266,6 @@ export function useSell() {
 						tags,
 						category,
 					},
-					toast,
 				}),
 			);
 		}

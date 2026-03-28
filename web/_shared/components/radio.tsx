@@ -16,7 +16,7 @@ export default function Radio({
 	return (
 		<div className="grid place-items-center">
 			<input
-				className="peer col-start-1 row-start-1 appearance-none aspect-square h-4 w-4 rounded-full border border-black shadow"
+				className="peer col-start-1 row-start-1 appearance-none aspect-square h-4 w-4 rounded-full border border-black shadow-sm"
 				type="radio"
 				id={id}
 				name={name}

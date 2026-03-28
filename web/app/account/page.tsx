@@ -12,10 +12,8 @@ import {
 
 import { InputText } from "@shared/components/inputText";
 import { Section } from "@shared/components/section";
-import { Button } from "@shared/shadcn/button";
 import { ButtonIcon } from "@shared/ui/buttonIcon";
 import { Avatar, AvatarImage } from "@shared/shadcn/avatar";
-import { toast } from "@shared/shadcn/hooks/use-toast";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -26,7 +24,7 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	AlertDialogTrigger,
-} from "@shared/shadcn/alertDialog";
+} from "@shadcn/components/ui/alert-dialog";
 
 import {
 	TypographyH3,
@@ -35,6 +33,8 @@ import {
 } from "@shared/shadcn/typography";
 
 import { Controller, useForm } from "react-hook-form";
+import { Button } from "@shadcn/components/ui/button";
+import { toast } from "sonner";
 
 function PersonalInformationForm() {
 	const {
@@ -156,6 +156,7 @@ function PersonalInformationForm() {
 							</Button>
 
 							<ButtonIcon
+								size="sm"
 								type="button"
 								icon="delete"
 								onClick={() => {
@@ -207,8 +208,9 @@ function PersonalInformationForm() {
 					})}
 				/>
 
-				<div className="flex justify-end gap-4">
+				<div className="flex justify-end gap-2">
 					<Button
+						size="lg"
 						variant="secondary"
 						disabled={!formState.isDirty}
 						onClick={resetForm}
@@ -216,7 +218,7 @@ function PersonalInformationForm() {
 						Cancel
 					</Button>
 
-					<Button type="submit" disabled={!formState.isDirty}>
+					<Button size="lg" type="submit" disabled={!formState.isDirty}>
 						Save
 					</Button>
 				</div>
@@ -248,10 +250,8 @@ function ChangePasswordForm() {
 					dispatch(updateMyPasswordAsync({ currentPassword, newPassword }));
 					reset();
 				} else {
-					toast({
-						title: "The passwords you entered do not match",
-						duration: 3000,
-						variant: "destructive",
+					toast("The passwords you entered do not match.", {
+						position: "top-center",
 					});
 				}
 			})}
@@ -293,8 +293,9 @@ function ChangePasswordForm() {
 					})}
 				/>
 
-				<div className="flex justify-end gap-4">
+				<div className="flex justify-end gap-2">
 					<Button
+						size="lg"
 						variant="secondary"
 						disabled={!formState.isDirty}
 						onClick={() => reset()}
@@ -302,7 +303,7 @@ function ChangePasswordForm() {
 						Cancel
 					</Button>
 
-					<Button type="submit" disabled={!formState.isDirty}>
+					<Button size="lg" type="submit" disabled={!formState.isDirty}>
 						Save
 					</Button>
 				</div>
@@ -327,7 +328,9 @@ function DeleteAccountForm() {
 
 				<AlertDialog>
 					<AlertDialogTrigger asChild>
-						<Button variant="destructive">Yes, delete my account</Button>
+						<Button size="xl" variant="destructive">
+							Yes, delete my account
+						</Button>
 					</AlertDialogTrigger>
 					<AlertDialogContent>
 						<AlertDialogHeader>

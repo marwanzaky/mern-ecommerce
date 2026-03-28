@@ -3,7 +3,7 @@ import { guestCartService } from "@redux/services/guestCartService";
 import { RootState } from "@redux/store";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { IProduct } from "@shared/interfaces";
-import { ToastService } from "@shared/shadcn/hooks/use-toast";
+import { toast } from "sonner";
 
 export const getCartMeAsync = createAsyncThunk(
 	"cart/getCartMe",
@@ -26,11 +26,7 @@ export const getCartMeAsync = createAsyncThunk(
 export const postCartItemAsync = createAsyncThunk(
 	"cart/postCartItem",
 	async (
-		{
-			product,
-			toast,
-			quantity = 1,
-		}: { product: IProduct; toast: ToastService; quantity?: number },
+		{ product, quantity = 1 }: { product: IProduct; quantity?: number },
 		{ getState, rejectWithValue },
 	) => {
 		const state = getState() as RootState;
@@ -40,11 +36,7 @@ export const postCartItemAsync = createAsyncThunk(
 			if (isAuthenticated === false) {
 				const updatedCart = await guestCartService.postItem(product, quantity);
 
-				toast({
-					title: "Added to cart (guest)",
-					description: `"${product.name}" has been added to your cart.`,
-					duration: 3000,
-				});
+				toast("Added to cart (guest).", { position: "top-center" });
 
 				return updatedCart;
 			}
@@ -55,11 +47,7 @@ export const postCartItemAsync = createAsyncThunk(
 				quantity,
 			);
 
-			toast({
-				title: "Added to cart",
-				description: `"${product.name}" has been added to your cart.`,
-				duration: 3000,
-			});
+			toast("Added to cart.", { position: "top-center" });
 
 			return updatedCart;
 		} catch (error: any) {
@@ -95,10 +83,7 @@ export const updateCartItemQuantityAsync = createAsyncThunk(
 
 export const deleteCartItemAsync = createAsyncThunk(
 	"cart/deleteCartItem",
-	async (
-		{ product, toast }: { product: IProduct; toast: ToastService },
-		{ getState, rejectWithValue },
-	) => {
+	async ({ product }: { product: IProduct }, { getState, rejectWithValue }) => {
 		const state = getState() as RootState;
 		const isAuthenticated = state.authReducer.isAuthenticated;
 
@@ -106,11 +91,7 @@ export const deleteCartItemAsync = createAsyncThunk(
 			if (isAuthenticated === false) {
 				const updatedCart = await guestCartService.deleteItem(product._id);
 
-				toast({
-					title: "Removed from cart (guest)",
-					description: `"${product.name}" has been removed from your cart.`,
-					duration: 3000,
-				});
+				toast("Removed from cart (guest).", { position: "top-center" });
 
 				return updatedCart;
 			}
@@ -120,11 +101,7 @@ export const deleteCartItemAsync = createAsyncThunk(
 				product._id,
 			);
 
-			toast({
-				title: "Removed from cart",
-				description: `"${product.name}" has been removed from your cart.`,
-				duration: 3000,
-			});
+			toast("Removed from cart.", { position: "top-center" });
 
 			return updatedCart;
 		} catch (error: any) {

@@ -8,7 +8,6 @@ import { IProduct } from "@shared/interfaces";
 import { useAppSelector } from "@redux/store";
 import { productsService } from "@redux/services/productsService";
 import { Textarea } from "@shared/components/textarea";
-import { Button } from "@shared/shadcn/button";
 import { TypographyH4 } from "@shared/shadcn/typography";
 import {
 	Dialog,
@@ -17,11 +16,13 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@shared/shadcn/dialog";
-import { Label } from "@shared/shadcn/label";
+} from "@shadcn/components/ui/dialog";
+import { Label } from "@shadcn/components/ui/label";
 import Ratings from "@shared/shadcn/ratings";
 import Icon from "@shared/ui/icon";
-import { toast } from "@shared/shadcn/hooks/use-toast";
+import { Button } from "@shadcn/components/ui/button";
+import { TypographyMuted } from "@shadcn/components/ui/typography";
+import { toast } from "sonner";
 
 export default function Overview({ product }: { product: IProduct }) {
 	const router = useRouter();
@@ -51,10 +52,7 @@ export default function Overview({ product }: { product: IProduct }) {
 			dialogDescription,
 		);
 
-		toast({
-			title: "Your review is sent successfully!",
-			duration: 3000,
-		});
+		toast("Your review is sent successfully!", { position: "top-center" });
 
 		closeDialog();
 	};
@@ -69,9 +67,9 @@ export default function Overview({ product }: { product: IProduct }) {
 						{product.avgRatings.toFixed(2)}
 					</div>
 					<Stars value={product.avgRatings} displayTotal={false} />
-					<div className="text-custom-grey leading-none">
+					<TypographyMuted className="leading-none">
 						{product.numReviews} reviews
-					</div>
+					</TypographyMuted>
 				</div>
 
 				<ul className="flex flex-col justify-center space-y-2">
@@ -84,7 +82,9 @@ export default function Overview({ product }: { product: IProduct }) {
 			</div>
 
 			<div className="flex justify-center">
-				<Button onClick={openDialog}>Write a review</Button>
+				<Button size="lg" onClick={openDialog}>
+					Write a review
+				</Button>
 			</div>
 
 			<Dialog open={displayDialog} onOpenChange={setDisplayDialog}>
@@ -116,6 +116,16 @@ export default function Overview({ product }: { product: IProduct }) {
 					</div>
 
 					<DialogFooter>
+						<Button
+							variant="outline"
+							type="button"
+							onClick={() => {
+								setDisplayDialog(false);
+							}}
+						>
+							Cancel
+						</Button>
+
 						<Button type="button" onClick={submitDialog}>
 							Submit
 						</Button>
@@ -135,13 +145,10 @@ function OverviewRatesLi({
 }) {
 	return (
 		<li className="flex items-center">
-			<div className="w-2.5 text-custom-primary-foreground leading-none">★</div>
-			<div className="w-[3.125rem] text-center leading-none">{stars}</div>
-			<div className="h-0.5 w-full bg-custom-border">
-				<div
-					className="h-full bg-custom-primary-foreground"
-					style={{ width: percent }}
-				/>
+			<div className="w-2.5 text-primary leading-none">★</div>
+			<div className="w-12.5 text-center leading-none">{stars}</div>
+			<div className="h-0.5 w-full bg-border">
+				<div className="h-full bg-primary" style={{ width: percent }} />
 			</div>
 		</li>
 	);

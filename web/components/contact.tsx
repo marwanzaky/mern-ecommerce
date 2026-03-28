@@ -7,9 +7,10 @@ import { Section } from "@shared/components/section";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { InputText } from "@shared/components/inputText";
 import { Textarea } from "@shared/components/textarea";
-import { Button } from "@shared/shadcn/button";
-import { TypographyH2, TypographyH4, TypographyP } from "@shared/ui/typography";
-import { toast } from "@shared/shadcn/hooks/use-toast";
+import { TypographyH2, TypographyH4 } from "@shared/ui/typography";
+import { TypographyP } from "@shadcn/components/ui/typography";
+import { Button } from "@shadcn/components/ui/button";
+import { toast } from "sonner";
 
 type Inputs = {
 	name: string;
@@ -34,17 +35,13 @@ export default function Contact() {
 
 			reset();
 
-			toast({
-				title: "Message sent successfully. Thank you!",
+			toast("Message sent successfully. Thank you!", {
+				position: "top-center",
 			});
 
 			router.push("/");
 		} catch (error) {
-			toast({
-				title: "Something went wrong",
-				description: "Please try again later.",
-				variant: "destructive",
-			});
+			toast("Something went wrong.", { position: "top-center" });
 
 			console.error(error);
 		}
@@ -121,7 +118,7 @@ export default function Contact() {
 					{...register("message", { required: "This field is required." })}
 				/>
 
-				<Button size="lg" type="submit">
+				<Button size="xl" type="submit">
 					Send
 				</Button>
 			</form>

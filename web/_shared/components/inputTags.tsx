@@ -13,7 +13,7 @@ const inputTagsVariants = cva(
 	[
 		"w-full flex flex-wrap gap-2",
 		"rounded-xl bg-custom-background-foreground",
-		"outline-none shadow-[0_0_0_1pt_#ecf0f1] focus-within:shadow-[0_0_0_2pt_cornflowerblue] transition-shadow",
+		"outline-hidden shadow-[0_0_0_1pt_#ecf0f1] focus-within:shadow-[0_0_0_2pt_cornflowerblue] transition-shadow",
 	],
 	{
 		variants: {
@@ -80,7 +80,7 @@ const InputTags = forwardRef<HTMLInputElement, InputTagsProps>(
 
 					<input
 						ref={ref}
-						className="flex-1 outline-none bg-transparent leading-none"
+						className="flex-1 outline-hidden bg-transparent leading-none"
 						value={pendingDataPoint}
 						onChange={(e) => setPendingDataPoint(e.target.value)}
 						onKeyDown={(e) => {

@@ -7,8 +7,8 @@ import { cn } from "@lib/utils";
 export const textareaVariants = cva(
 	[
 		"flex w-full h-52 max-h-96 min-h-[62px] px-[25px] py-5 leading-6",
-		"rounded-xl bg-custom-background-foreground",
-		"outline-none shadow-[0_0_0_1pt_#ecf0f1] focus:shadow-[0_0_0_2pt_cornflowerblue] transition-shadow",
+		"rounded-xl bg-custom-background-foreground placeholder:text-[#97A5A8]",
+		"outline-hidden shadow-[0_0_0_1pt_#ecf0f1] focus:shadow-[0_0_0_2pt_cornflowerblue] transition-shadow",
 	],
 	{
 		variants: {

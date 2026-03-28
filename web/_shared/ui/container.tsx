@@ -9,7 +9,10 @@ export function Container({
 }) {
 	return (
 		<div
-			className={cn("max-w-screen-container mx-auto px-4 w-full", className)}
+			className={cn(
+				"max-w-(--breakpoint-container) mx-auto px-4 w-full",
+				className,
+			)}
 		>
 			{children}
 		</div>

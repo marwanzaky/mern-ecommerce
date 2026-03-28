@@ -9,9 +9,9 @@ import { signupAsync } from "@redux/thunks/authThunks";
 import { InputText } from "@shared/components/inputText";
 import { useForm } from "react-hook-form";
 import { Section } from "@shared/components/section";
-import { Button } from "@shared/shadcn/button";
 import { TypographyH4 } from "@shared/shadcn/typography";
 import Icon from "@shared/ui/icon";
+import { Button } from "@shadcn/components/ui/button";
 
 type Form = {
 	name: string;
@@ -111,13 +111,13 @@ export default function Signup() {
 					/>
 
 					<div className="flex flex-col gap-2">
-						<Button size="lg" type="submit">
+						<Button size="xl" type="submit">
 							Sign up
 						</Button>
 
 						<Button
 							variant="secondary"
-							size="lg"
+							size="xl"
 							type="button"
 							onClick={() => {
 								window.location.href = `${process.env.NEXT_PUBLIC_SERVER!}/auth/google`;

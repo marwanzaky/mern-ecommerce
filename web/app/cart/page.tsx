@@ -7,7 +7,6 @@ import { useCart } from "@hooks/useCart";
 import { Table } from "@shared/components/table";
 import { Section } from "@shared/components/section";
 import { TypographyH4 } from "@shared/shadcn/typography";
-import { Button } from "@shared/shadcn/button";
 import {
 	Empty,
 	EmptyContent,
@@ -15,6 +14,7 @@ import {
 	EmptyHeader,
 	EmptyTitle,
 } from "@shared/components/empty";
+import { Button } from "@shadcn/components/ui/button";
 
 export default function Page() {
 	const router = useRouter();
