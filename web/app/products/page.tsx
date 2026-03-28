@@ -234,9 +234,7 @@ export default function Page() {
 											{[1, 2, 3, 4, 5].map((star) => (
 												<StarIcon
 													key={`star-${star}`}
-													className={cn(
-														"h-4 w-4 fill-yellow-400 text-yellow-400",
-													)}
+													className={"h-4 w-4 fill-yellow-400 text-yellow-400"}
 												/>
 											))}
 										</Label>
@@ -247,9 +245,7 @@ export default function Page() {
 											{[1, 2, 3, 4].map((star) => (
 												<StarIcon
 													key={`star-${star}`}
-													className={cn(
-														"h-4 w-4 fill-yellow-400 text-yellow-400",
-													)}
+													className={"h-4 w-4 fill-yellow-400 text-yellow-400"}
 												/>
 											))}
 										</Label>
@@ -261,9 +257,7 @@ export default function Page() {
 											{[1, 2, 3].map((star) => (
 												<StarIcon
 													key={`star-${star}`}
-													className={cn(
-														"h-4 w-4 fill-yellow-400 text-yellow-400",
-													)}
+													className={"h-4 w-4 fill-yellow-400 text-yellow-400"}
 												/>
 											))}
 										</Label>
@@ -275,9 +269,7 @@ export default function Page() {
 											{[1, 2].map((star) => (
 												<StarIcon
 													key={`star-${star}`}
-													className={cn(
-														"h-4 w-4 fill-yellow-400 text-yellow-400",
-													)}
+													className={"h-4 w-4 fill-yellow-400 text-yellow-400"}
 												/>
 											))}
 										</Label>
@@ -287,9 +279,7 @@ export default function Page() {
 										<RadioGroupItem value="1" id="option-1" />
 										<Label htmlFor="option-1">
 											<StarIcon
-												className={cn(
-													"h-4 w-4 mr-1 fill-yellow-400 text-yellow-400",
-												)}
+												className={"h-4 w-4 fill-yellow-400 text-yellow-400"}
 											/>
 										</Label>
 									</div>

@@ -14,7 +14,6 @@ import { cn } from "@lib/utils";
 import Stars from "@shared/components/stars";
 import { IProduct } from "@shared/interfaces";
 import { ButtonIcon } from "@shared/ui/buttonIcon";
-import { useIsMobile } from "@shared/shadcn/hooks/use-mobile";
 
 import { formatPrice } from "@utils/formatPrice";
 import { createProductSlug } from "@utils/stringUtils";

@@ -22,7 +22,7 @@ import { TypographyMuted } from "@shadcn/components/ui/typography";
 import { toast } from "sonner";
 import { Field, FieldGroup, FieldLabel } from "@shadcn/components/ui/field";
 import { Textarea } from "@shadcn/components/ui/textarea";
-import { StarIcon } from "lucide-react";
+import { Star, StarIcon } from "lucide-react";
 import { cn } from "@lib/utils";
 
 export default function Overview({ product }: { product: IProduct }) {
@@ -167,7 +167,9 @@ function OverviewRatesLi({
 }) {
 	return (
 		<li className="flex items-center">
-			<div className="w-2.5 text-primary leading-none">★</div>
+			<div className="w-2.5 text-primary leading-none">
+				<Star className="w-4 h-4 fill-primary" />
+			</div>
 			<div className="w-12.5 text-center leading-none">{stars}</div>
 			<div className="h-0.5 w-full bg-border">
 				<div className="h-full bg-primary" style={{ width: percent }} />
