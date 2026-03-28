@@ -10,7 +10,6 @@ import {
 	updateMyPasswordAsync,
 } from "@redux/thunks/authThunks";
 
-import { InputText } from "@shared/components/inputText";
 import { Section } from "@shared/components/section";
 import { ButtonIcon } from "@shared/ui/buttonIcon";
 import {
@@ -43,6 +42,7 @@ import {
 	AvatarFallback,
 	AvatarImage,
 } from "@shadcn/components/ui/avatar";
+import { useRouter } from "next/navigation";
 
 function PersonalInformationForm() {
 	const {
@@ -379,7 +379,16 @@ function DeleteAccountForm() {
 }
 
 export default function Page() {
-	const { user } = useAppSelector((state) => state.authReducer);
+	const { user, isAuthenticated } = useAppSelector(
+		(state) => state.authReducer,
+	);
+	const router = useRouter();
+
+	useEffect(() => {
+		if (isAuthenticated === false) {
+			router.push("/signin");
+		}
+	}, []);
 
 	return (
 		<>

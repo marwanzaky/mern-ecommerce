@@ -65,6 +65,13 @@ import { initials, stringToDate } from "@utils/stringUtils";
 import { Button } from "@shadcn/components/ui/button";
 import { TypographyP } from "@shadcn/components/ui/typography";
 import { Label } from "@shadcn/components/ui/label";
+import {
+	Field,
+	FieldDescription,
+	FieldGroup,
+	FieldLabel,
+} from "@shadcn/components/ui/field";
+import { Input } from "@shadcn/components/ui/input";
 
 function Preview({ product }: { product: IProduct }) {
 	const { isFavorite, addToFavorites, removeFromFavorites } =
@@ -255,19 +262,22 @@ function Details({ product }: { product: IProduct }) {
 				</div>
 			</div>
 
-			<div className="space-y-2">
-				<Label htmlFor="quantity">Quantity:</Label>
-
-				<InputText
-					className="w-28"
-					id="quantity"
-					type="number"
-					value={quantity}
-					min={1}
-					max={100}
-					onChange={(e) => setQuantity(parseInt(e.target.value))}
-				/>
-			</div>
+			<FieldGroup>
+				<Field>
+					<FieldLabel htmlFor="quantity">Quantity</FieldLabel>
+					<div>
+						<Input
+							className="w-24 h-10"
+							id="quantity"
+							type="number"
+							min={1}
+							max={100}
+							value={quantity}
+							onChange={(e) => setQuantity(parseInt(e.target.value))}
+						/>
+					</div>
+				</Field>
+			</FieldGroup>
 
 			<div className="space-y-2 flex flex-col">
 				<Button

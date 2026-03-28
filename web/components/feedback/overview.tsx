@@ -61,23 +61,23 @@ export default function Overview({ product }: { product: IProduct }) {
 				</ul>
 			</div>
 
-			<Dialog open={displayDialog} onOpenChange={setDisplayDialog}>
-				<form
-					onSubmit={async () => {
-						await productsService.postProductReview(
-							token,
-							product._id,
-							dialogRating,
-							dialogDescription,
-						);
+			<div className="flex justify-center">
+				<Dialog open={displayDialog} onOpenChange={setDisplayDialog}>
+					<form
+						onSubmit={async () => {
+							await productsService.postProductReview(
+								token,
+								product._id,
+								dialogRating,
+								dialogDescription,
+							);
 
-						toast("Your review is sent successfully!", {
-							position: "top-center",
-						});
-					}}
-				>
-					<DialogTrigger asChild>
-						<div className="flex justify-center">
+							toast("Your review is sent successfully!", {
+								position: "top-center",
+							});
+						}}
+					>
+						<DialogTrigger asChild>
 							<Button
 								size="lg"
 								onClick={(e) => {
@@ -89,52 +89,52 @@ export default function Overview({ product }: { product: IProduct }) {
 							>
 								Write a review
 							</Button>
-						</div>
-					</DialogTrigger>
-					<DialogContent className="sm:max-w-[24rem] ">
-						<DialogHeader>
-							<DialogTitle>Write a review</DialogTitle>
-							<DialogDescription>
-								Share your experience with this product.
-							</DialogDescription>
-						</DialogHeader>
+						</DialogTrigger>
+						<DialogContent className="sm:max-w-[24rem] ">
+							<DialogHeader>
+								<DialogTitle>Write a review</DialogTitle>
+								<DialogDescription>
+									Share your experience with this product.
+								</DialogDescription>
+							</DialogHeader>
 
-						<FieldGroup>
-							<Field>
-								<FieldLabel>Rating</FieldLabel>
-								<Ratings
-									value={dialogRating}
-									onValueChange={setDialogRating}
-									Icon={<Icon src="icons/star.svg" />}
-								/>
-							</Field>
-							<Field>
-								<FieldLabel id="description">Description</FieldLabel>
-								<Textarea
-									id="description"
-									placeholder="Describe your experience..."
-									className="min-h-32"
-									onChange={(e) => setDialogDescription(e.target.value)}
-								></Textarea>
-							</Field>
-						</FieldGroup>
+							<FieldGroup>
+								<Field>
+									<FieldLabel>Rating</FieldLabel>
+									<Ratings
+										value={dialogRating}
+										onValueChange={setDialogRating}
+										Icon={<Icon src="icons/star.svg" />}
+									/>
+								</Field>
+								<Field>
+									<FieldLabel id="description">Description</FieldLabel>
+									<Textarea
+										id="description"
+										placeholder="Describe your experience..."
+										className="min-h-32"
+										onChange={(e) => setDialogDescription(e.target.value)}
+									></Textarea>
+								</Field>
+							</FieldGroup>
 
-						<DialogFooter>
-							<Button
-								variant="outline"
-								type="button"
-								onClick={() => {
-									setDisplayDialog(false);
-								}}
-							>
-								Cancel
-							</Button>
+							<DialogFooter>
+								<Button
+									variant="outline"
+									type="button"
+									onClick={() => {
+										setDisplayDialog(false);
+									}}
+								>
+									Cancel
+								</Button>
 
-							<Button type="submit">Submit</Button>
-						</DialogFooter>
-					</DialogContent>
-				</form>
-			</Dialog>
+								<Button type="submit">Submit</Button>
+							</DialogFooter>
+						</DialogContent>
+					</form>
+				</Dialog>
+			</div>
 		</div>
 	);
 }

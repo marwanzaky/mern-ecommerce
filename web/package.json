@@ -6,6 +6,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@hookform/resolvers": "^5.2.2",
 		"@lexical/react": "^0.39.0",
 		"@next/third-parties": "^16.1.6",
 		"@radix-ui/react-toast": "^1.2.14",
