@@ -160,13 +160,11 @@ export default function Contact() {
 							</Field>
 						)}
 					/>
-					<FieldGroup>
-						<Field>
-							<Button size="lg" type="submit">
-								Send
-							</Button>
-						</Field>
-					</FieldGroup>
+					<Field>
+						<Button size="lg" type="submit">
+							Send
+						</Button>
+					</Field>
 				</FieldGroup>
 			</form>
 		</Section>

@@ -221,23 +221,19 @@ function PersonalInformationForm() {
 						/>
 					</Field>
 
-					<FieldGroup>
-						<Field>
-							<div className="flex gap-2">
-								<Button
-									variant="outline"
-									disabled={!formState.isDirty}
-									onClick={resetForm}
-								>
-									Cancel
-								</Button>
+					<Field orientation="horizontal">
+						<Button
+							variant="outline"
+							disabled={!formState.isDirty}
+							onClick={resetForm}
+						>
+							Cancel
+						</Button>
 
-								<Button type="submit" disabled={!formState.isDirty}>
-									Save
-								</Button>
-							</div>
-						</Field>
-					</FieldGroup>
+						<Button type="submit" disabled={!formState.isDirty}>
+							Save
+						</Button>
+					</Field>
 				</FieldGroup>
 			</div>
 		</form>
@@ -311,23 +307,20 @@ function ChangePasswordForm() {
 						})}
 					/>
 				</Field>
-				<FieldGroup>
-					<Field>
-						<div className="flex gap-2">
-							<Button
-								variant="outline"
-								disabled={!formState.isDirty}
-								onClick={() => reset()}
-							>
-								Cancel
-							</Button>
 
-							<Button type="submit" disabled={!formState.isDirty}>
-								Save
-							</Button>
-						</div>
-					</Field>
-				</FieldGroup>
+				<Field orientation="horizontal">
+					<Button
+						variant="outline"
+						disabled={!formState.isDirty}
+						onClick={() => reset()}
+					>
+						Cancel
+					</Button>
+
+					<Button type="submit" disabled={!formState.isDirty}>
+						Save
+					</Button>
+				</Field>
 			</FieldGroup>
 		</form>
 	);

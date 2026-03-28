@@ -22,7 +22,6 @@ import {
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
 } from "@shadcn/components/ui/dropdown-menu";
-import { InputText } from "@shared/components/inputText";
 import { useIsMobile } from "@shared/shadcn/hooks/use-mobile";
 
 import { useEffect, useState } from "react";
@@ -35,7 +34,8 @@ import {
 	AvatarImage,
 } from "@shadcn/components/ui/avatar";
 import { initials } from "@utils/stringUtils";
-import { BadgeCheck, LogOut, Menu, MessagesSquare } from "lucide-react";
+import { BadgeCheck, LogOut, Menu, MessagesSquare, Search } from "lucide-react";
+import { Input } from "@shadcn/components/ui/input";
 
 export default function Navigation() {
 	const router = useRouter();
@@ -71,6 +71,7 @@ export default function Navigation() {
 				</Link>
 
 				<form
+					className="w-32"
 					onSubmit={(event) => {
 						event.preventDefault();
 						const params = new URLSearchParams();
@@ -78,14 +79,16 @@ export default function Navigation() {
 						router.push(`/products?${params.toString()}`);
 					}}
 				>
-					<InputText
-						size="sm"
-						icon={isMobile ? undefined : "search"}
-						placeholder="Search..."
-						className="md:w-40"
-						value={search}
-						onChange={(event) => setSearch(event.target.value)}
-					/>
+					<div className="relative">
+						<Search className="-translate-y-1/2 absolute top-1/2 left-3 h-4 w-4 text-muted-foreground" />
+						<Input
+							type="search"
+							className="bg-background pl-9"
+							placeholder="Search..."
+							value={search}
+							onChange={(event) => setSearch(event.target.value)}
+						/>
+					</div>
 				</form>
 			</div>
 
