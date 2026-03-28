@@ -25,7 +25,10 @@ export const loginAsync = createAsyncThunk(
 			router.push("/");
 			return data;
 		} catch (error: any) {
-			toast("Sign-in failed.", { position: "top-center" });
+			toast.error("Sign-in failed.", {
+				description: error.message,
+				position: "top-center",
+			});
 
 			return rejectWithValue(error.message);
 		}
@@ -47,19 +50,13 @@ export const signupAsync = createAsyncThunk(
 		try {
 			const data = await usersService.signup(name, email, password);
 
-			toast({
-				title: "Account created successfully!",
-				duration: 3000,
-			});
+			toast("Account created successfully!");
 
 			return data;
 		} catch (error: any) {
-			toast({
-				title: "Uh oh! Something went wrong.",
+			toast.error("Uh oh! Something went wrong.", {
 				description: error.message,
-				duration: 3000,
-				variant: "destructive",
-				action: <ToastAction altText="Try again">Try again</ToastAction>,
+				position: "top-center",
 			});
 
 			return rejectWithValue(error.message);
@@ -94,10 +91,7 @@ export const updateMeAsync = createAsyncThunk(
 				updatedUser,
 			);
 
-			toast({
-				title: "User settings updated successfully!",
-				duration: 3000,
-			});
+			toast("User settings updated successfully!", { position: "top-center" });
 
 			return data;
 		} catch (error: any) {
@@ -120,19 +114,13 @@ export const updateMyPasswordAsync = createAsyncThunk(
 				updatedUserPassword,
 			);
 
-			toast({
-				title: "User password updated successfully!",
-				duration: 3000,
-			});
+			toast("User password updated successfully!", { position: "top-center" });
 
 			return data;
 		} catch (error: any) {
-			toast({
-				title: "Uh oh! Something went wrong.",
+			toast.error("Uh oh! Something went wrong.", {
 				description: error.message,
-				duration: 3000,
-				variant: "destructive",
-				action: <ToastAction altText="Try again">Try again</ToastAction>,
+				position: "top-center",
 			});
 
 			return rejectWithValue(error.message);
@@ -148,10 +136,7 @@ export const deleteMeAsync = createAsyncThunk(
 		try {
 			const data = await usersService.deleteMe(state.authReducer.token);
 
-			toast({
-				title: "User deleted successfully!",
-				duration: 3000,
-			});
+			toast("User deleted successfully!", { position: "top-center" });
 
 			return data;
 		} catch (error: any) {

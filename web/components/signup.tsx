@@ -8,19 +8,15 @@ import { AppDispatch } from "@redux/store";
 import { signupAsync } from "@redux/thunks/authThunks";
 import { useForm } from "react-hook-form";
 import { Section } from "@shared/components/section";
-import { TypographyH4 } from "@shared/shadcn/typography";
 import { Button } from "@shadcn/components/ui/button";
 import { Input } from "@shadcn/components/ui/input";
 import {
 	Card,
-	CardAction,
 	CardContent,
 	CardDescription,
-	CardFooter,
 	CardHeader,
 	CardTitle,
 } from "@shadcn/components/ui/card";
-import { Label } from "@shadcn/components/ui/label";
 
 import {
 	Field,
