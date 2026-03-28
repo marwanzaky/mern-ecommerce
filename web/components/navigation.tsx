@@ -29,6 +29,13 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { categoriesService } from "@redux/services/categoriesService";
 import { ProductsPageParams } from "@hooks/useProducts";
+import {
+	Avatar,
+	AvatarFallback,
+	AvatarImage,
+} from "@shadcn/components/ui/avatar";
+import { initials } from "@utils/stringUtils";
+import { BadgeCheck, LogOut, Menu, MessagesSquare } from "lucide-react";
 
 export default function Navigation() {
 	const router = useRouter();
@@ -102,7 +109,7 @@ export default function Navigation() {
 					{items.length > 0 && <Badge>{items.length}</Badge>}
 				</ButtonIcon>
 
-				{isAuthenticated
+				{isAuthenticated && user
 					? process.env.NEXT_PUBLIC_ACCOUNT === "true" && (
 							<div>
 								<DropdownMenu>
@@ -111,19 +118,25 @@ export default function Navigation() {
 									</DropdownMenuTrigger>
 
 									<DropdownMenuContent
-										className="w-fit"
-										side="bottom"
+										className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+										side={"bottom"}
 										align="end"
 										sideOffset={4}
 									>
-										<DropdownMenuLabel>
-											<div className="flex flex-col space-y-1">
-												<span className="text-foreground truncate font-medium text-sm leading-none">
-													{user?.name}
-												</span>
-												<span className="text-xs font-normal leading-none text-muted-foreground">
-													{user?.email}
-												</span>
+										<DropdownMenuLabel className="p-0 font-normal">
+											<div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+												<Avatar className="h-8 w-8 rounded-lg">
+													<AvatarImage src={user.photoUrl} alt={user.name} />
+													<AvatarFallback className="rounded-lg">
+														{initials(user.name)}
+													</AvatarFallback>
+												</Avatar>
+												<div className="grid flex-1 text-left text-sm leading-tight">
+													<span className="text-foreground truncate font-medium">
+														{user.name}
+													</span>
+													<span className="truncate text-xs">{user.email}</span>
+												</div>
 											</div>
 										</DropdownMenuLabel>
 
@@ -135,17 +148,16 @@ export default function Navigation() {
 													router.push("/account");
 												}}
 											>
+												<BadgeCheck />
 												Account
 											</DropdownMenuItem>
 										</DropdownMenuGroup>
 
 										<DropdownMenuSeparator />
 
-										{user && user.role === "admin" && (
+										{user.role === "admin" && (
 											<>
-												<DropdownMenuLabel className="text-sm">
-													Admin
-												</DropdownMenuLabel>
+												<DropdownMenuLabel>Admin</DropdownMenuLabel>
 
 												<DropdownMenuGroup>
 													<DropdownMenuItem
@@ -153,6 +165,7 @@ export default function Navigation() {
 															router.push("/admin/messages");
 														}}
 													>
+														<MessagesSquare />
 														Messages
 													</DropdownMenuItem>
 
@@ -161,6 +174,7 @@ export default function Navigation() {
 															router.push("/admin/categories");
 														}}
 													>
+														<Menu />
 														Categories
 													</DropdownMenuItem>
 												</DropdownMenuGroup>
@@ -170,12 +184,12 @@ export default function Navigation() {
 										)}
 
 										<DropdownMenuItem
-											variant="destructive"
 											onClick={() => {
 												window.localStorage.clear();
 												location.reload();
 											}}
 										>
+											<LogOut />
 											Log out
 										</DropdownMenuItem>
 									</DropdownMenuContent>
