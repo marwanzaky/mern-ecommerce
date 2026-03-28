@@ -1,9 +1,13 @@
-import * as React from "react";
+import React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@lib/utils";
-import Image from "next/image";
+import {
+	Avatar,
+	AvatarFallback,
+	AvatarImage,
+} from "@shadcn/components/ui/avatar";
 
 const imageButtonVariants = cva(
 	[
@@ -19,15 +23,21 @@ const imageButtonVariants = cva(
 );
 
 export interface ImageIconProps
-	extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+	extends
+		React.ButtonHTMLAttributes<HTMLButtonElement>,
 		VariantProps<typeof imageButtonVariants> {
 	asChild?: boolean;
 	styleClass?: string;
-	imgUrl: string;
+	imgUrl: string | undefined;
+	fallback: string;
+	alt: string;
 }
 
 const ImageButton = React.forwardRef<HTMLButtonElement, ImageIconProps>(
-	({ className, styleClass, imgUrl, asChild = false, ...props }, ref) => {
+	(
+		{ className, styleClass, imgUrl, alt, fallback, asChild = false, ...props },
+		ref,
+	) => {
 		const Comp = asChild ? Slot : "button";
 		return (
 			<Comp
@@ -35,13 +45,10 @@ const ImageButton = React.forwardRef<HTMLButtonElement, ImageIconProps>(
 				ref={ref}
 				{...props}
 			>
-				<Image
-					className="rounded-full filter-none!"
-					src={imgUrl}
-					width={24}
-					height={24}
-					alt="Icon"
-				/>
+				<Avatar className="w-6 h-6">
+					<AvatarImage src={imgUrl} alt={alt} />
+					<AvatarFallback>{fallback}</AvatarFallback>
+				</Avatar>
 			</Comp>
 		);
 	},

@@ -13,7 +13,6 @@ import {
 import { InputText } from "@shared/components/inputText";
 import { Section } from "@shared/components/section";
 import { ButtonIcon } from "@shared/ui/buttonIcon";
-import { Avatar, AvatarImage } from "@shared/shadcn/avatar";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -35,6 +34,15 @@ import {
 import { Controller, useForm } from "react-hook-form";
 import { Button } from "@shadcn/components/ui/button";
 import { toast } from "sonner";
+
+import { Field, FieldGroup, FieldLabel } from "@shadcn/components/ui/field";
+import { Input } from "@shadcn/components/ui/input";
+import { initials } from "@utils/stringUtils";
+import {
+	Avatar,
+	AvatarFallback,
+	AvatarImage,
+} from "@shadcn/components/ui/avatar";
 
 function PersonalInformationForm() {
 	const {
@@ -139,7 +147,8 @@ function PersonalInformationForm() {
 
 							return (
 								<Avatar className="h-12 w-12">
-									<AvatarImage src={previewUrl || "img/avatar.jpg"} />
+									<AvatarImage src={previewUrl} />
+									<AvatarFallback>{initials(user!.name)}</AvatarFallback>
 								</Avatar>
 							);
 						}}
@@ -176,54 +185,60 @@ function PersonalInformationForm() {
 						</TypographyMuted>
 					</div>
 				</div>
+				<FieldGroup>
+					<Field>
+						<FieldLabel htmlFor="name">Full Name</FieldLabel>
+						<Input
+							id="name"
+							type="text"
+							placeholder="John Doe"
+							{...register("name", {
+								required: "This field is required.",
+								minLength: { value: 2, message: "Name is too short." },
+								maxLength: { value: 16, message: "Name is too long." },
+								pattern: {
+									value: /^[a-zA-Z0-9\s'-]+$/,
+									message: "Invalid characters in name.",
+								},
+							})}
+						/>
+					</Field>
+					<Field>
+						<FieldLabel htmlFor="name">Email</FieldLabel>
+						<Input
+							id="name"
+							type="email"
+							placeholder="m@example.com"
+							{...register("email", {
+								required: "This field is required.",
+								minLength: { value: 2, message: "Email is too short." },
+								maxLength: { value: 32, message: "Email is too long." },
+								pattern: {
+									value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+									message: "Invalid characters in email.",
+								},
+							})}
+						/>
+					</Field>
 
-				<InputText
-					size="sm"
-					type="text"
-					placeholder="Enter Name"
-					icon="person"
-					message={errors.name?.message}
-					{...register("name", {
-						required: "This field is required.",
-						minLength: { value: 2, message: "Name is too short." },
-						maxLength: { value: 16, message: "Name is too long." },
-						pattern: {
-							value: /^[a-zA-Z0-9\s'-]+$/,
-							message: "Invalid characters in name.",
-						},
-					})}
-				/>
-				<InputText
-					size="sm"
-					type="text"
-					placeholder="Enter Email"
-					icon="mail"
-					message={errors.email?.message}
-					{...register("email", {
-						required: "This field is required.",
-						minLength: { value: 2, message: "Email is too short." },
-						maxLength: { value: 32, message: "Email is too long." },
-						pattern: {
-							value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-							message: "Invalid characters in email.",
-						},
-					})}
-				/>
+					<FieldGroup>
+						<Field>
+							<div className="flex gap-2">
+								<Button
+									variant="outline"
+									disabled={!formState.isDirty}
+									onClick={resetForm}
+								>
+									Cancel
+								</Button>
 
-				<div className="flex gap-2">
-					<Button
-						size="lg"
-						variant="outline"
-						disabled={!formState.isDirty}
-						onClick={resetForm}
-					>
-						Cancel
-					</Button>
-
-					<Button size="lg" type="submit" disabled={!formState.isDirty}>
-						Save
-					</Button>
-				</div>
+								<Button type="submit" disabled={!formState.isDirty}>
+									Save
+								</Button>
+							</div>
+						</Field>
+					</FieldGroup>
+				</FieldGroup>
 			</div>
 		</form>
 	);
@@ -259,60 +274,61 @@ function ChangePasswordForm() {
 			})}
 		>
 			<TypographyH4>Change Password</TypographyH4>
+			<FieldGroup>
+				<Field>
+					<FieldLabel htmlFor="current-password">Current Password</FieldLabel>
+					<Input
+						id="current-password"
+						type="password"
+						{...register("currentPassword", {
+							required: "This field is required.",
+							minLength: { value: 8, message: "Password is too short." },
+							maxLength: { value: 32, message: "Password is too long." },
+						})}
+					/>
+				</Field>
+				<Field>
+					<FieldLabel htmlFor="new-password">New Password</FieldLabel>
+					<Input
+						id="new-password"
+						type="password"
+						{...register("newPassword", {
+							required: "This field is required.",
+							minLength: { value: 8, message: "Password is too short." },
+							maxLength: { value: 32, message: "Password is too long." },
+						})}
+					/>
+				</Field>
+				<Field>
+					<FieldLabel htmlFor="confirm-password">Confirm Password</FieldLabel>
+					<Input
+						id="confirm-password"
+						type="password"
+						{...register("confirmPassword", {
+							required: "This field is required.",
+							minLength: { value: 8, message: "Password is too short." },
+							maxLength: { value: 32, message: "Password is too long." },
+						})}
+					/>
+				</Field>
+				<FieldGroup>
+					<Field>
+						<div className="flex gap-2">
+							<Button
+								variant="outline"
+								disabled={!formState.isDirty}
+								onClick={() => reset()}
+							>
+								Cancel
+							</Button>
 
-			<div className="flex flex-col gap-4">
-				<InputText
-					size="sm"
-					type="password"
-					placeholder="Current Password"
-					icon="password"
-					message={errors.currentPassword?.message}
-					{...register("currentPassword", {
-						required: "This field is required.",
-						minLength: { value: 8, message: "Password is too short." },
-						maxLength: { value: 32, message: "Password is too long." },
-					})}
-				/>
-				<InputText
-					size="sm"
-					type="password"
-					placeholder="New Password"
-					icon="password"
-					message={errors.newPassword?.message}
-					{...register("newPassword", {
-						required: "This field is required.",
-						minLength: { value: 8, message: "Password is too short." },
-						maxLength: { value: 32, message: "Password is too long." },
-					})}
-				/>
-				<InputText
-					size="sm"
-					type="password"
-					placeholder="Confirm Password"
-					icon="password"
-					message={errors.confirmPassword?.message}
-					{...register("confirmPassword", {
-						required: "This field is required.",
-						minLength: { value: 8, message: "Password is too short." },
-						maxLength: { value: 32, message: "Password is too long." },
-					})}
-				/>
-
-				<div className="flex gap-2">
-					<Button
-						size="lg"
-						variant="outline"
-						disabled={!formState.isDirty}
-						onClick={() => reset()}
-					>
-						Cancel
-					</Button>
-
-					<Button size="lg" type="submit" disabled={!formState.isDirty}>
-						Save
-					</Button>
-				</div>
-			</div>
+							<Button type="submit" disabled={!formState.isDirty}>
+								Save
+							</Button>
+						</div>
+					</Field>
+				</FieldGroup>
+			</FieldGroup>
 		</form>
 	);
 }
@@ -372,7 +388,7 @@ export default function Page() {
 					<TypographyH3>loading...</TypographyH3>
 				</Section>
 			) : (
-				<Section className="m-auto max-w-lg">
+				<Section className="m-auto max-w-lg space-y-4">
 					<TypographyH3>Settings</TypographyH3>
 
 					<div className="flex flex-col gap-8">
