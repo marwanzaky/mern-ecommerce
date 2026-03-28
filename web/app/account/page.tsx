@@ -178,6 +178,7 @@ function PersonalInformationForm() {
 				</div>
 
 				<InputText
+					size="sm"
 					type="text"
 					placeholder="Enter Name"
 					icon="person"
@@ -193,6 +194,7 @@ function PersonalInformationForm() {
 					})}
 				/>
 				<InputText
+					size="sm"
 					type="text"
 					placeholder="Enter Email"
 					icon="mail"
@@ -208,10 +210,10 @@ function PersonalInformationForm() {
 					})}
 				/>
 
-				<div className="flex justify-end gap-2">
+				<div className="flex gap-2">
 					<Button
 						size="lg"
-						variant="secondary"
+						variant="outline"
 						disabled={!formState.isDirty}
 						onClick={resetForm}
 					>
@@ -260,6 +262,7 @@ function ChangePasswordForm() {
 
 			<div className="flex flex-col gap-4">
 				<InputText
+					size="sm"
 					type="password"
 					placeholder="Current Password"
 					icon="password"
@@ -271,6 +274,7 @@ function ChangePasswordForm() {
 					})}
 				/>
 				<InputText
+					size="sm"
 					type="password"
 					placeholder="New Password"
 					icon="password"
@@ -282,6 +286,7 @@ function ChangePasswordForm() {
 					})}
 				/>
 				<InputText
+					size="sm"
 					type="password"
 					placeholder="Confirm Password"
 					icon="password"
@@ -293,10 +298,10 @@ function ChangePasswordForm() {
 					})}
 				/>
 
-				<div className="flex justify-end gap-2">
+				<div className="flex gap-2">
 					<Button
 						size="lg"
-						variant="secondary"
+						variant="outline"
 						disabled={!formState.isDirty}
 						onClick={() => reset()}
 					>

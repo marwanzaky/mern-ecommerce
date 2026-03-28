@@ -213,47 +213,46 @@ export default function Page() {
 								onMaxChange={(value) => setDraftMaxPrice(value)}
 							/>
 
-							<div className="flex flex-col gap-2">
-								<RadioGroup
-									onValueChange={(value) => {
-										setDraftRating(parseInt(value));
-									}}
-								>
-									<div className="flex items-center gap-2">
-										<RadioGroupItem value="5" id="option-5" />
-										<Label className="text-primary" htmlFor="option-5">
-											★★★★★
-										</Label>
-									</div>
-									<div className="flex items-center gap-2">
-										<RadioGroupItem value="4" id="option-4" />
-										<Label className="text-primary" htmlFor="option-4">
-											★★★★
-										</Label>
-									</div>
+							<RadioGroup
+								className="gap-1"
+								onValueChange={(value) => {
+									setDraftRating(parseInt(value));
+								}}
+							>
+								<div className="flex items-center gap-2">
+									<RadioGroupItem value="5" id="option-5" />
+									<Label className="text-primary" htmlFor="option-5">
+										★★★★★
+									</Label>
+								</div>
+								<div className="flex items-center gap-2">
+									<RadioGroupItem value="4" id="option-4" />
+									<Label className="text-primary" htmlFor="option-4">
+										★★★★
+									</Label>
+								</div>
 
-									<div className="flex items-center gap-2">
-										<RadioGroupItem value="3" id="option-3" />
-										<Label className="text-primary" htmlFor="option-3">
-											★★★
-										</Label>
-									</div>
+								<div className="flex items-center gap-2">
+									<RadioGroupItem value="3" id="option-3" />
+									<Label className="text-primary" htmlFor="option-3">
+										★★★
+									</Label>
+								</div>
 
-									<div className="flex items-center gap-2">
-										<RadioGroupItem value="2" id="option-2" />
-										<Label className="text-primary" htmlFor="option-2">
-											★★
-										</Label>
-									</div>
+								<div className="flex items-center gap-2">
+									<RadioGroupItem value="2" id="option-2" />
+									<Label className="text-primary" htmlFor="option-2">
+										★★
+									</Label>
+								</div>
 
-									<div className="flex items-center gap-2">
-										<RadioGroupItem value="1" id="option-1" />
-										<Label className="text-primary" htmlFor="option-1">
-											★
-										</Label>
-									</div>
-								</RadioGroup>
-							</div>
+								<div className="flex items-center gap-2">
+									<RadioGroupItem value="1" id="option-1" />
+									<Label className="text-primary" htmlFor="option-1">
+										★
+									</Label>
+								</div>
+							</RadioGroup>
 						</div>
 
 						<DialogFooter className="mt-4">

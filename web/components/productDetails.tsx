@@ -252,10 +252,6 @@ function Details({ product }: { product: IProduct }) {
 			</div>
 
 			<div className="space-y-2">
-				{/* <label className="font-bold" htmlFor="quantity">
-					Quantity:
-				</label> */}
-
 				<Label htmlFor="quantity">Quantity:</Label>
 
 				<InputText

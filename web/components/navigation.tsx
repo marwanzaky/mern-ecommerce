@@ -118,7 +118,7 @@ export default function Navigation() {
 									>
 										<DropdownMenuLabel>
 											<div className="flex flex-col space-y-1">
-												<span className="truncate font-medium text-sm leading-none">
+												<span className="text-foreground truncate font-medium text-sm leading-none">
 													{user?.name}
 												</span>
 												<span className="text-xs font-normal leading-none text-muted-foreground">
@@ -170,6 +170,7 @@ export default function Navigation() {
 										)}
 
 										<DropdownMenuItem
+											variant="destructive"
 											onClick={() => {
 												window.localStorage.clear();
 												location.reload();

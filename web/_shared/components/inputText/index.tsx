@@ -11,7 +11,7 @@ const inputTextVariants = cva(
 	{
 		variants: {
 			size: {
-				sm: "px-[25px] h-[48px]",
+				sm: "px-[25px] h-[48px] text-sm",
 				md: "px-[25px] h-[62px]",
 			},
 			hasError: {

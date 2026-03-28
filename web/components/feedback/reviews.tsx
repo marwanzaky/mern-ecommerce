@@ -8,7 +8,7 @@ import {
 	EmptyDescription,
 	EmptyHeader,
 	EmptyTitle,
-} from "@shared/components/empty";
+} from "@shadcn/components/ui/empty";
 
 import { initials, stringToDate } from "@utils/stringUtils";
 import { useRouter } from "next/navigation";

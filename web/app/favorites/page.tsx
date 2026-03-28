@@ -12,7 +12,7 @@ import {
 	EmptyDescription,
 	EmptyHeader,
 	EmptyTitle,
-} from "@shared/components/empty";
+} from "@shadcn/components/ui/empty";
 import { Button } from "@shadcn/components/ui/button";
 
 export default function Page() {

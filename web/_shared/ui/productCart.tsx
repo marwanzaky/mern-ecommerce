@@ -18,7 +18,6 @@ import { useIsMobile } from "@shared/shadcn/hooks/use-mobile";
 
 import { formatPrice } from "@utils/formatPrice";
 import { createProductSlug } from "@utils/stringUtils";
-import { toast } from "sonner";
 
 type ProductCartProps = {
 	data: IProduct;
@@ -73,7 +72,6 @@ export default function ProductCart({ data }: ProductCartProps) {
 				{process.env.NEXT_PUBLIC_REVIEWS === "true" && (
 					<Stars
 						className="mb-2"
-						size={useIsMobile() ? 15 : 18}
 						value={data.avgRatings}
 						total={data.numReviews}
 					/>

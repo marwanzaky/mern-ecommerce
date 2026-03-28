@@ -1,5 +1,6 @@
+import { TypographyP } from "@shadcn/components/ui/typography";
 import { Section } from "@shared/components/section";
-import { TypographyH2, TypographyH4, TypographyP } from "@shared/ui/typography";
+import { TypographyH2, TypographyH4 } from "@shared/ui/typography";
 
 export default function PrivacyPolicy() {
 	return (

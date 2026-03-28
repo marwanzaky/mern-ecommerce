@@ -68,7 +68,7 @@ export function useCart() {
 			header: "",
 			type: "action",
 			action: (row) => {
-				dispatch(deleteCartItemAsync({ product: row, toast }));
+				dispatch(deleteCartItemAsync({ product: row }));
 			},
 			actionIcon: "delete",
 			className: "w-9.5",
