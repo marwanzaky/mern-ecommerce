@@ -40,7 +40,11 @@ import {
 	TooltipTrigger,
 } from "@shared/shadcn/tooltip";
 import { PublicCategoryTree } from "@shared/types/category.type";
-import { Avatar, AvatarImage } from "@shared/shadcn/avatar";
+import {
+	Avatar,
+	AvatarFallback,
+	AvatarImage,
+} from "@shadcn/components/ui/avatar";
 
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/store";
@@ -57,7 +61,7 @@ import { formatPrice } from "@utils/formatPrice";
 import { categoriesService } from "@redux/services/categoriesService";
 
 import { sendGTMEvent } from "@next/third-parties/google";
-import { stringToDate } from "@utils/stringUtils";
+import { initials, stringToDate } from "@utils/stringUtils";
 import { Button } from "@shadcn/components/ui/button";
 import { TypographyP } from "@shadcn/components/ui/typography";
 import { Label } from "@shadcn/components/ui/label";
@@ -390,20 +394,22 @@ function Details({ product }: { product: IProduct }) {
 					<AccordionItem value="item-3">
 						<AccordionTrigger>Seller Information</AccordionTrigger>
 						<AccordionContent>
-							<div className="flex items-center gap-4">
-								<Avatar className="h-12 w-12">
+							<div className="flex items-center gap-2">
+								<Avatar className="h-10 w-10">
 									<AvatarImage
 										role="button"
 										src={product.user.photoUrl}
-										loading="lazy"
+										alt={`Photo of ${product.user.name}`}
 										onClick={() => router.push(`/user/${product.user?._id}`)}
+										loading="lazy"
 									/>
+									<AvatarFallback>{initials(product.user.name)}</AvatarFallback>
 								</Avatar>
 
 								<div>
 									<Link
 										href={`/user/${product.user._id}`}
-										className="hover:underline"
+										// className="hover:underline"
 									>
 										{product.user.name}
 									</Link>

@@ -7,7 +7,6 @@ import { IProduct } from "@shared/interfaces";
 
 import { useAppSelector } from "@redux/store";
 import { productsService } from "@redux/services/productsService";
-import { Textarea } from "@shared/components/textarea";
 import { TypographyH4 } from "@shared/shadcn/typography";
 import {
 	Dialog,
@@ -16,6 +15,7 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
+	DialogTrigger,
 } from "@shadcn/components/ui/dialog";
 import { Label } from "@shadcn/components/ui/label";
 import Ratings from "@shared/shadcn/ratings";
@@ -23,6 +23,8 @@ import Icon from "@shared/ui/icon";
 import { Button } from "@shadcn/components/ui/button";
 import { TypographyMuted } from "@shadcn/components/ui/typography";
 import { toast } from "sonner";
+import { Field, FieldGroup, FieldLabel } from "@shadcn/components/ui/field";
+import { Textarea } from "@shadcn/components/ui/textarea";
 
 export default function Overview({ product }: { product: IProduct }) {
 	const router = useRouter();
@@ -34,28 +36,6 @@ export default function Overview({ product }: { product: IProduct }) {
 	const [displayDialog, setDisplayDialog] = useState(false);
 	const [dialogRating, setDialogRating] = useState(5);
 	const [dialogDescription, setDialogDescription] = useState("");
-
-	const openDialog = () => {
-		if (!isAuthenticated) return router.push("/signin");
-		setDisplayDialog(true);
-	};
-
-	const closeDialog = () => {
-		setDisplayDialog(false);
-	};
-
-	const submitDialog = async () => {
-		await productsService.postProductReview(
-			token,
-			product._id,
-			dialogRating,
-			dialogDescription,
-		);
-
-		toast("Your review is sent successfully!", { position: "top-center" });
-
-		closeDialog();
-	};
 
 	return (
 		<div className="flex flex-col justify-center">
@@ -81,56 +61,79 @@ export default function Overview({ product }: { product: IProduct }) {
 				</ul>
 			</div>
 
-			<div className="flex justify-center">
-				<Button size="lg" onClick={openDialog}>
-					Write a review
-				</Button>
-			</div>
-
 			<Dialog open={displayDialog} onOpenChange={setDisplayDialog}>
-				<DialogContent className="sm:max-w-[24rem] ">
-					<DialogHeader>
-						<DialogTitle>Write a review</DialogTitle>
-						<DialogDescription>
-							Share your experience with this product to help other shoppers
-							like you.
-						</DialogDescription>
-					</DialogHeader>
+				<form
+					onSubmit={async () => {
+						await productsService.postProductReview(
+							token,
+							product._id,
+							dialogRating,
+							dialogDescription,
+						);
 
-					<div className="space-y-4">
-						<Ratings
-							value={dialogRating}
-							onValueChange={setDialogRating}
-							Icon={<Icon src="icons/star.svg" />}
-						/>
-
-						<div className="space-y-4">
-							<Label>Description</Label>
-							<Textarea
-								id="description"
-								placeholder="Describe your experience..."
-								icon="description"
-								onChange={(e) => setDialogDescription(e.target.value)}
-							/>
+						toast("Your review is sent successfully!", {
+							position: "top-center",
+						});
+					}}
+				>
+					<DialogTrigger asChild>
+						<div className="flex justify-center">
+							<Button
+								size="lg"
+								onClick={(e) => {
+									if (!isAuthenticated) {
+										e.preventDefault();
+										return router.push("/signin");
+									}
+								}}
+							>
+								Write a review
+							</Button>
 						</div>
-					</div>
+					</DialogTrigger>
+					<DialogContent className="sm:max-w-[24rem] ">
+						<DialogHeader>
+							<DialogTitle>Write a review</DialogTitle>
+							<DialogDescription>
+								Share your experience with this product.
+							</DialogDescription>
+						</DialogHeader>
 
-					<DialogFooter>
-						<Button
-							variant="outline"
-							type="button"
-							onClick={() => {
-								setDisplayDialog(false);
-							}}
-						>
-							Cancel
-						</Button>
+						<FieldGroup>
+							<Field>
+								<FieldLabel>Rating</FieldLabel>
+								<Ratings
+									value={dialogRating}
+									onValueChange={setDialogRating}
+									Icon={<Icon src="icons/star.svg" />}
+								/>
+							</Field>
+							<Field>
+								<FieldLabel id="description">Description</FieldLabel>
+								<Textarea
+									id="description"
+									placeholder="Describe your experience..."
+									className="min-h-32"
+									onChange={(e) => setDialogDescription(e.target.value)}
+								></Textarea>
+							</Field>
+						</FieldGroup>
 
-						<Button type="button" onClick={submitDialog}>
-							Submit
-						</Button>
-					</DialogFooter>
-				</DialogContent>
+						<DialogFooter>
+							<Button
+								variant="outline"
+								type="button"
+								onClick={() => {
+									setDisplayDialog(false);
+								}}
+							>
+								Cancel
+							</Button>
+
+							<Button type="submit">Submit</Button>
+						</DialogFooter>
+					</DialogContent>
+				</form>
 			</Dialog>
 		</div>
 	);

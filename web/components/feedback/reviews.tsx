@@ -2,7 +2,11 @@ import { cn } from "@lib/utils";
 
 import Stars from "@shared/components/stars";
 import { IProduct } from "@shared/interfaces";
-import { Avatar, AvatarImage } from "@shared/shadcn/avatar";
+import {
+	Avatar,
+	AvatarFallback,
+	AvatarImage,
+} from "@shadcn/components/ui/avatar";
 import {
 	Empty,
 	EmptyDescription,
@@ -47,26 +51,16 @@ export default function Reviews({ product }: { product: IProduct }) {
 			{product.reviews?.length > 0 ? (
 				product.reviews?.map((review, i) => (
 					<div key={`review ${i}`} className="mb-8 last:mb-0 flex">
-						{review.user.photoUrl ? (
-							// mr-4 h-10 w-10
-							<Avatar className="mr-2 h-8 w-8">
-								<AvatarImage
-									role="button"
-									src={review.user.photoUrl}
-									alt={`Photo of ${review.user.name}`}
-									loading="lazy"
-									onClick={() => router.push(`/user/${review.user._id}`)}
-								/>
-							</Avatar>
-						) : (
-							// mr-4
-							<AvatarInitials
+						<Avatar className="mr-2 h-8 w-8">
+							<AvatarImage
 								role="button"
-								className="mr-2"
-								name={review.user.name}
+								src={review.user.photoUrl}
+								alt={`Photo of ${review.user.name}`}
 								onClick={() => router.push(`/user/${review.user._id}`)}
+								loading="lazy"
 							/>
-						)}
+							<AvatarFallback>{initials(review.user.name)}</AvatarFallback>
+						</Avatar>
 
 						<div>
 							<div className="leading-none mb-0.5 text-sm">

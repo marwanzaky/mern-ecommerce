@@ -12,9 +12,9 @@ import {
 	EmptyDescription,
 	EmptyHeader,
 	EmptyTitle,
-} from "@shared/components/empty";
+} from "@shadcn/components/ui/empty";
 import { Section } from "@shared/components/section";
-import { Avatar, AvatarImage } from "@shared/shadcn/avatar";
+import { Avatar, AvatarImage } from "@shadcn/components/ui/avatar";
 import { User } from "@shared/types/user.type";
 
 export default function Page() {
