@@ -10,8 +10,6 @@ import {
 import { Column } from "@shared/components/table";
 import { ButtonIcon } from "@shared/ui/buttonIcon";
 import { useQuery } from "@tanstack/react-query";
-import { InputText } from "@shared/components/inputText";
-import { Textarea } from "@shared/components/textarea";
 import {
 	Select,
 	SelectContent,
@@ -38,6 +36,9 @@ import {
 	AlertDialogTitle,
 	AlertDialogTrigger,
 } from "@shadcn/components/ui/alert-dialog";
+import { Input } from "@shadcn/components/ui/input";
+import { Textarea } from "@shadcn/components/ui/textarea";
+import { Field, FieldGroup, FieldLabel } from "@shadcn/components/ui/field";
 
 export function useAdminMessages() {
 	const { token } = useAppSelector((state) => state.authReducer);
@@ -128,49 +129,79 @@ export function useAdminMessages() {
 	const ViewMessageDialog = (
 		<Dialog open={visible} onOpenChange={setVisible}>
 			<form>
-				<DialogContent className="sm:max-w-sm">
+				<DialogContent className="sm:max-w-xs">
 					<DialogHeader>
 						<DialogTitle>View Message</DialogTitle>
 					</DialogHeader>
 
 					{selectedMessage && (
 						<>
-							<Select
-								value={selectedMessage.status}
-								onValueChange={async (value: "new" | "read" | "replied") => {
-									const newMessage =
-										await contactMessagesService.updateMessageStatus(
-											token,
-											selectedMessage._id,
-											value,
-										);
-									setSelectedMessage(newMessage);
-									refetch();
-								}}
-							>
-								<SelectTrigger className="w-full max-w-48">
-									<SelectValue placeholder="Select a status" />
-								</SelectTrigger>
-								<SelectContent>
-									<SelectGroup>
-										<SelectLabel>Status</SelectLabel>
-										<SelectItem value="new">New</SelectItem>
-										<SelectItem value="read">Read</SelectItem>
-										<SelectItem value="replied">Replied</SelectItem>
-									</SelectGroup>
-								</SelectContent>
-							</Select>
-							<InputText
-								size="sm"
-								disabled
-								value={new Date(selectedMessage.createdAt).toLocaleDateString(
-									"en-GB",
-								)}
-							/>
-							<InputText size="sm" disabled value={selectedMessage.name} />
-							<InputText size="sm" disabled value={selectedMessage.email} />
-							<InputText size="sm" disabled value={selectedMessage.subject} />
-							<Textarea disabled value={selectedMessage.message} />
+							<FieldGroup>
+								<Field>
+									<FieldLabel>Status</FieldLabel>
+									<Select
+										value={selectedMessage.status}
+										onValueChange={async (
+											value: "new" | "read" | "replied",
+										) => {
+											const newMessage =
+												await contactMessagesService.updateMessageStatus(
+													token,
+													selectedMessage._id,
+													value,
+												);
+											setSelectedMessage(newMessage);
+											refetch();
+										}}
+									>
+										<SelectTrigger>
+											<SelectValue placeholder="Select a status" />
+										</SelectTrigger>
+										<SelectContent>
+											<SelectGroup>
+												<SelectLabel>Status</SelectLabel>
+												<SelectItem value="new">New</SelectItem>
+												<SelectItem value="read">Read</SelectItem>
+												<SelectItem value="replied">Replied</SelectItem>
+											</SelectGroup>
+										</SelectContent>
+									</Select>
+								</Field>
+								<Field>
+									<FieldLabel htmlFor="date">Date</FieldLabel>
+									<Input
+										id="date"
+										value={new Date(
+											selectedMessage.createdAt,
+										).toLocaleDateString("en-GB")}
+										readOnly
+									/>
+								</Field>
+								<Field>
+									<FieldLabel htmlFor="name">Full Name</FieldLabel>
+									<Input id="name" value={selectedMessage.name} readOnly />
+								</Field>
+								<Field>
+									<FieldLabel htmlFor="email">Email</FieldLabel>
+									<Input id="email" value={selectedMessage.email} readOnly />
+								</Field>
+								<Field>
+									<FieldLabel htmlFor="subject">Subject</FieldLabel>
+									<Input
+										id="subject"
+										value={selectedMessage.subject}
+										readOnly
+									/>
+								</Field>
+								<Field>
+									<FieldLabel htmlFor="message">Message</FieldLabel>
+									<Textarea
+										id="message"
+										value={selectedMessage.message}
+										readOnly
+									/>
+								</Field>
+							</FieldGroup>
 						</>
 					)}
 				</DialogContent>

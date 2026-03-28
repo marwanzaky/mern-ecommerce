@@ -10,7 +10,7 @@ import {
 	EmptyDescription,
 	EmptyHeader,
 	EmptyTitle,
-} from "@shared/components/empty";
+} from "@shadcn/components/ui/empty";
 
 export default function Page() {
 	const { columns, isLoading, data, ViewMessageDialog } = useAdminMessages();

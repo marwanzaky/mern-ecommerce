@@ -17,14 +17,13 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@shadcn/components/ui/dialog";
-import { Label } from "@shadcn/components/ui/label";
-import Ratings from "@shared/shadcn/ratings";
-import Icon from "@shared/ui/icon";
 import { Button } from "@shadcn/components/ui/button";
 import { TypographyMuted } from "@shadcn/components/ui/typography";
 import { toast } from "sonner";
 import { Field, FieldGroup, FieldLabel } from "@shadcn/components/ui/field";
 import { Textarea } from "@shadcn/components/ui/textarea";
+import { StarIcon } from "lucide-react";
+import { cn } from "@lib/utils";
 
 export default function Overview({ product }: { product: IProduct }) {
 	const router = useRouter();
@@ -34,8 +33,9 @@ export default function Overview({ product }: { product: IProduct }) {
 	);
 
 	const [displayDialog, setDisplayDialog] = useState(false);
-	const [dialogRating, setDialogRating] = useState(5);
-	const [dialogDescription, setDialogDescription] = useState("");
+	const [rating, setRating] = useState(0);
+	const [hoverRating, setHoverRating] = useState(0);
+	const [description, setDescription] = useState("");
 
 	return (
 		<div className="flex flex-col justify-center">
@@ -68,8 +68,8 @@ export default function Overview({ product }: { product: IProduct }) {
 							await productsService.postProductReview(
 								token,
 								product._id,
-								dialogRating,
-								dialogDescription,
+								rating,
+								description,
 							);
 
 							toast("Your review is sent successfully!", {
@@ -85,6 +85,7 @@ export default function Overview({ product }: { product: IProduct }) {
 										e.preventDefault();
 										return router.push("/signin");
 									}
+									setRating(0);
 								}}
 							>
 								Write a review
@@ -94,26 +95,42 @@ export default function Overview({ product }: { product: IProduct }) {
 							<DialogHeader>
 								<DialogTitle>Write a review</DialogTitle>
 								<DialogDescription>
-									Share your experience with this product.
+									Please rate your experience and share any additional feedback.
 								</DialogDescription>
 							</DialogHeader>
 
 							<FieldGroup>
 								<Field>
 									<FieldLabel>Rating</FieldLabel>
-									<Ratings
-										value={dialogRating}
-										onValueChange={setDialogRating}
-										Icon={<Icon src="icons/star.svg" />}
-									/>
+									<div className="flex">
+										{[1, 2, 3, 4, 5].map((star) => (
+											<button
+												className="transition-transform hover:scale-110 "
+												key={star}
+												onClick={() => setRating(star)}
+												onMouseEnter={() => setHoverRating(star)}
+												onMouseLeave={() => setHoverRating(0)}
+												type="button"
+											>
+												<StarIcon
+													className={cn(
+														"h-8 w-8 mr-1 transition-colors",
+														(hoverRating || rating) >= star
+															? "fill-yellow-400 text-yellow-400"
+															: "text-muted-foreground",
+													)}
+												/>
+											</button>
+										))}
+									</div>
 								</Field>
 								<Field>
-									<FieldLabel id="description">Description</FieldLabel>
+									<FieldLabel id="description">Additional feedback</FieldLabel>
 									<Textarea
 										id="description"
 										placeholder="Describe your experience..."
 										className="min-h-32"
-										onChange={(e) => setDialogDescription(e.target.value)}
+										onChange={(e) => setDescription(e.target.value)}
 									></Textarea>
 								</Field>
 							</FieldGroup>
@@ -129,7 +146,9 @@ export default function Overview({ product }: { product: IProduct }) {
 									Cancel
 								</Button>
 
-								<Button type="submit">Submit</Button>
+								<Button type="submit" disabled={rating === 0}>
+									Submit
+								</Button>
 							</DialogFooter>
 						</DialogContent>
 					</form>
