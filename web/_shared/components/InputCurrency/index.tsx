@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { InputText } from "../inputText";
+import { Input } from "@shadcn/components/ui/input";
+import { DollarSign } from "lucide-react";
 
 type InputCurrencyProps = {
 	value?: number | undefined;
 	onChange: (val: number | undefined) => void;
 	onBlur?: (val: number | undefined) => void;
 	placeholder?: string;
-	size?: "sm" | "md";
 	required?: boolean;
 	message?: string;
 };
@@ -16,7 +16,6 @@ export function InputCurrency({
 	onChange,
 	onBlur,
 	placeholder,
-	size = "sm",
 	required,
 	message,
 }: InputCurrencyProps) {
@@ -40,19 +39,19 @@ export function InputCurrency({
 	};
 
 	return (
-		<InputText
-			styleClass="remove-arrow"
-			type="number"
-			icon="attach_money"
-			step="0.01"
-			min={0}
-			size={size}
-			placeholder={placeholder}
-			value={inputValue}
-			onChange={(e) => setInputValue(e.target.value)}
-			onBlur={handleBlur}
-			required={required}
-			message={message}
-		/>
+		<div className="relative">
+			<DollarSign className="-translate-y-1/2 absolute top-1/2 right-3 h-4 w-4 text-muted-foreground" />
+			<Input
+				className="remove-arrow"
+				type="number"
+				step="0.01"
+				min={0}
+				placeholder={placeholder}
+				value={inputValue}
+				onChange={(e) => setInputValue(e.target.value)}
+				onBlur={handleBlur}
+				required={required}
+			/>
+		</div>
 	);
 }

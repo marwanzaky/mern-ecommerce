@@ -1,21 +1,22 @@
-import Icon from "@shared/ui/icon";
-import { Badge } from "@shared/shadcn/badge";
+import { Badge } from "@shadcn/components/ui/badge";
+import { X } from "lucide-react";
 
 export type ChipProps = {
 	children?: React.ReactNode;
-	onClick?: React.MouseEventHandler<HTMLImageElement>;
+	onClick?: React.MouseEventHandler<HTMLSpanElement>;
 };
 
 export function Chip({ children, onClick }: ChipProps) {
 	return (
-		<Badge variant="secondary" className="space-x-1 shrink-0">
-			<div>{children}</div>
-			<Icon
-				className="cursor-pointer hover:filter-primary-dark"
-				src="icons/close.svg"
-				size={16}
-				onClick={onClick}
-			/>
+		<Badge
+			role="button"
+			variant="secondary"
+			className="space-x-1 shrink-0 cursor-pointer"
+			onClick={onClick}
+		>
+			{children}
+
+			<X />
 		</Badge>
 	);
 }

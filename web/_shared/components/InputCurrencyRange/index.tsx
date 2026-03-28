@@ -10,7 +10,6 @@ type InputCurrencyRangeProps = {
 	onMinChange: (value: number | undefined) => void;
 	onMaxChange: (value: number | undefined) => void;
 	required?: boolean;
-	size?: "md" | "sm";
 	message?: string;
 };
 
@@ -23,7 +22,6 @@ export function InputCurrencyRange({
 	onMinChange,
 	onMaxChange,
 	required,
-	size,
 	message,
 }: InputCurrencyRangeProps) {
 	return (
@@ -33,7 +31,6 @@ export function InputCurrencyRange({
 				onChange={onMinChange}
 				value={minValue}
 				required={required}
-				size={size}
 				message={message}
 			/>
 
@@ -42,7 +39,6 @@ export function InputCurrencyRange({
 				onChange={onMaxChange}
 				value={maxValue}
 				required={required}
-				size={size}
 				message={message}
 			/>
 		</div>
