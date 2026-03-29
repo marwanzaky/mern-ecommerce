@@ -10,8 +10,8 @@ import {
 } from "@redux/thunks/userProductsThunks";
 
 import { IProduct } from "@shared/interfaces";
-import { Column } from "@shared/components/table";
-import { LogoCell } from "@shared/components/table/cells/logoCell";
+import { Column } from "@shared/components/ui/table";
+import { LogoCell } from "@shared/components/ui/table/cells/logoCell";
 
 import {
 	AlertDialog,
@@ -24,8 +24,8 @@ import {
 	AlertDialogTitle,
 	AlertDialogTrigger,
 } from "@shadcn/components/ui/alert-dialog";
-import { ButtonIcon } from "@shared/ui/buttonIcon";
-import { ImageNode } from "@shared/components/lexical/nodes/imageNode";
+import { ButtonIcon } from "@shared/components/ui/buttonIcon";
+import { ImageNode } from "@shared/components/ui/lexical/nodes/imageNode";
 
 import { useForm, useWatch } from "react-hook-form";
 

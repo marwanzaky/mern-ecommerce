@@ -11,9 +11,9 @@ import { useToggleFavorite } from "@hooks/useToggleFavorite";
 
 import { cn } from "@lib/utils";
 
-import Stars from "@shared/components/stars";
+import Stars from "@shared/components/ui/stars";
 import { IProduct } from "@shared/interfaces";
-import { ButtonIcon } from "@shared/ui/buttonIcon";
+import { ButtonIcon } from "@shared/components/ui/buttonIcon";
 
 import { formatPrice } from "@utils/formatPrice";
 import { createProductSlug } from "@utils/stringUtils";
@@ -70,7 +70,7 @@ export default function ProductCart({ data }: ProductCartProps) {
 
 				{process.env.NEXT_PUBLIC_REVIEWS === "true" && (
 					<Stars
-						className="mb-2"
+						className="mb-1"
 						value={data.avgRatings}
 						total={data.numReviews}
 					/>

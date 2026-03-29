@@ -9,8 +9,8 @@ import Footer from "@components/footer";
 import Navigation from "@components/navigation";
 import AppStateInit from "@components/appStateInit";
 
-import { Container } from "@shared/ui/container";
-import { TooltipProvider } from "@shared/shadcn/tooltip";
+import { Container } from "@shared/components/ui/container";
+import { TooltipProvider } from "@shadcn/components/ui/tooltip";
 
 import AppProviders from "@redux/appProviders";
 

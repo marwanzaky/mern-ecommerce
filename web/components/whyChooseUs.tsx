@@ -1,8 +1,8 @@
 import { cn } from "@lib/utils";
-import Icon from "@shared/ui/icon";
-import { Section } from "@shared/components/section";
-import { TypographyH3 } from "@shared/shadcn/typography";
-import { TypographyMuted, TypographyP } from "@shadcn/components/ui/typography";
+import Icon from "@shared//components/ui/icon";
+import { Section } from "@shared/components/ui/section";
+import { TypographyH3 } from "@shadcn/components/ui/typography";
+import { TypographyMuted } from "@shadcn/components/ui/typography";
 
 export default function WhyChooseUs() {
 	return (

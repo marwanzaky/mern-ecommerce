@@ -2,8 +2,8 @@
 
 import { useRef } from "react";
 
-import Icon from "@shared/ui/icon";
-import { ButtonIcon } from "@shared/ui/buttonIcon";
+import Icon from "@shared/components/ui/icon";
+import { ButtonIcon } from "@shared/components/ui/buttonIcon";
 
 import { cn } from "@lib/utils";
 

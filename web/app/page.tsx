@@ -3,10 +3,10 @@ import WhyChooseUs from "@components/whyChooseUs";
 import Testimonials from "@components/testimonials";
 import Categories from "@components/categories";
 
-import ProductCart from "@shared/ui/productCart";
-import { TypographyH3 } from "@shared/shadcn/typography";
+import ProductCart from "@shared/components/ui/productCart";
+import { TypographyH3 } from "@shadcn/components/ui/typography";
 import { IProduct } from "@shared/interfaces";
-import { Section } from "@shared/components/section";
+import { Section } from "@shared/components/ui/section";
 
 import { productsService } from "@redux/services/productsService";
 import { categoriesService } from "@redux/services/categoriesService";

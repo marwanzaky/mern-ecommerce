@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Input } from "@shadcn/components/ui/input";
 import { DollarSign } from "lucide-react";
+import { Input } from "@shadcn/components/ui/input";
 
 type InputCurrencyProps = {
 	value?: number | undefined;
@@ -8,7 +8,6 @@ type InputCurrencyProps = {
 	onBlur?: (val: number | undefined) => void;
 	placeholder?: string;
 	required?: boolean;
-	message?: string;
 };
 
 export function InputCurrency({
@@ -17,7 +16,6 @@ export function InputCurrency({
 	onBlur,
 	placeholder,
 	required,
-	message,
 }: InputCurrencyProps) {
 	const [inputValue, setInputValue] = useState("");
 

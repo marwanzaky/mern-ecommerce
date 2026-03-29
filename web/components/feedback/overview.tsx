@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import Stars from "@shared/components/stars";
+import Stars from "@shared/components/ui/stars";
 
 import { IProduct } from "@shared/interfaces";
 
 import { useAppSelector } from "@redux/store";
 import { productsService } from "@redux/services/productsService";
-import { TypographyH4 } from "@shared/shadcn/typography";
+import { TypographyH4 } from "@shadcn/components/ui/typography";
 import {
 	Dialog,
 	DialogContent,

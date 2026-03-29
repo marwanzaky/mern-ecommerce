@@ -7,8 +7,8 @@ import { useAppSelector } from "@redux/store";
 
 import { cn } from "@lib/utils";
 
-import { ButtonIcon } from "@shared/ui/buttonIcon";
-import { ImageButton } from "@shared/ui/imageButton";
+import { ButtonIcon } from "@shared/components/ui/buttonIcon";
+import { ImageButton } from "@shared/components/ui/imageButton";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -22,7 +22,7 @@ import {
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
 } from "@shadcn/components/ui/dropdown-menu";
-import { useIsMobile } from "@shared/shadcn/hooks/use-mobile";
+import { useIsMobile } from "@shadcn/hooks/use-mobile";
 
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";

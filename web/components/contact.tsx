@@ -3,9 +3,9 @@
 import { useRouter } from "next/navigation";
 
 import { contactMessagesService } from "@redux/services/contactMessagesService";
-import { Section } from "@shared/components/section";
+import { Section } from "@shared/components/ui/section";
 import { Controller, useForm } from "react-hook-form";
-import { TypographyH2, TypographyH4 } from "@shared/ui/typography";
+import { TypographyH2, TypographyH4 } from "@shared/components/ui/typography";
 import { TypographyP } from "@shadcn/components/ui/typography";
 import { Button } from "@shadcn/components/ui/button";
 import { toast } from "sonner";

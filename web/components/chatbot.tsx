@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { InputText } from "@shared/components/inputText";
 import {
 	Dialog,
 	DialogContent,
@@ -10,10 +9,11 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@shared/shadcn/dialog";
+} from "@shadcn/components/ui/dialog";
 
 import clsx from "clsx";
 import { chatService } from "@redux/services/chatService";
+import { Input } from "@shadcn/components/ui/input";
 
 type ChatbotMessage = {
 	type: "ai" | "user";
@@ -111,7 +111,7 @@ export default function Chatbot() {
 				</div>
 
 				<DialogFooter className="sm:justify-start">
-					<InputText
+					<Input
 						className="w-full"
 						placeholder="Enter your message"
 						value={inputValue}

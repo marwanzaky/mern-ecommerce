@@ -10,8 +10,8 @@ import {
 	updateMyPasswordAsync,
 } from "@redux/thunks/authThunks";
 
-import { Section } from "@shared/components/section";
-import { ButtonIcon } from "@shared/ui/buttonIcon";
+import { Section } from "@shared/components/ui/section";
+import { ButtonIcon } from "@shared/components/ui/buttonIcon";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -28,7 +28,7 @@ import {
 	TypographyH3,
 	TypographyH4,
 	TypographyMuted,
-} from "@shared/shadcn/typography";
+} from "@shadcn/components/ui/typography";
 
 import { Controller, useForm } from "react-hook-form";
 import { Button } from "@shadcn/components/ui/button";

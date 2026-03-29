@@ -1,8 +1,8 @@
 "use client";
 
-import { Column, Table } from "@shared/components/table";
-import { Section } from "@shared/components/section";
-import { TypographyH4, TypographyP } from "@shared/shadcn/typography";
+import { Column, Table } from "@shared/components/ui/table";
+import { Section } from "@shared/components/ui/section";
+import { TypographyH4 } from "@shadcn/components/ui/typography";
 import { useQuery } from "@tanstack/react-query";
 
 import { useAppSelector } from "@redux/store";
@@ -16,7 +16,6 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from "@shadcn/components/ui/dialog";
-import { InputText } from "@shared/components/inputText";
 import { Controller, useForm } from "react-hook-form";
 import {
 	Select,
@@ -29,11 +28,13 @@ import {
 import { adminCategoriesService } from "@redux/services/adminCategoriesService";
 import { categoriesService } from "@redux/services/categoriesService";
 import ImageInput from "@app/sell/components/imageInput";
-import { LogoCell } from "@shared/components/table/cells/logoCell";
-import { Checkbox } from "@shared/shadcn/checkbox";
+import { LogoCell } from "@shared/components/ui/table/cells/logoCell";
+import { Checkbox } from "@shadcn/components/ui/checkbox";
 import { Category } from "@shared/types/category.type";
 import { toast } from "sonner";
 import { Button } from "@shadcn/components/ui/button";
+import { Field, FieldGroup, FieldLabel } from "@shadcn/components/ui/field";
+import { Input } from "@shadcn/components/ui/input";
 
 export default function Page() {
 	const columns: Column<Category>[] = [
@@ -41,23 +42,25 @@ export default function Page() {
 			header: "Active",
 			field: "isActive",
 			type: "custom",
-			className: "first:text-center w-0",
+			className: "first:text-center! w-0",
 			render: (value: boolean, row) => {
 				return (
-					<Checkbox
-						id="category-checkbox"
-						name="category-checkbox"
-						checked={value}
-						onClick={async () => {
-							await adminCategoriesService.updateCategory(row.id, token, {
-								isActive: !value,
-							});
+					<div className="flex justify-center">
+						<Checkbox
+							id="category-checkbox"
+							name="category-checkbox"
+							checked={value}
+							onClick={async () => {
+								await adminCategoriesService.updateCategory(row.id, token, {
+									isActive: !value,
+								});
 
-							toast("Category updated.", { position: "top-center" });
+								toast("Category updated.", { position: "top-center" });
 
-							refetch();
-						}}
-					/>
+								refetch();
+							}}
+						/>
+					</div>
 				);
 			},
 		},
@@ -230,87 +233,100 @@ export default function Page() {
 						})}
 						className="space-y-4"
 					>
-						<Controller
-							name="image"
-							control={control}
-							render={({ field }) => (
-								<ImageInput
-									className="h-32"
-									styleClass="object-cover"
-									value={field.value}
-									onChange={field.onChange}
+						<FieldGroup>
+							<Field>
+								<FieldLabel>Category Image</FieldLabel>
+								<Controller
+									name="image"
+									control={control}
+									render={({ field }) => (
+										<ImageInput
+											className="h-32"
+											styleClass="object-cover"
+											value={field.value}
+											onChange={field.onChange}
+										/>
+									)}
 								/>
-							)}
-						/>
+							</Field>
+							<Field>
+								<FieldLabel htmlFor="name">Category Name</FieldLabel>
+								<Input
+									id="name"
+									type="text"
+									placeholder="e.g. Shoes, Electronics, Home Decor"
+									{...register("name", {
+										required: "This field is required.",
+										minLength: { value: 2, message: "Name is too short." },
+										maxLength: { value: 64, message: "Name is too long." },
+									})}
+								/>
+							</Field>
 
-						<InputText
-							type="text"
-							id="name"
-							placeholder="Category Name"
-							icon="inventory_2"
-							message={errors.name?.message}
-							{...register("name", {
-								required: "This field is required.",
-								minLength: { value: 2, message: "Name is too short." },
-								maxLength: { value: 64, message: "Name is too long." },
-							})}
-						/>
-						<InputText
-							type="text"
-							id="slug"
-							placeholder="Category Slug"
-							icon="inventory_2"
-							message={errors.slug?.message}
-							{...register("slug", {
-								required: "This field is required.",
-							})}
-						/>
+							<Field>
+								<FieldLabel htmlFor="slug">Category Slug</FieldLabel>
+								<Input
+									type="text"
+									id="slug"
+									placeholder="e.g. shoes, electronics, home-decor"
+									{...register("slug", {
+										required: "This field is required.",
+									})}
+								/>
+							</Field>
 
-						<div className="flex items-center gap-2">
-							<TypographyP className="hidden sm:block whitespace-nowrap">
-								Parent:
-							</TypographyP>
+							<Field>
+								<FieldLabel>Category Parent</FieldLabel>
+								<Controller
+									name="parent"
+									control={control}
+									render={({ field }) => (
+										<Select
+											value={field.value || ""}
+											onValueChange={field.onChange}
+										>
+											<SelectTrigger>
+												<SelectValue />
+											</SelectTrigger>
+											<SelectContent>
+												<SelectGroup>
+													{options.map((item) => (
+														<SelectItem
+															key={`select-item-${item.value}`}
+															value={item.value}
+														>
+															{item.label}
+														</SelectItem>
+													))}
+												</SelectGroup>
+											</SelectContent>
+										</Select>
+									)}
+								/>
+							</Field>
+						</FieldGroup>
 
-							<Controller
-								name="parent"
-								control={control}
-								render={({ field }) => (
-									<Select
-										value={field.value || ""}
-										onValueChange={field.onChange}
-									>
-										<SelectTrigger>
-											<SelectValue />
-										</SelectTrigger>
-										<SelectContent>
-											<SelectGroup>
-												{options.map((item) => (
-													<SelectItem
-														key={`select-item-${item.value}`}
-														value={item.value}
-													>
-														{item.label}
-													</SelectItem>
-												))}
-											</SelectGroup>
-										</SelectContent>
-									</Select>
-								)}
+						<Field>
+							<FieldLabel id="sort-order">Category Sort Order</FieldLabel>
+							<Input
+								id="sort-order"
+								type="number"
+								min={1}
+								{...register("sortOrder", {
+									required: "This field is required.",
+								})}
 							/>
-						</div>
-
-						<InputText
-							type="number"
-							id="sortOrder"
-							placeholder="Category Sort Order"
-							icon="inventory_2"
-							message={errors.sortOrder?.message}
-							{...register("sortOrder", {
-								required: "This field is required.",
-							})}
-						/>
+						</Field>
 
 						<DialogFooter className="gap-2">
+							<Button
+								variant="outline"
+								onClick={() => {
+									setOpen(false);
+								}}
+							>
+								Cancel
+							</Button>
 							<Button type="submit" disabled={!formState.isDirty}>
 								Submit
 							</Button>
@@ -341,52 +357,66 @@ export default function Page() {
 						})}
 						className="space-y-4"
 					>
-						<Controller
-							name="image"
-							control={control}
-							render={({ field }) => (
-								<ImageInput
-									className="h-32"
-									styleClass="object-cover"
-									value={field.value}
-									onChange={field.onChange}
+						<FieldGroup>
+							<Field>
+								<FieldLabel>Category Image</FieldLabel>
+								<Controller
+									name="image"
+									control={control}
+									render={({ field }) => (
+										<ImageInput
+											className="h-32"
+											styleClass="object-cover"
+											value={field.value}
+											onChange={field.onChange}
+										/>
+									)}
 								/>
-							)}
-						/>
+							</Field>
+							<Field>
+								<FieldLabel htmlFor="name">Category Name</FieldLabel>
+								<Input
+									id="name"
+									placeholder="e.g. Shoes, Electronics, Home Decor"
+									{...register("name", {
+										required: "This field is required.",
+										minLength: { value: 2, message: "Name is too short." },
+										maxLength: { value: 64, message: "Name is too long." },
+									})}
+								/>
+							</Field>
 
-						<InputText
-							size="sm"
-							placeholder="Category Name"
-							message={errors.name?.message}
-							{...register("name", {
-								required: "This field is required.",
-								minLength: { value: 2, message: "Name is too short." },
-								maxLength: { value: 64, message: "Name is too long." },
-							})}
-						/>
-						<InputText
-							size="sm"
-							placeholder="Category Slug"
-							message={errors.slug?.message}
-							{...register("slug", {
-								required: "This field is required.",
-							})}
-						/>
-						<InputText
-							size="sm"
-							placeholder="Category Parent"
-							message={errors.parent?.message}
-							{...register("parent")}
-						/>
-						<InputText
-							size="sm"
-							placeholder="Category Sort Order"
-							type="number"
-							message={errors.sortOrder?.message}
-							{...register("sortOrder", {
-								required: "This field is required.",
-							})}
-						/>
+							<Field>
+								<FieldLabel htmlFor="slug">Category Slug</FieldLabel>
+								<Input
+									id="slug"
+									placeholder="e.g. shoes, electronics, home-decor"
+									{...register("slug", {
+										required: "This field is required.",
+									})}
+								/>
+							</Field>
+
+							<Field>
+								<FieldLabel htmlFor="parent">Category Parent</FieldLabel>
+								<Input id="parent" {...register("parent")} />
+							</Field>
+
+							<Field>
+								<FieldLabel htmlFor="sort-order">
+									Category Sort Order
+								</FieldLabel>
+								<Input
+									id="sort-order"
+									placeholder="Category Sort Order"
+									type="number"
+									{...register("sortOrder", {
+										required: "This field is required.",
+									})}
+								/>
+							</Field>
+						</FieldGroup>
+
 						<DialogFooter>
 							<DialogClose asChild>
 								<Button variant="outline">Cancel</Button>

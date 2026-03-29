@@ -2,9 +2,9 @@
 
 import { SortOption, useProducts } from "@hooks/useProducts";
 
-import ProductItem from "@shared/ui/productCart";
-import { Chip } from "@shared/components/chip";
-import { Section } from "@shared/components/section";
+import ProductItem from "@shared/components/ui/productCart";
+import { Chip } from "@shared/components/ui/chip";
+import { Section } from "@shared/components/ui/section";
 import {
 	Select,
 	SelectContent,
@@ -20,8 +20,8 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from "@shadcn/components/ui/dialog";
-import { TypographyP } from "@shared/shadcn/typography";
-import { InputCurrencyRange } from "@shared/components/InputCurrencyRange";
+import { TypographyP } from "@shadcn/components/ui/typography";
+import { InputCurrencyRange } from "@shared/components/ui/InputCurrencyRange";
 
 import { formatPrice } from "@utils/formatPrice";
 import { Button } from "@shadcn/components/ui/button";

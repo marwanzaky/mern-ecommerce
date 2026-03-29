@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 
 import { handleLogin } from "@utils/authHelpers";
 
-import { Section } from "@shared/components/section";
+import { Section } from "@shared/components/ui/section";
 import { Button } from "@shadcn/components/ui/button";
 
 import {

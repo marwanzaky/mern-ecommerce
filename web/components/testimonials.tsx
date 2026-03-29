@@ -1,6 +1,6 @@
-import Icon from "@shared/ui/icon";
-import { Section } from "@shared/components/section";
-import { Container } from "@shared/ui/container";
+import Icon from "@shared//components/ui/icon";
+import { Section } from "@shared/components/ui/section";
+import { Container } from "@shared/components/ui/container";
 
 export default function Testimonials() {
 	return (

@@ -1,5 +1,5 @@
 import { Input } from "@shadcn/components/ui/input";
-import { ButtonIcon } from "@shared/ui/buttonIcon";
+import { ButtonIcon } from "@shared/components/ui/buttonIcon";
 import { formatPrice } from "@utils/formatPrice";
 
 export type Column<T = any> = {
@@ -60,7 +60,7 @@ export function Table({ className, columns, data }: TableProps) {
 								>
 									{column.type === "number-input" ? (
 										<Input
-											className="mx-auto w-18"
+											className="mx-auto"
 											type="number"
 											value={row[column.field]}
 											onChange={(e) =>

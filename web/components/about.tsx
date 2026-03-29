@@ -2,9 +2,9 @@
 
 import { Button } from "@shadcn/components/ui/button";
 import { TypographyP } from "@shadcn/components/ui/typography";
-import { Section } from "@shared/components/section";
-import { Container } from "@shared/ui/container";
-import { TypographyH2, TypographyH4 } from "@shared/ui/typography";
+import { Section } from "@shared/components/ui/section";
+import { Container } from "@shared/components/ui/container";
+import { TypographyH2, TypographyH4 } from "@shared/components/ui/typography";
 import { useRouter } from "next/navigation";
 
 function Paragraph({

@@ -3,11 +3,10 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import { TypographyH1 } from "@shared/components/typography";
-import { TypographyP } from "@shared/shadcn/typography";
-
 import { createProductSlug } from "@utils/stringUtils";
+import { TypographyP } from "@shadcn/components/ui/typography";
 import { Button } from "@shadcn/components/ui/button";
+import { TypographyH1 } from "@shadcn/components/ui/typography";
 
 export default function Header() {
 	const router = useRouter();

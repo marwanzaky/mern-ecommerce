@@ -4,9 +4,9 @@ import { useRouter } from "next/navigation";
 
 import { useCart } from "@hooks/useCart";
 
-import { Table } from "@shared/components/table";
-import { Section } from "@shared/components/section";
-import { TypographyH4 } from "@shared/shadcn/typography";
+import { Table } from "@shared/components/ui/table";
+import { Section } from "@shared/components/ui/section";
+import { TypographyH4 } from "@shadcn/components/ui/typography";
 import {
 	Empty,
 	EmptyContent,

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import {
 	$createImageNode,
 	ImageNode,
-} from "@shared/components/lexical/nodes/imageNode";
+} from "@shared/components/ui/lexical/nodes/imageNode";
 
 import { $insertNodes, $getRoot } from "lexical";
 import { $generateNodesFromDOM } from "@lexical/html";

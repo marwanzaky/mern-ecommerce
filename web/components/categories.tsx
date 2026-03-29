@@ -3,8 +3,8 @@
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-import { Section } from "@shared/components/section";
-import { Container } from "@shared/ui/container";
+import { Section } from "@shared/components/ui/section";
+import { Container } from "@shared/components/ui/container";
 import { PublicCategoryTree } from "@shared/types/category.type";
 
 export default function Categories({

@@ -9,11 +9,10 @@ import Feedback from "@components/feedback";
 
 import Link from "next/link";
 
-import Stars from "@shared/components/stars";
+import Stars from "@shared/components/ui/stars";
 import { IProduct } from "@shared/interfaces";
-import { InputText } from "@shared/components/inputText";
-import ProductCart from "@shared/ui/productCart";
-import { ButtonIcon } from "@shared/ui/buttonIcon";
+import ProductCart from "@shared/components/ui/productCart";
+import { ButtonIcon } from "@shared/components/ui/buttonIcon";
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -28,17 +27,17 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@shadcn/components/ui/accordion";
-import { Section } from "@shared/components/section";
-import { TypographyH4 } from "@shared/ui/typography";
+import { Section } from "@shared/components/ui/section";
+import { TypographyH4 } from "@shared/components/ui/typography";
 import {
-	TypographyH3 as ShadcnTypographyH3,
+	TypographyH3,
 	TypographyMuted,
-} from "@shared/shadcn/typography";
+} from "@shadcn/components/ui/typography";
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipTrigger,
-} from "@shared/shadcn/tooltip";
+} from "@shadcn/components/ui/tooltip";
 import { PublicCategoryTree } from "@shared/types/category.type";
 import {
 	Avatar,
@@ -64,13 +63,7 @@ import { sendGTMEvent } from "@next/third-parties/google";
 import { initials, stringToDate } from "@utils/stringUtils";
 import { Button } from "@shadcn/components/ui/button";
 import { TypographyP } from "@shadcn/components/ui/typography";
-import { Label } from "@shadcn/components/ui/label";
-import {
-	Field,
-	FieldDescription,
-	FieldGroup,
-	FieldLabel,
-} from "@shadcn/components/ui/field";
+import { Field, FieldGroup, FieldLabel } from "@shadcn/components/ui/field";
 import { Input } from "@shadcn/components/ui/input";
 
 function Preview({ product }: { product: IProduct }) {
@@ -477,9 +470,9 @@ export default function ProductDetails({ product }: { product: IProduct }) {
 
 			{similarProducts && similarProducts.length > 0 && (
 				<Section className="pt-0! space-y-2 lg:space-y-4">
-					<ShadcnTypographyH3 className="text-center lg:text-left">
+					<TypographyH3 className="text-center lg:text-left">
 						Similar products
-					</ShadcnTypographyH3>
+					</TypographyH3>
 
 					<div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 lg:gap-4">
 						{similarProducts.map((item) => (

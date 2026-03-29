@@ -3,9 +3,9 @@ import { useRouter } from "next/navigation";
 
 import { useFavorites } from "@hooks/useFavorites";
 
-import ProductItem from "@shared/ui/productCart";
-import { TypographyH4 } from "@shared/shadcn/typography";
-import { Section } from "@shared/components/section";
+import ProductItem from "@shared/components/ui/productCart";
+import { TypographyH4 } from "@shadcn/components/ui/typography";
+import { Section } from "@shared/components/ui/section";
 import {
 	Empty,
 	EmptyContent,

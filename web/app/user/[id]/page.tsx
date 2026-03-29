@@ -13,7 +13,7 @@ import {
 	EmptyHeader,
 	EmptyTitle,
 } from "@shadcn/components/ui/empty";
-import { Section } from "@shared/components/section";
+import { Section } from "@shared/components/ui/section";
 import { Avatar, AvatarImage } from "@shadcn/components/ui/avatar";
 import { User } from "@shared/types/user.type";
 

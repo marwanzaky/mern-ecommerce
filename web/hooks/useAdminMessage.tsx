@@ -7,8 +7,8 @@ import {
 	IContactMessage,
 } from "@redux/services/contactMessagesService";
 
-import { Column } from "@shared/components/table";
-import { ButtonIcon } from "@shared/ui/buttonIcon";
+import { Column } from "@shared/components/ui/table";
+import { ButtonIcon } from "@shared/components/ui/buttonIcon";
 import { useQuery } from "@tanstack/react-query";
 import {
 	Select,

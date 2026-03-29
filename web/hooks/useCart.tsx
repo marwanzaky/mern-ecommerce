@@ -8,8 +8,8 @@ import {
 } from "@redux/thunks/cartThunks";
 
 import { IProduct } from "@shared/interfaces";
-import { Column } from "@shared/components/table";
-import { LogoCell } from "@shared/components/table/cells/logoCell";
+import { Column } from "@shared/components/ui/table";
+import { LogoCell } from "@shared/components/ui/table/cells/logoCell";
 
 import { selectCartTotalStr } from "@redux/selectors/cartSelectors";
 import { paymentsService } from "@redux/services/paymentsService";
@@ -47,7 +47,7 @@ export function useCart() {
 			header: "Quantity",
 			field: "quantity",
 			type: "number-input",
-			className: "w-[15%]",
+			className: "w-[10%]",
 			onChange: (value, row) => {
 				dispatch(
 					updateCartItemQuantityAsync({

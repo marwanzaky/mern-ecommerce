@@ -1,6 +1,6 @@
 import { cn } from "@lib/utils";
 
-import Stars from "@shared/components/stars";
+import Stars from "@shared/components/ui/stars";
 import { IProduct } from "@shared/interfaces";
 import {
 	Avatar,

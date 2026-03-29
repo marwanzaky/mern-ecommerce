@@ -5,26 +5,15 @@ import { forwardRef, useEffect, useState } from "react";
 import clsx from "clsx";
 import { cva } from "class-variance-authority";
 
-import Icon from "@shared/ui/icon";
-
-import { Badge } from "./badge";
+import { Chip } from "./chip";
 
 const inputTagsVariants = cva(
 	[
-		"w-full flex flex-wrap gap-2",
-		"rounded-xl bg-custom-background-foreground",
-		"outline-hidden shadow-[0_0_0_1pt_#ecf0f1] focus-within:shadow-[0_0_0_2pt_cornflowerblue] transition-shadow",
+		"min-h-8 py-2 flex flex-wrap gap-2 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
 	],
 	{
-		variants: {
-			size: {
-				sm: "px-[25px] min-h-[48px]",
-				md: "px-[25px] min-h-[62px] py-4",
-			},
-		},
-		defaultVariants: {
-			size: "md",
-		},
+		variants: {},
+		defaultVariants: {},
 	},
 );
 
@@ -62,20 +51,15 @@ const InputTags = forwardRef<HTMLInputElement, InputTagsProps>(
 
 		return (
 			<div>
-				<div className={clsx(inputTagsVariants({ size: "md" }), className)}>
+				<div className={clsx(inputTagsVariants({}), className)}>
 					{value.map((item) => (
-						<Badge className="flex gap-1 hover:bg-gray-300" key={item}>
+						<Chip
+							onClick={() => {
+								onChange(value.filter((i) => i !== item));
+							}}
+						>
 							{item}
-
-							<Icon
-								className="cursor-pointer"
-								onClick={() => {
-									onChange(value.filter((i) => i !== item));
-								}}
-								src="icons/close.svg"
-								size={16}
-							/>
-						</Badge>
+						</Chip>
 					))}
 
 					<input

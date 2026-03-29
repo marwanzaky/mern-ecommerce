@@ -1,6 +1,5 @@
 import Link from "next/link";
-
-import { Avatar } from "@shared/components/avatar";
+import { Avatar, AvatarImage } from "@shadcn/components/ui/avatar";
 
 export type LogoCellProps = {
 	label: string;
@@ -12,9 +11,13 @@ export function LogoCell({ label, imgUrl, href }: LogoCellProps) {
 	return (
 		<div className="flex gap-5 items-center">
 			<Link href={href}>
-				<div className="border rounded-xl overflow-hidden">
-					<Avatar className="rounded-none" size="md" imgUrl={imgUrl} />
-				</div>
+				<Avatar className="border h-12 w-12 rounded-lg overflow-hidden">
+					<AvatarImage
+						className="rounded-none"
+						src={imgUrl}
+						alt={`Photo of "${label}"`}
+					/>
+				</Avatar>
 			</Link>
 
 			<Link

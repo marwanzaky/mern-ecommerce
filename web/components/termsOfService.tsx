@@ -1,6 +1,6 @@
 import { TypographyP } from "@shadcn/components/ui/typography";
-import { Section } from "@shared/components/section";
-import { TypographyH2, TypographyH4 } from "@shared/ui/typography";
+import { Section } from "@shared/components/ui/section";
+import { TypographyH2, TypographyH4 } from "@shared/components/ui/typography";
 
 export default function TermsOfService() {
 	return (

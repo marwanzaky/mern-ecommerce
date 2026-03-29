@@ -1,5 +1,5 @@
-import { $createImageNode } from "@shared/components/lexical/nodes/imageNode";
-import { ButtonIcon } from "@shared/ui/buttonIcon";
+import { $createImageNode } from "@shared/components/ui/lexical/nodes/imageNode";
+import { ButtonIcon } from "@shared/components/ui/buttonIcon";
 
 import { $insertNodes } from "lexical";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
