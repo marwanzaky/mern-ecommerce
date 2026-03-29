@@ -11,7 +11,7 @@ export default function Footer() {
 				<div>
 					<TypographyH4 className="text-white">Quick links</TypographyH4>
 
-					<ul className="flex gap-x-5 flex-wrap">
+					<ul className="flex gap-x-5 flex-wrap text-sm">
 						{process.env.NEXT_PUBLIC_ABOUT === "true" && (
 							<li>
 								<Link

@@ -410,10 +410,7 @@ function Details({ product }: { product: IProduct }) {
 								</Avatar>
 
 								<div>
-									<Link
-										href={`/user/${product.user._id}`}
-										// className="hover:underline"
-									>
+									<Link href={`/user/${product.user._id}`}>
 										{product.user.name}
 									</Link>
 

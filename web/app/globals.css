@@ -5,31 +5,22 @@
 @custom-variant dark (&:is(.dark *));
 
 @layer base {
-	*,
-	::after,
-	::before,
-	::backdrop,
-	::file-selector-button {
-		border-color: var(--color-gray-200, currentcolor);
-	}
-}
-
-@layer base {
 	* {
 		@apply border-border outline-ring/50;
 	}
 	body {
 		@apply bg-background text-foreground;
 	}
-	html {
-		@apply font-sans text-base;
-	}
 }
 
 @theme inline {
+	/* custom filters */
 	--filter-primary: brightness(0) saturate(100%) invert(30%) sepia(85%)
 		saturate(1559%) hue-rotate(146deg) brightness(99%) contrast(101%);
-	/* custom */
+	--filter-placeholder: brightness(0) saturate(100%) invert(68%) sepia(4%)
+		saturate(720%) hue-rotate(146deg) brightness(95%) contrast(89%);
+
+	/* custom breakpoints */
 	--breakpoint-container: 1090px;
 
 	/* custom colors */
@@ -170,9 +161,4 @@
 }
 .scrollbar-hide::-webkit-scrollbar {
 	display: none;
-}
-
-.filter-custom-placeholder {
-	filter: brightness(0) saturate(100%) invert(68%) sepia(4%) saturate(720%)
-		hue-rotate(146deg) brightness(95%) contrast(89%);
 }

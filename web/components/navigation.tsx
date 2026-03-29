@@ -64,7 +64,7 @@ export default function Navigation() {
 				</div>
 
 				<Link
-					className="hidden lg:block font-bold text-lg hover:text-custom-primary-foreground transition-colors"
+					className="hidden lg:block font-bold text-lg hover:text-primary transition-colors"
 					href="/"
 				>
 					{process.env.NEXT_PUBLIC_NAME}

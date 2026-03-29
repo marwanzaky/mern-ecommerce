@@ -2,10 +2,10 @@
 
 import { useRef } from "react";
 
-import Icon from "@shared/components/ui/icon";
 import { ButtonIcon } from "@shared/components/ui/buttonIcon";
 
 import { cn } from "@lib/utils";
+import { Image } from "lucide-react";
 
 type ImageSlot = {
 	url?: string;
@@ -40,7 +40,7 @@ export default function ImageInput({
 
 			<div
 				className={cn(
-					"w-full h-[62px] rounded-xl overflow-hidden outline-hidden shadow-[0_0_0_1pt_#ecf0f1] focus:shadow-[0_0_0_2pt_cornflowerblue]",
+					"w-full aspect-square rounded-xl overflow-hidden outline-hidden border",
 					className,
 				)}
 			>
@@ -77,13 +77,10 @@ export default function ImageInput({
 				) : (
 					<div
 						role="button"
-						className="h-full w-full bg-custom-background-foreground flex justify-center items-center"
+						className="h-full w-full bg-secondary hover:bg-secondary/80 flex justify-center items-center"
 						onClick={() => inputRef.current?.click()}
 					>
-						<Icon
-							className="filter-custom-placeholder"
-							src="icons/upload_file.svg"
-						/>
+						<Image className="filter-(--filter-placeholder)" />
 					</div>
 				)}
 			</div>

@@ -81,7 +81,9 @@ export default function Reviews({ product }: { product: IProduct }) {
 								value={review.rating}
 								displayTotal={false}
 							/>
-							<TypographyMuted>{review.description}</TypographyMuted>
+							<TypographyMuted className="text-sm">
+								{review.description}
+							</TypographyMuted>
 						</div>
 					</div>
 				))

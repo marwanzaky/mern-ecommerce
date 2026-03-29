@@ -162,14 +162,8 @@ export function ProductDialog({
 											<ContentEditable
 												className={cn(
 													textareaVariants({}),
-													"block overflow-y-scroll max-h-32",
+													"block overflow-y-scroll min-h-8 max-h-32",
 												)}
-												aria-placeholder="Product Description"
-												placeholder={
-													<div className="absolute top-5 left-[25px] text-gray-400">
-														Product Description
-													</div>
-												}
 											/>
 										}
 										ErrorBoundary={LexicalErrorBoundary}

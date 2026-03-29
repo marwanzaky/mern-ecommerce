@@ -46,12 +46,7 @@ export function TypographyH4({ className, children }: Typography) {
 
 export function TypographyP({ className, children }: Typography) {
 	return (
-		<p
-			className={cn(
-				"leading-7 [&:not(:first-child)]:mt-6 text-[0.9375rem]",
-				className,
-			)}
-		>
+		<p className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}>
 			{children}
 		</p>
 	);
@@ -60,8 +55,6 @@ export function TypographyP({ className, children }: Typography) {
 export function TypographyMuted({ className, children }: Typography) {
 	return (
 		// text-sm
-		<p className={cn("text-muted-foreground text-[0.9375rem]", className)}>
-			{children}
-		</p>
+		<p className={cn("text-muted-foreground", className)}>{children}</p>
 	);
 }

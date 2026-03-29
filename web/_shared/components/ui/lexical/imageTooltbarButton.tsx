@@ -33,9 +33,10 @@ export function ImageToolbarButton() {
 
 	return (
 		<ButtonIcon
+			size="sm"
 			type="button"
 			icon="upload"
-			className="absolute top-[25px] right-4"
+			className="absolute top-0.75 right-4"
 			onClick={insertImage}
 		/>
 	);

@@ -54,6 +54,7 @@ const InputTags = forwardRef<HTMLInputElement, InputTagsProps>(
 				<div className={clsx(inputTagsVariants({}), className)}>
 					{value.map((item) => (
 						<Chip
+							key={`input-tag-${item}`}
 							onClick={() => {
 								onChange(value.filter((i) => i !== item));
 							}}

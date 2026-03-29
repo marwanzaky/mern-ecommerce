@@ -334,7 +334,7 @@ function DeleteAccountForm() {
 			<TypographyH4>Delete Account</TypographyH4>
 
 			<div className="flex flex-col gap-4">
-				<TypographyMuted>
+				<TypographyMuted className="text-sm">
 					No longer want to use our service? You can delete your account here.
 					This action is not reversible. All information related to this account
 					will be deleted permanently.

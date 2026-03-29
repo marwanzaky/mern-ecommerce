@@ -65,7 +65,6 @@ const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
 				{...props}
 			>
 				<Icon
-					// size={10}
 					className={cn("group-hover:filter-(--filter-primary)", styleClass)}
 					src={`icons/${icon}.svg`}
 				/>
