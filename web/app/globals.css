@@ -28,8 +28,8 @@
 	--color-custom-background-foreground: oklch(0.9776 0.0021 197.12);
 
 	/* shadcn */
-	--font-heading: var(--font-sans);
-	--font-sans: var(--font-sans);
+	--font-heading: var(--font-poppins);
+	--font-sans: var(--font-poppins);
 	--color-sidebar-ring: var(--sidebar-ring);
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);

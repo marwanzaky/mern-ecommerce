@@ -167,9 +167,7 @@ function OverviewRatesLi({
 }) {
 	return (
 		<li className="flex items-center">
-			<div className="w-2.5 text-primary leading-none">
-				<Star className="w-4 h-4 fill-primary" />
-			</div>
+			<div className="w-2.5 text-primary leading-none">★</div>
 			<div className="w-12.5 text-center leading-none">{stars}</div>
 			<div className="h-0.5 w-full bg-border">
 				<div className="h-full bg-primary" style={{ width: percent }} />

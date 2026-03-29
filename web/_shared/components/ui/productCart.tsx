@@ -17,6 +17,7 @@ import { ButtonIcon } from "@shared/components/ui/buttonIcon";
 
 import { formatPrice } from "@utils/formatPrice";
 import { createProductSlug } from "@utils/stringUtils";
+import { useIsMobile } from "@shadcn/hooks/use-mobile";
 
 type ProductCartProps = {
 	data: IProduct;
@@ -25,6 +26,7 @@ type ProductCartProps = {
 export default function ProductCart({ data }: ProductCartProps) {
 	const dispatch = useDispatch<AppDispatch>();
 
+	const isMobile = useIsMobile();
 	const { isFavorite, addToFavorites, removeFromFavorites } =
 		useToggleFavorite(data);
 
@@ -70,7 +72,8 @@ export default function ProductCart({ data }: ProductCartProps) {
 
 				{process.env.NEXT_PUBLIC_REVIEWS === "true" && (
 					<Stars
-						className="mb-1"
+						className="mb-2"
+						size={isMobile ? 16 : 18}
 						value={data.avgRatings}
 						total={data.numReviews}
 					/>

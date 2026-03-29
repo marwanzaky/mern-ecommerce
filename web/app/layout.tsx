@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import { Poppins, Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -20,14 +20,12 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { Metadata, Viewport } from "next";
 import { Toaster } from "sonner";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-
-// const poppins = Poppins({
-// 	subsets: ["latin"],
-// 	weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-// 	variable: "--font-poppins",
-// 	display: "swap",
-// });
+const poppins = Poppins({
+	subsets: ["latin"],
+	weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+	variable: "--font-poppins",
+	display: "swap",
+});
 
 export const metadata: Metadata = {
 	title: "Mamolio",
@@ -52,7 +50,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className={cn("font-sans", inter.variable)}>
+		<html lang="en" className={cn("font-poppins", poppins.variable)}>
 			<body className={cn("min-h-screen bg-background")}>
 				<AppProviders>
 					<AppStateInit />
