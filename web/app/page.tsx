@@ -20,9 +20,7 @@ export default async function Page() {
 			<Header />
 
 			<Section className="space-y-2 lg:space-y-4">
-				<TypographyH3 className="text-center lg:text-left">
-					Featured products
-				</TypographyH3>
+				<TypographyH3 className="text-center">Featured Products</TypographyH3>
 
 				<div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 lg:gap-4">
 					{data.map((item) => (

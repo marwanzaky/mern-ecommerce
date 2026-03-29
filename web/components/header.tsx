@@ -27,10 +27,10 @@ export default function Header() {
 
 			<div className="space-y-4">
 				<div>
-					<TypographyH1 className="text-center text-white">
+					<TypographyH1 className="text-center text-white text-4xl md:text-5xl">
 						{productName}
 					</TypographyH1>
-					<TypographyP className="text-center text-white max-w-xs mx-auto">
+					<TypographyP className="text-center text-muted max-w-xs mx-auto">
 						{productDescription}
 					</TypographyP>
 				</div>

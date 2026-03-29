@@ -40,7 +40,7 @@ import { Input } from "@shadcn/components/ui/input";
 export default function Navigation() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
-	const isMobile = useIsMobile();
+	const isMobile = useIsMobile({});
 
 	const { isAuthenticated, user } = useAppSelector(
 		(state) => state.authReducer,

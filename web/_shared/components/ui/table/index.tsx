@@ -32,7 +32,7 @@ export type TableProps = {
 export function Table({ className, columns, data }: TableProps) {
 	return (
 		<div className={`w-full overflow-x-auto ${className || ""}`}>
-			<table className="w-full border rounded-xl border-separate! p-2.5">
+			<table className="w-full border rounded-lg border-separate! p-2.5">
 				<thead>
 					<tr>
 						{columns.map((column, colIndex) => (

@@ -28,7 +28,7 @@ import {
 	AccordionTrigger,
 } from "@shadcn/components/ui/accordion";
 import { Section } from "@shared/components/ui/section";
-import { TypographyH4 } from "@shared/components/ui/typography";
+import { TypographyH4 } from "@shadcn/components/ui/typography";
 import {
 	TypographyH3,
 	TypographyMuted,
@@ -93,7 +93,7 @@ function Preview({ product }: { product: IProduct }) {
 
 			<div className="relative">
 				<Image
-					className="w-full mb-2 md:mb-4 rounded-md shadow-md aspect-square object-cover"
+					className="w-full mb-2 md:mb-4 rounded-lg shadow aspect-square object-cover"
 					src={product.imgUrls[imgIndex]}
 					alt={product.name}
 					width={512}
@@ -124,7 +124,7 @@ function Preview({ product }: { product: IProduct }) {
 					<Image
 						role="button"
 						className={cn(
-							"w-full rounded-md opacity-100 hover:opacity-50 shadow-md aspect-square object-cover border border-transparent hover:border-black",
+							"w-full rounded-lg opacity-100 hover:opacity-50 shadow aspect-square object-cover border border-transparent hover:border-black",
 							i === imgIndex && "border-primary",
 						)}
 						key={`${product.name} ${i + 1}`}
@@ -336,7 +336,7 @@ function Details({ product }: { product: IProduct }) {
 					<AccordionTrigger>Description</AccordionTrigger>
 					<AccordionContent asChild>
 						<div
-							className="[&_img]:rounded-md"
+							className="[&_img]:rounded-lg"
 							dangerouslySetInnerHTML={{ __html: product.description }}
 						/>
 					</AccordionContent>
@@ -344,8 +344,8 @@ function Details({ product }: { product: IProduct }) {
 				<AccordionItem value="item-2">
 					<AccordionTrigger>Shipping and Refund Policy</AccordionTrigger>
 					<AccordionContent>
-						<TypographyH4>Refund Policy</TypographyH4>
-						<TypographyP>
+						<TypographyH4 className="text-sm">Refund Policy</TypographyH4>
+						<TypographyP className="leading-5">
 							We have a 30-day return policy, which means you have 30 days after
 							receiving your item to request a return.
 							<br />
@@ -369,8 +369,8 @@ function Details({ product }: { product: IProduct }) {
 							<br />
 						</TypographyP>
 
-						<TypographyH4>Shipping policy</TypographyH4>
-						<TypographyP>
+						<TypographyH4 className="text-sm">Shipping Policy</TypographyH4>
+						<TypographyP className="leading-5">
 							All orders are processed within 1 to 3 business days (excluding
 							weekends and holidays) after receiving your order confirmation
 							email. You will receive another notification when your order has
@@ -379,8 +379,10 @@ function Details({ product }: { product: IProduct }) {
 							<br />
 						</TypographyP>
 
-						<TypographyH4>International Shipping</TypographyH4>
-						<TypographyP>
+						<TypographyH4 className="text-sm">
+							International Shipping
+						</TypographyH4>
+						<TypographyP className="leading-5">
 							We offer international shipping to the following countries: United
 							States, United Kingdom, Australia, Canada, Germany, France, Spain,
 							United Arab Emirates, Indonesia.
@@ -467,9 +469,7 @@ export default function ProductDetails({ product }: { product: IProduct }) {
 
 			{similarProducts && similarProducts.length > 0 && (
 				<Section className="pt-0! space-y-2 lg:space-y-4">
-					<TypographyH3 className="text-center lg:text-left">
-						Similar products
-					</TypographyH3>
+					<TypographyH3 className="text-center">Similar Products</TypographyH3>
 
 					<div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 lg:gap-4">
 						{similarProducts.map((item) => (

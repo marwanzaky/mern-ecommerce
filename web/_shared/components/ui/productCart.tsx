@@ -26,7 +26,7 @@ type ProductCartProps = {
 export default function ProductCart({ data }: ProductCartProps) {
 	const dispatch = useDispatch<AppDispatch>();
 
-	const isMobile = useIsMobile();
+	const isMobile = useIsMobile({});
 	const { isFavorite, addToFavorites, removeFromFavorites } =
 		useToggleFavorite(data);
 

@@ -21,7 +21,7 @@ export default function Categories({
 					{categoryTree.map((item, i) => (
 						<button
 							key={`category-${item.slug}`}
-							className="group relative bg-custom-background aspect-square flex items-center justify-center rounded overflow-hidden"
+							className="group relative bg-custom-background aspect-square flex items-center justify-center rounded-lg overflow-hidden"
 							onClick={() => {
 								const params = new URLSearchParams();
 								params.set("category", item.slug);

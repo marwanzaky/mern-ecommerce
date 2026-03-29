@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { contactMessagesService } from "@redux/services/contactMessagesService";
 import { Section } from "@shared/components/ui/section";
 import { Controller, useForm } from "react-hook-form";
-import { TypographyH2, TypographyH4 } from "@shared/components/ui/typography";
+import { TypographyH2, TypographyH4 } from "@shadcn/components/ui/typography";
 import { TypographyP } from "@shadcn/components/ui/typography";
 import { Button } from "@shadcn/components/ui/button";
 import { toast } from "sonner";
@@ -68,8 +68,8 @@ export default function Contact() {
 	return (
 		<Section className="grid grid-cols-1 md:grid-cols-2 gap-12">
 			<div>
-				<TypographyH2 className="text-center lg:text-left">
-					Contact us
+				<TypographyH2 className="text-center border-none">
+					Contact Us
 				</TypographyH2>
 				<TypographyH4>Have a question?</TypographyH4>
 				<TypographyP>

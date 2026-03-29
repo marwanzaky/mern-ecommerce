@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { Container } from "@shared/components/ui/container";
-import { TypographyH4 } from "@shared/components/ui/typography";
+import { TypographyH4 } from "@shadcn/components/ui/typography";
 
 export default function Footer() {
 	return (

@@ -18,6 +18,19 @@ export function TypographyH1({ className, children }: Typography) {
 	);
 }
 
+export function TypographyH2({ className, children }: Typography) {
+	return (
+		<h2
+			className={cn(
+				"scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0 mb-10",
+				className,
+			)}
+		>
+			{children}
+		</h2>
+	);
+}
+
 export function TypographyH3({ className, children }: Typography) {
 	return (
 		<h3
