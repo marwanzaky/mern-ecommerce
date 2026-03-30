@@ -40,7 +40,7 @@ export default function Header() {
 						size="lg"
 						onClick={() =>
 							router.push(
-								`/product/${createProductSlug(productName, productId)}`,
+								`/products/${createProductSlug(productName, productId)}`,
 							)
 						}
 					>

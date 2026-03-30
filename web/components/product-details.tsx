@@ -11,7 +11,7 @@ import Link from "next/link";
 
 import Stars from "@shared/components/ui/stars";
 import { IProduct } from "@shared/interfaces";
-import ProductCart from "@shared/components/ui/product-cart";
+import ProductCard from "@shared/components/ui/product-card";
 import { ButtonIcon } from "@shared/components/ui/button-icon";
 import {
 	Breadcrumb,
@@ -473,7 +473,7 @@ export default function ProductDetails({ product }: { product: IProduct }) {
 
 					<div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 lg:gap-4">
 						{similarProducts.map((item) => (
-							<ProductCart key={item._id} data={item} />
+							<ProductCard key={item._id} data={item} />
 						))}
 					</div>
 				</Section>

@@ -19,11 +19,11 @@ import { formatPrice } from "@utils/format-price";
 import { createProductSlug } from "@utils/string-utils";
 import { useIsMobile } from "@shadcn/hooks/use-mobile";
 
-type ProductCartProps = {
+type ProductCardProps = {
 	data: IProduct;
 };
 
-export default function ProductCart({ data }: ProductCartProps) {
+export default function ProductCard({ data }: ProductCardProps) {
 	const dispatch = useDispatch<AppDispatch>();
 
 	const isMobile = useIsMobile({});
@@ -54,7 +54,7 @@ export default function ProductCart({ data }: ProductCartProps) {
 				)}
 			</div>
 
-			<Link href={`/product/${createProductSlug(data.name, data._id)}`}>
+			<Link href={`/products/${createProductSlug(data.name, data._id)}`}>
 				<Image
 					className="aspect-square object-cover w-full h-full"
 					src={data.imgUrls[0]}

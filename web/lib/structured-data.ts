@@ -4,13 +4,13 @@ export function generateProductStructuredData(product: IProduct) {
 	return {
 		"@context": "https://schema.org",
 		"@type": "Product",
-		"@id": `https://${process.env.NEXT_PUBLIC_WEBSITE!}/product/${product._id}`,
+		"@id": `https://${process.env.NEXT_PUBLIC_WEBSITE!}/products/${product._id}`,
 		name: product.name,
 		description: product.description,
 		image: product.imgUrls,
 		offers: {
 			"@type": "Offer",
-			"@id": `https://${process.env.NEXT_PUBLIC_WEBSITE!}/product/${product._id}#offer`,
+			"@id": `https://${process.env.NEXT_PUBLIC_WEBSITE!}/products/${product._id}#offer`,
 			price: product.price,
 			priceCurrency: "USD",
 			availability:

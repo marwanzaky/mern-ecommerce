@@ -7,7 +7,7 @@ import { TypographyH3 } from "@shadcn/components/ui/typography";
 
 import { IProduct } from "@shared/interfaces";
 import { Section } from "@shared/components/ui/section";
-import ProductCart from "@shared/components/ui/product-cart";
+import ProductCard from "@shared/components/ui/product-card";
 
 import { productsService } from "@redux/services/products-service";
 import { categoriesService } from "@redux/services/categories-service";
@@ -25,7 +25,7 @@ export default async function Page() {
 
 				<div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 lg:gap-4">
 					{data.map((item) => (
-						<ProductCart key={item._id} data={item} />
+						<ProductCard key={item._id} data={item} />
 					))}
 				</div>
 			</Section>

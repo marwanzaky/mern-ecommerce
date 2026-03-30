@@ -2,7 +2,7 @@
 
 import { SortOption, useProducts } from "@hooks/use-products";
 
-import ProductItem from "@shared/components/ui/product-cart";
+import ProductCard from "@shared/components/ui/product-card";
 import { Chip } from "@shared/components/ui/chip";
 import { Section } from "@shared/components/ui/section";
 import {
@@ -160,7 +160,7 @@ export default function Page() {
 
 				<div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 lg:gap-4">
 					{data?.map((item) => (
-						<ProductItem key={item._id} data={item} />
+						<ProductCard key={item._id} data={item} />
 					))}
 				</div>
 			</Section>

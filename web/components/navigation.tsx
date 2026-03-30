@@ -260,8 +260,6 @@ function NavLi({ href, name }: { href: string; name: string }) {
 	const pathname = usePathname();
 	let select = pathname === href;
 
-	if (href === "/products" && pathname.includes("/product")) select = true;
-
 	return (
 		<li>
 			<Link
