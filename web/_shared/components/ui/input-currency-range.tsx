@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { InputCurrency } from "../InputCurrency";
+import { InputCurrency } from "./Input-currency";
 
 type InputCurrencyRangeProps = {
 	className?: string;

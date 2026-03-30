@@ -1,4 +1,4 @@
-import ShippingPolicy from "@components/shippingPolicy";
+import ShippingPolicy from "@components/shipping-policy";
 
 export default function Page() {
 	return <ShippingPolicy />;

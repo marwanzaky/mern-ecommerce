@@ -14,7 +14,7 @@ import {
 	EmptyTitle,
 } from "@shadcn/components/ui/empty";
 
-import { initials, stringToDate } from "@utils/stringUtils";
+import { initials, stringToDate } from "@utils/string-utils";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { TypographyMuted } from "@shadcn/components/ui/typography";

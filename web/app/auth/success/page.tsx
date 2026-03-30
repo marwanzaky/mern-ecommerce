@@ -1,6 +1,6 @@
 "use client";
 
-import { handleGoogleAuth } from "@utils/authHelpers";
+import { handleGoogleAuth } from "@utils/auth-helpers";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";

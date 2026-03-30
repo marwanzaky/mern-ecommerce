@@ -2,11 +2,11 @@ import { stringify } from "qs";
 import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter, useSearchParams } from "next/navigation";
-import { categoriesService } from "@redux/services/categoriesService";
+import { categoriesService } from "@redux/services/categories-service";
 import {
 	GetAllProductsOptions,
 	productsService,
-} from "@redux/services/productsService";
+} from "@redux/services/products-service";
 import { IProduct } from "@shared/interfaces";
 
 export type SortOption =

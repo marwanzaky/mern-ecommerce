@@ -1,13 +1,13 @@
 "use client";
 
 import { useMemo } from "react";
-import { SellInputs } from "@hooks/useSell";
+import { SellInputs } from "@hooks/use-sell";
 
-import { InputCurrencyRange } from "@shared/components/ui/InputCurrencyRange";
-import { InputTags } from "@shared/components/ui/inputTags";
-import { ImageToolbarButton } from "@shared/components/ui/lexical/imageTooltbarButton";
-import { MyOnChangePlugin } from "@shared/components/ui/lexical/myOnChangePlugin";
-import { LoadDescriptionPlugin } from "@shared/components/ui/lexical/loadDescriptionPlugin";
+import { InputCurrencyRange } from "@shared/components/ui/input-currency-range";
+import { InputTags } from "@shared/components/ui/input-tags";
+import { ImageToolbarButton } from "@shared/components/ui/lexical/image-tooltbar-button";
+import { MyOnChangePlugin } from "@shared/components/ui/lexical/my-on-change-plugin";
+import { LoadDescriptionPlugin } from "@shared/components/ui/lexical/load-description-plugin";
 import {
 	Dialog,
 	DialogContent,
@@ -42,10 +42,10 @@ import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
 
 import { cn } from "@lib/utils";
 
-import ImageInput from "./imageInput";
+import ImageInput from "../../../_shared/components/ui/image-input";
 
 import { useQuery } from "@tanstack/react-query";
-import { categoriesService } from "@redux/services/categoriesService";
+import { categoriesService } from "@redux/services/categories-service";
 import { Button } from "@shadcn/components/ui/button";
 import { Field, FieldGroup, FieldLabel } from "@shadcn/components/ui/field";
 import { Input } from "@shadcn/components/ui/input";

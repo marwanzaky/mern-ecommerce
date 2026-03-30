@@ -8,7 +8,7 @@ import {
 	signupAsync,
 	updateMeAsync,
 	updateMyPasswordAsync,
-} from "@redux/thunks/authThunks";
+} from "@redux/thunks/auth-thunks";
 
 export type AuthState = {
 	user: User | null;

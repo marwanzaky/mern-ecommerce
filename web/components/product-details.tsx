@@ -11,8 +11,8 @@ import Link from "next/link";
 
 import Stars from "@shared/components/ui/stars";
 import { IProduct } from "@shared/interfaces";
-import ProductCart from "@shared/components/ui/productCart";
-import { ButtonIcon } from "@shared/components/ui/buttonIcon";
+import ProductCart from "@shared/components/ui/product-cart";
+import { ButtonIcon } from "@shared/components/ui/button-icon";
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -47,20 +47,20 @@ import {
 
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/store";
-import { postCartItemAsync } from "@redux/thunks/cartThunks";
-import { useToggleFavorite } from "@hooks/useToggleFavorite";
+import { postCartItemAsync } from "@redux/thunks/cart-thunks";
+import { useToggleFavorite } from "@hooks/use-toggle-favorite";
 import { useQuery } from "@tanstack/react-query";
 import {
 	GetAllProductsOptions,
 	productsService,
-} from "@redux/services/productsService";
+} from "@redux/services/products-service";
 import { cn } from "@lib/utils";
 
-import { formatPrice } from "@utils/formatPrice";
-import { categoriesService } from "@redux/services/categoriesService";
+import { formatPrice } from "@utils/format-price";
+import { categoriesService } from "@redux/services/categories-service";
 
 import { sendGTMEvent } from "@next/third-parties/google";
-import { initials, stringToDate } from "@utils/stringUtils";
+import { initials, stringToDate } from "@utils/string-utils";
 import { Button } from "@shadcn/components/ui/button";
 import { TypographyP } from "@shadcn/components/ui/typography";
 import { Field, FieldGroup, FieldLabel } from "@shadcn/components/ui/field";

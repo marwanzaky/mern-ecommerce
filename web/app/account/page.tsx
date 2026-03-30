@@ -8,10 +8,10 @@ import {
 	deleteMeAsync,
 	updateMeAsync,
 	updateMyPasswordAsync,
-} from "@redux/thunks/authThunks";
+} from "@redux/thunks/auth-thunks";
 
 import { Section } from "@shared/components/ui/section";
-import { ButtonIcon } from "@shared/components/ui/buttonIcon";
+import { ButtonIcon } from "@shared/components/ui/button-icon";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -42,7 +42,7 @@ import {
 	FieldLabel,
 } from "@shadcn/components/ui/field";
 import { Input } from "@shadcn/components/ui/input";
-import { initials } from "@utils/stringUtils";
+import { initials } from "@utils/string-utils";
 import {
 	Avatar,
 	AvatarFallback,

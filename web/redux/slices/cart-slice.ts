@@ -5,7 +5,7 @@ import {
 	getCartMeAsync,
 	postCartItemAsync,
 	updateCartItemQuantityAsync,
-} from "@redux/thunks/cartThunks";
+} from "@redux/thunks/cart-thunks";
 
 import { CartItem } from "@shared/interfaces/cart.interface";
 

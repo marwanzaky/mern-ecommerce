@@ -3,10 +3,10 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@redux/store";
-import { getFavoritesAsync } from "@redux/thunks/favoritesThunks";
-import { getCartMeAsync } from "@redux/thunks/cartThunks";
-import { getUserProductsAsync } from "@redux/thunks/userProductsThunks";
-import { getMeAsync } from "@redux/thunks/authThunks";
+import { getFavoritesAsync } from "@redux/thunks/favorites-thunks";
+import { getCartMeAsync } from "@redux/thunks/cart-thunks";
+import { getUserProductsAsync } from "@redux/thunks/user-products-thunks";
+import { getMeAsync } from "@redux/thunks/auth-thunks";
 
 export default function AppStateInit() {
 	const dispatch = useDispatch<AppDispatch>();

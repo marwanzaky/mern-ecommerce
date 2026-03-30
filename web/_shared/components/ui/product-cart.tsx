@@ -4,19 +4,19 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { useDispatch } from "react-redux";
-import { postCartItemAsync } from "@redux/thunks/cartThunks";
+import { postCartItemAsync } from "@redux/thunks/cart-thunks";
 import { AppDispatch } from "@redux/store";
 
-import { useToggleFavorite } from "@hooks/useToggleFavorite";
+import { useToggleFavorite } from "@hooks/use-toggle-favorite";
 
 import { cn } from "@lib/utils";
 
 import Stars from "@shared/components/ui/stars";
 import { IProduct } from "@shared/interfaces";
-import { ButtonIcon } from "@shared/components/ui/buttonIcon";
+import { ButtonIcon } from "@shared/components/ui/button-icon";
 
-import { formatPrice } from "@utils/formatPrice";
-import { createProductSlug } from "@utils/stringUtils";
+import { formatPrice } from "@utils/format-price";
+import { createProductSlug } from "@utils/string-utils";
 import { useIsMobile } from "@shadcn/hooks/use-mobile";
 
 type ProductCartProps = {

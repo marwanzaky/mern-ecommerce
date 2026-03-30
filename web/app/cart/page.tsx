@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-import { useCart } from "@hooks/useCart";
+import { useCart } from "@hooks/use-cart";
 
 import { Table } from "@shared/components/ui/table";
 import { Section } from "@shared/components/ui/section";

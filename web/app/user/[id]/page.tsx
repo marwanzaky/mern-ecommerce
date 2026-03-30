@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 
 import { AvatarInitials } from "@components/feedback/reviews";
 
-import { usersService } from "@redux/services/usersService";
+import { usersService } from "@redux/services/users-service";
 
 import {
 	Empty,

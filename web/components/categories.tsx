@@ -1,7 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import { Section } from "@shared/components/ui/section";
 import { Container } from "@shared/components/ui/container";

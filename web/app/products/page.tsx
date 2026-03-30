@@ -1,8 +1,8 @@
 "use client";
 
-import { SortOption, useProducts } from "@hooks/useProducts";
+import { SortOption, useProducts } from "@hooks/use-products";
 
-import ProductItem from "@shared/components/ui/productCart";
+import ProductItem from "@shared/components/ui/product-cart";
 import { Chip } from "@shared/components/ui/chip";
 import { Section } from "@shared/components/ui/section";
 import {
@@ -21,9 +21,9 @@ import {
 	DialogTitle,
 } from "@shadcn/components/ui/dialog";
 import { TypographyP } from "@shadcn/components/ui/typography";
-import { InputCurrencyRange } from "@shared/components/ui/InputCurrencyRange";
+import { InputCurrencyRange } from "@shared/components/ui/input-currency-range";
 
-import { formatPrice } from "@utils/formatPrice";
+import { formatPrice } from "@utils/format-price";
 import { Button } from "@shadcn/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@shadcn/components/ui/radio-group";
 import { Label } from "@shadcn/components/ui/label";

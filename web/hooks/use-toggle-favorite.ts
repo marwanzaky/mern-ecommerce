@@ -4,7 +4,7 @@ import { AppDispatch, useAppSelector } from "@redux/store";
 import {
 	postFavoritesAsync,
 	removeFavoritesAsync,
-} from "@redux/thunks/favoritesThunks";
+} from "@redux/thunks/favorites-thunks";
 import { IProduct } from "@shared/interfaces";
 
 export function useToggleFavorite(product: IProduct) {

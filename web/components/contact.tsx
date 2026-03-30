@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-import { contactMessagesService } from "@redux/services/contactMessagesService";
+import { contactMessagesService } from "@redux/services/contact-messages-service";
 import { Section } from "@shared/components/ui/section";
 import { Controller, useForm } from "react-hook-form";
 import { TypographyH2, TypographyH4 } from "@shadcn/components/ui/typography";

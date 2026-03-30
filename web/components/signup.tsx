@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/store";
-import { signupAsync } from "@redux/thunks/authThunks";
+import { signupAsync } from "@redux/thunks/auth-thunks";
 import { useForm } from "react-hook-form";
 import { Section } from "@shared/components/ui/section";
 import { Button } from "@shadcn/components/ui/button";

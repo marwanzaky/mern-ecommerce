@@ -1,5 +1,5 @@
-import { cartsService } from "@redux/services/cartsService";
-import { guestCartService } from "@redux/services/guestCartService";
+import { cartsService } from "@redux/services/carts-service";
+import { guestCartService } from "@redux/services/guest-cart-service";
 import { RootState } from "@redux/store";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { IProduct } from "@shared/interfaces";

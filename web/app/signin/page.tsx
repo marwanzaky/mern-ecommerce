@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 
-import { handleLogin } from "@utils/authHelpers";
+import { handleLogin } from "@utils/auth-helpers";
 
 import { Section } from "@shared/components/ui/section";
 import { Button } from "@shadcn/components/ui/button";

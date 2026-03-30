@@ -7,8 +7,8 @@ import { useAppSelector } from "@redux/store";
 
 import { cn } from "@lib/utils";
 
-import { ButtonIcon } from "@shared/components/ui/buttonIcon";
-import { ImageButton } from "@shared/components/ui/imageButton";
+import { ButtonIcon } from "@shared/components/ui/button-icon";
+import { ImageButton } from "@shared/components/ui/image-button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -26,14 +26,14 @@ import { useIsMobile } from "@shadcn/hooks/use-mobile";
 
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { categoriesService } from "@redux/services/categoriesService";
-import { ProductsPageParams } from "@hooks/useProducts";
+import { categoriesService } from "@redux/services/categories-service";
+import { ProductsPageParams } from "@hooks/use-products";
 import {
 	Avatar,
 	AvatarFallback,
 	AvatarImage,
 } from "@shadcn/components/ui/avatar";
-import { initials } from "@utils/stringUtils";
+import { initials } from "@utils/string-utils";
 import { BadgeCheck, LogOut, Menu, MessagesSquare, Search } from "lucide-react";
 import { Input } from "@shadcn/components/ui/input";
 

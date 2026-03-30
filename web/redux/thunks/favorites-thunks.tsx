@@ -1,5 +1,5 @@
 import { RootState } from "@redux/store";
-import { favoritesService } from "@redux/services/favoritesService";
+import { favoritesService } from "@redux/services/favorites-service";
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { IProduct } from "@shared/interfaces";

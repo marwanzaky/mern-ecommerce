@@ -25,10 +25,10 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@shadcn/components/ui/select";
-import { adminCategoriesService } from "@redux/services/adminCategoriesService";
-import { categoriesService } from "@redux/services/categoriesService";
-import ImageInput from "@app/sell/components/imageInput";
-import { LogoCell } from "@shared/components/ui/table/cells/logoCell";
+import { adminCategoriesService } from "@redux/services/admin-categories-service";
+import { categoriesService } from "@redux/services/categories-service";
+import ImageInput from "@shared/components/ui/image-input";
+import { LogoCell } from "@shared/components/ui/table/cells/logo-cell";
 import { Checkbox } from "@shadcn/components/ui/checkbox";
 import { Category } from "@shared/types/category.type";
 import { toast } from "sonner";

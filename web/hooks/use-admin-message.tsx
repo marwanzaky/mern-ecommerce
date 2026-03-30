@@ -5,10 +5,10 @@ import { useAppSelector } from "@redux/store";
 import {
 	contactMessagesService,
 	IContactMessage,
-} from "@redux/services/contactMessagesService";
+} from "@redux/services/contact-messages-service";
 
 import { Column } from "@shared/components/ui/table";
-import { ButtonIcon } from "@shared/components/ui/buttonIcon";
+import { ButtonIcon } from "@shared/components/ui/button-icon";
 import { useQuery } from "@tanstack/react-query";
 import {
 	Select,

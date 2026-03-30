@@ -4,7 +4,7 @@ import {
 	postUserProductAsync,
 	removeUserProductAsync,
 	updateUserProductAsync,
-} from "@redux/thunks/userProductsThunks";
+} from "@redux/thunks/user-products-thunks";
 
 import { IProduct } from "@shared/interfaces";
 

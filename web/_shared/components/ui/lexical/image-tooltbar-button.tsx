@@ -1,9 +1,10 @@
-import { $createImageNode } from "@shared/components/ui/lexical/nodes/imageNode";
-import { ButtonIcon } from "@shared/components/ui/buttonIcon";
+import { $createImageNode } from "@shared/components/ui/lexical/nodes/image-node";
+import { ButtonIcon } from "@shared/components/ui/button-icon";
 
 import { $insertNodes } from "lexical";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { uploadFile } from "@redux/services/uploadsService";
+
+import { uploadFile } from "@redux/services/uploads-service";
 
 export function ImageToolbarButton() {
 	const [editor] = useLexicalComposerContext();

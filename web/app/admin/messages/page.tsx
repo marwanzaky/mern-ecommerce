@@ -1,6 +1,6 @@
 "use client";
 
-import { useAdminMessages } from "@hooks/useAdminMessage";
+import { useAdminMessages } from "@hooks/use-admin-message";
 
 import { Table } from "@shared/components/ui/table";
 import { Section } from "@shared/components/ui/section";

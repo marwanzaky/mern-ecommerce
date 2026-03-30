@@ -1,6 +1,6 @@
 import { Input } from "@shadcn/components/ui/input";
-import { ButtonIcon } from "@shared/components/ui/buttonIcon";
-import { formatPrice } from "@utils/formatPrice";
+import { ButtonIcon } from "@shared/components/ui/button-icon";
+import { formatPrice } from "@utils/format-price";
 
 export type Column<T = any> = {
 	field: keyof T;

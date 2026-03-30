@@ -1,7 +1,7 @@
-import ProductDetails from "@components/productDetails";
+import ProductDetails from "@components/product-details";
 import { generateProductStructuredData } from "@lib/structured-data";
-import { productsService } from "@redux/services/productsService";
-import { createProductSlug } from "@utils/stringUtils";
+import { productsService } from "@redux/services/products-service";
+import { createProductSlug } from "@utils/string-utils";
 import { IProduct } from "@shared/interfaces";
 
 interface Props {

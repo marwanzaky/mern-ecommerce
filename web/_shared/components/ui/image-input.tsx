@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 
-import { ButtonIcon } from "@shared/components/ui/buttonIcon";
+import { ButtonIcon } from "@shared/components/ui/button-icon";
 
 import { cn } from "@lib/utils";
 import { Image } from "lucide-react";

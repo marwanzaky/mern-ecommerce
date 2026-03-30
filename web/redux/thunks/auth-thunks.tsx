@@ -1,4 +1,4 @@
-import { usersService } from "@redux/services/usersService";
+import { usersService } from "@redux/services/users-service";
 import { RootState } from "@redux/store";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { UpdateUser, UpdateUserPassword } from "@shared/types/user.type";

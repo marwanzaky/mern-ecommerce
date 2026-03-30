@@ -5,15 +5,15 @@ import { AppDispatch, useAppSelector } from "@redux/store";
 import {
 	deleteCartItemAsync,
 	updateCartItemQuantityAsync,
-} from "@redux/thunks/cartThunks";
+} from "@redux/thunks/cart-thunks";
 
 import { IProduct } from "@shared/interfaces";
 import { Column } from "@shared/components/ui/table";
-import { LogoCell } from "@shared/components/ui/table/cells/logoCell";
+import { LogoCell } from "@shared/components/ui/table/cells/logo-cell";
 
-import { selectCartTotalStr } from "@redux/selectors/cartSelectors";
-import { paymentsService } from "@redux/services/paymentsService";
-import { createProductSlug } from "@utils/stringUtils";
+import { selectCartTotalStr } from "@redux/selectors/cart-selectors";
+import { paymentsService } from "@redux/services/payments-service";
+import { createProductSlug } from "@utils/string-utils";
 
 type CartItem = IProduct & { imgUrl: string; quantity: number; total: number };
 

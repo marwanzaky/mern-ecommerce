@@ -7,11 +7,11 @@ import {
 	postUserProductAsync,
 	removeUserProductAsync,
 	updateUserProductAsync,
-} from "@redux/thunks/userProductsThunks";
+} from "@redux/thunks/user-products-thunks";
 
 import { IProduct } from "@shared/interfaces";
 import { Column } from "@shared/components/ui/table";
-import { LogoCell } from "@shared/components/ui/table/cells/logoCell";
+import { LogoCell } from "@shared/components/ui/table/cells/logo-cell";
 
 import {
 	AlertDialog,
@@ -24,15 +24,15 @@ import {
 	AlertDialogTitle,
 	AlertDialogTrigger,
 } from "@shadcn/components/ui/alert-dialog";
-import { ButtonIcon } from "@shared/components/ui/buttonIcon";
-import { ImageNode } from "@shared/components/ui/lexical/nodes/imageNode";
+import { ButtonIcon } from "@shared/components/ui/button-icon";
+import { ImageNode } from "@shared/components/ui/lexical/nodes/image-node";
 
 import { useForm, useWatch } from "react-hook-form";
 
 import { InitialConfigType } from "@lexical/react/LexicalComposer";
 import { LineBreakNode, ParagraphNode } from "lexical";
-import { ProductDialog } from "@app/sell/components/productDialog";
-import { createProductSlug } from "@utils/stringUtils";
+import { ProductDialog } from "@app/sell/components/product-dialog";
+import { createProductSlug } from "@utils/string-utils";
 
 type CartItem = IProduct & { imgUrl: string };
 

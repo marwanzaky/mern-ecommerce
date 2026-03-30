@@ -6,7 +6,7 @@ import Stars from "@shared/components/ui/stars";
 import { IProduct } from "@shared/interfaces";
 
 import { useAppSelector } from "@redux/store";
-import { productsService } from "@redux/services/productsService";
+import { productsService } from "@redux/services/products-service";
 import { TypographyH4 } from "@shadcn/components/ui/typography";
 import {
 	Dialog,

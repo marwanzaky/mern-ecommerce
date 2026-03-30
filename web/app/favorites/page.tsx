@@ -1,9 +1,9 @@
 "use client";
 import { useRouter } from "next/navigation";
 
-import { useFavorites } from "@hooks/useFavorites";
+import { useFavorites } from "@hooks/use-favorites";
 
-import ProductItem from "@shared/components/ui/productCart";
+import ProductItem from "@shared/components/ui/product-cart";
 import { TypographyH4 } from "@shadcn/components/ui/typography";
 import { Section } from "@shared/components/ui/section";
 import {

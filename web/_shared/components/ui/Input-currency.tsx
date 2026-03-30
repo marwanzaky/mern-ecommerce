@@ -38,9 +38,9 @@ export function InputCurrency({
 
 	return (
 		<div className="relative">
-			<DollarSign className="-translate-y-1/2 absolute top-1/2 right-3 h-4 w-4 text-muted-foreground" />
+			<DollarSign className="-translate-y-1/2 absolute top-1/2 left-3 h-4 w-4 text-muted-foreground" />
 			<Input
-				className="remove-arrow"
+				className="pl-8"
 				type="number"
 				step="0.01"
 				min={0}

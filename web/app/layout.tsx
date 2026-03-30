@@ -1,23 +1,23 @@
 import "./globals.css";
 
+import { cn } from "@lib/utils";
+
+import { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Footer from "@components/footer";
 import Navigation from "@components/navigation";
-import AppStateInit from "@components/appStateInit";
+import AppStateInit from "@components/app-state-init";
 
 import { Container } from "@shared/components/ui/container";
 import { TooltipProvider } from "@shadcn/components/ui/tooltip";
 
-import AppProviders from "@redux/appProviders";
+import AppProviders from "@redux/app-providers";
 
-import { cn } from "@lib/utils";
-
-import { GoogleAnalytics } from "@next/third-parties/google";
-import { Metadata, Viewport } from "next";
 import { Toaster } from "sonner";
 
 const poppins = Poppins({

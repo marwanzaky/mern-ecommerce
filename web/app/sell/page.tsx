@@ -2,7 +2,7 @@
 
 import { Table } from "@shared/components/ui/table";
 
-import { useSell } from "@hooks/useSell";
+import { useSell } from "@hooks/use-sell";
 
 import { Section } from "@shared/components/ui/section";
 import { TypographyH4 } from "@shadcn/components/ui/typography";
