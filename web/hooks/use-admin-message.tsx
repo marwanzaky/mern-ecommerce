@@ -57,7 +57,7 @@ export function useAdminMessages() {
 			header: "Status",
 			field: "status",
 			type: "text",
-			className: "capitalize",
+			className: "text-center! capitalize",
 		},
 		{
 			header: "Name",
