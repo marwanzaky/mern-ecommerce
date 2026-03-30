@@ -42,7 +42,7 @@ export default function Page() {
 								setDisplayDialog(true);
 							}}
 						>
-							Add item
+							Add product
 						</Button>
 					</div>
 				</div>
@@ -62,7 +62,7 @@ export default function Page() {
 								setDisplayDialog(true);
 							}}
 						>
-							Add
+							Add product
 						</Button>
 					</EmptyContent>
 				</Empty>

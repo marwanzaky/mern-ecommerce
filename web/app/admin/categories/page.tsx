@@ -168,7 +168,7 @@ export default function Page() {
 			<Dialog open={editDialog} onOpenChange={setEditDialog}>
 				<DialogContent className="sm:max-w-104">
 					<DialogHeader>
-						<DialogTitle>Edit Category</DialogTitle>
+						<DialogTitle>Edit category</DialogTitle>
 					</DialogHeader>
 
 					<form onSubmit={editCategorySubmit} className="space-y-4">

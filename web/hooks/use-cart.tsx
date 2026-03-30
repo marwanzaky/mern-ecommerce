@@ -31,7 +31,7 @@ export function useCart() {
 			className: "sm:w-[50%]",
 			render: (value, row) => (
 				<LogoCell
-					href={`product/${createProductSlug(row.name, row._id)}`}
+					href={`products/${createProductSlug(row.name, row._id)}`}
 					label={row.name}
 					imgUrl={value}
 				/>

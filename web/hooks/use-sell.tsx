@@ -104,7 +104,7 @@ export function useSell() {
 			className: "w-auto md:w-[60%]",
 			render: (value, row) => (
 				<LogoCell
-					href={`product/${createProductSlug(row.name, row._id)}`}
+					href={`products/${createProductSlug(row.name, row._id)}`}
 					label={row.name}
 					imgUrl={value}
 				/>
@@ -301,7 +301,7 @@ export function useSell() {
 			// Edit item dialog
 			open={displayEditDialog}
 			onOpenChange={setDisplayEditDialog}
-			dialogHeader="Edit item"
+			dialogHeader="Edit product"
 			onSubmit={handleSubmit(onUpdateProduct)}
 			cancelButtonText="Cancel"
 			cancelButtonAction={() => {
@@ -325,7 +325,7 @@ export function useSell() {
 			// Dialog
 			open={displayDialog}
 			onOpenChange={setDisplayDialog}
-			dialogHeader="Add item"
+			dialogHeader="Add product"
 			onSubmit={handleSubmit(onAddProduct)}
 			submitButtonText="Add"
 		/>
