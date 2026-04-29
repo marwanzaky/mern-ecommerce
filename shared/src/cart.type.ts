@@ -1,3 +1,4 @@
+import { EntityBase } from "./entity.type";
 import { ProductEntity } from "./product.types";
 
 /**
@@ -13,8 +14,7 @@ export type CartItemEntity = { product: CartProductEntity; quantity: number };
 /**
  * Mongodb cart document entity
  */
-export type CartEntity = {
-	_id: string;
+export type CartEntity = EntityBase & {
 	user: string;
 	items: CartItemEntity[];
 };

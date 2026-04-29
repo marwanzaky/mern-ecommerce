@@ -3,19 +3,20 @@ import { InjectModel } from "@nestjs/mongoose";
 
 import mongoose, { Model } from "mongoose";
 
-import {
-	CreateProductEntity,
-	UpdateProductEntity,
-} from "@interfaces/product.interface";
-import { Product } from "./entities/product.entity";
-import { Review } from "@reviews/entities/review.entity";
-import { CategoriesService } from "@modules/categories/categories.service";
+import { delay } from "@/common/helper";
+import { CategoriesService } from "@/modules/categories/categories.service";
+import { TranslationService } from "@/modules/translation/translation.service";
+import { Review } from "@/reviews/entities/review.entity";
 import {
 	ProductEntity,
 	ProductWithReviewsEntity,
 	Rating,
 	RatingDistribution,
-} from "@shared/product.types";
+	TranslatedText,
+} from "@/shared/types/product.types";
+import { CreateProductEntity, UpdateProductEntity } from "@/types/product.type";
+
+import { Product } from "./entities/product.entity";
 
 @Injectable()
 export class ProductsService {
@@ -23,6 +24,7 @@ export class ProductsService {
 		@InjectModel(Product.name) private productModel: Model<Product>,
 		@InjectModel(Review.name) private reviewModel: Model<Review>,
 		private categoriesService: CategoriesService,
+		private translationService: TranslationService,
 	) {}
 
 	async create(
@@ -33,18 +35,30 @@ export class ProductsService {
 			priceCompare,
 			imgUrls,
 			description,
+			shortDescription,
 			tags,
 			stock,
 			category,
 		}: CreateProductEntity,
 	): Promise<Product> {
+		const translatedName = await this.translationService.translateText(name);
+		const translatedDescription =
+			await this.translationService.translateJson(description);
+
+		let translatedShortDescription: TranslatedText | undefined = undefined;
+		if (shortDescription) {
+			translatedShortDescription =
+				await this.translationService.translateJson(shortDescription);
+		}
+
 		const product = await this.productModel.create({
 			user,
-			name,
+			name: translatedName,
 			price,
 			priceCompare,
 			imgUrls,
-			description,
+			description: translatedDescription,
+			shortDescription: translatedShortDescription,
 			tags: tags || [],
 			stock,
 			category,
@@ -90,7 +104,11 @@ export class ProductsService {
 		}
 
 		if (query.name) {
-			filter.name = { $regex: new RegExp(query.name, "i") };
+			filter.$or = [
+				{ "name.en": { $regex: new RegExp(query.name, "i") } },
+				{ "name.fr": { $regex: new RegExp(query.name, "i") } },
+				{ "name.ar": { $regex: new RegExp(query.name, "i") } },
+			];
 		}
 
 		if (query.category) {
@@ -159,16 +177,48 @@ export class ProductsService {
 		return product as unknown as ProductWithReviewsEntity;
 	}
 
-	findByIdAndUpdate(
+	async findByIdAndUpdate(
 		id: string,
 		updateProductDto: UpdateProductEntity,
 	): Promise<Product | null> {
-		return this.productModel.findByIdAndUpdate(id, updateProductDto, {
+		const data: Partial<ProductEntity> = {
+			...updateProductDto,
+			name: undefined,
+			description: undefined,
+			shortDescription: undefined,
+		};
+
+		if (updateProductDto.name) {
+			data.name = await this.translationService.translateText(
+				updateProductDto.name,
+			);
+		}
+
+		await delay(1000);
+
+		if (updateProductDto.description) {
+			data.description = await this.translationService.translateJson(
+				updateProductDto.description,
+			);
+		}
+
+		await delay(1000);
+
+		if (updateProductDto.shortDescription) {
+			data.shortDescription = await this.translationService.translateJson(
+				updateProductDto.shortDescription,
+			);
+		}
+
+		return this.productModel.findByIdAndUpdate(id, data, {
 			new: true,
 			runValidators: true,
 		});
 	}
 
+	/**
+	 * Find product by id and delete, as well as its reviews
+	 */
 	async findByIdAndDelete(id: string): Promise<Product | null> {
 		await this.reviewModel.deleteMany({
 			product: new mongoose.Types.ObjectId(id),

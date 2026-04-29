@@ -39,8 +39,8 @@ export default function Page() {
 
 		if (product) {
 			form.reset({
-				name: product.name,
-				description: product.description,
+				name: product.name.en,
+				description: product.description.en,
 				priceRangeUsd: {
 					min: product.price / 100,
 					max: product.priceCompare / 100,

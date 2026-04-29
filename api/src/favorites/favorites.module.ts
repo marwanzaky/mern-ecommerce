@@ -1,10 +1,11 @@
 import { forwardRef, Module } from "@nestjs/common";
-
 import { MongooseModule } from "@nestjs/mongoose";
+
+import { ProductsModule } from "@/products/products.module";
+
+import { Favorite, FavoriteSchema } from "./entities/favorite.entity";
 import { FavoritesController } from "./favorites.controller";
 import { FavoritesService } from "./favorites.service";
-import { Favorite, FavoriteSchema } from "./entities/favorite.entity";
-import { ProductsModule } from "@products/products.module";
 
 @Module({
 	imports: [

@@ -6,6 +6,7 @@ import {
 	postCartItemAsync,
 	updateCartItemQuantityAsync,
 } from "@/redux/thunks/cart-thunks";
+
 import { CartItemEntity } from "@/shared/types/cart.type";
 
 export type CartState = {

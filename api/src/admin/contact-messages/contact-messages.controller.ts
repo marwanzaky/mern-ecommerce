@@ -9,7 +9,8 @@ import {
 } from "@nestjs/common";
 import { ApiOperation, ApiTags } from "@nestjs/swagger";
 
-import { Public } from "@auth/auth.guard";
+import { Public } from "@/auth/auth.guard";
+
 import { ContactMessagesService } from "./contact-messages.service";
 import { SendContactMessageDto } from "./dto/send-contact-message.dto";
 import { UpdateContactMessageStatusDto } from "./dto/update-contact-message-status.dto";

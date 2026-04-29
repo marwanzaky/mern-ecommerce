@@ -4,10 +4,7 @@ import { useState } from "react";
 
 import { useQuery } from "@tanstack/react-query";
 
-import {
-	contactMessagesService,
-	IContactMessage,
-} from "@/redux/services/contact-messages-service";
+import { contactMessagesService } from "@/redux/services/contact-messages-service";
 
 import { ButtonIcon } from "@/components/ui/button-icon";
 import { Column } from "@/components/ui/table";
@@ -42,6 +39,8 @@ import {
 } from "@/shadcn/components/ui/select";
 import { Textarea } from "@/shadcn/components/ui/textarea";
 
+import { ContactMessage } from "@/shared/types/contact-message.type";
+
 export function useAdminMessages() {
 	const { data, isLoading, refetch } = useQuery({
 		queryKey: ["contact-messages"],
@@ -50,9 +49,9 @@ export function useAdminMessages() {
 	});
 
 	const [visible, setVisible] = useState(false);
-	const [selectedMessage, setSelectedMessage] = useState<IContactMessage>();
+	const [selectedMessage, setSelectedMessage] = useState<ContactMessage>();
 
-	const columns: Column<IContactMessage>[] = [
+	const columns: Column<ContactMessage>[] = [
 		{
 			header: "Status",
 			field: "status",

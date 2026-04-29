@@ -1,15 +1,24 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+
 import mongoose, { Document } from "mongoose";
-import { ICart } from "@interfaces/cart.interface";
-import { User } from "../../users/entities/user.entity";
-import { Product } from "@products/entities/product.entity";
+
+import { Product } from "@/products/entities/product.entity";
+import { User } from "@/users/entities/user.entity";
+
+export type CartDocumentType = {
+	user: mongoose.Schema.Types.ObjectId;
+	items: {
+		product: mongoose.Schema.Types.ObjectId;
+		quantity: number;
+	}[];
+};
 
 @Schema({
-	timestamps: true,
 	toJSON: { virtuals: true },
 	toObject: { virtuals: true },
+	timestamps: true,
 })
-export class Cart extends Document implements Omit<ICart, "_id"> {
+export class Cart extends Document implements CartDocumentType {
 	@Prop({
 		type: mongoose.Schema.ObjectId,
 		ref: User.name,

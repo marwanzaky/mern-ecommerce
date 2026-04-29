@@ -4,18 +4,21 @@ import {
 	Injectable,
 	UnauthorizedException,
 } from "@nestjs/common";
-import { InjectModel } from "@nestjs/mongoose";
-import { User } from "@users/entities/user.entity";
-import { JwtService } from "@nestjs/jwt";
 import { ConfigService } from "@nestjs/config";
-import { SignUpDto } from "./dto/signup.dto";
-import { Model } from "mongoose";
-import { LoginDto } from "./dto/login.dto";
+import { JwtService } from "@nestjs/jwt";
+import { InjectModel } from "@nestjs/mongoose";
+
 import { compare } from "bcrypt";
-import { IRequest } from "@interfaces/request.interface";
-import { CartsService } from "@carts/carts.service";
-import { UsersService } from "@users/users.service";
-import { UserRole } from "@shared/user.type";
+import { Model } from "mongoose";
+
+import { CartsService } from "@/carts/carts.service";
+import { UserRole } from "@/shared/types/user.type";
+import { IRequest } from "@/types/request.type";
+import { User } from "@/users/entities/user.entity";
+import { UsersService } from "@/users/users.service";
+
+import { LoginDto } from "./dto/login.dto";
+import { SignUpDto } from "./dto/signup.dto";
 
 @Injectable()
 export class AuthService {
@@ -101,7 +104,7 @@ export class AuthService {
 			"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		let retVal = "";
 
-		for (var i = 0, n = charset.length; i < length; ++i) {
+		for (let i = 0, n = charset.length; i < length; ++i) {
 			retVal += charset.charAt(Math.floor(Math.random() * n));
 		}
 		return retVal;

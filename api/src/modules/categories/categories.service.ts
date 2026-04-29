@@ -3,14 +3,15 @@ import { InjectModel } from "@nestjs/mongoose";
 
 import mongoose, { Model } from "mongoose";
 
-import { Category as CategoryEntity } from "./entities/category.entity";
 import {
 	Category as CategoryType,
 	CreateCategory,
 	PublicCategory,
 	PublicCategoryTree,
 	UpdateCategory,
-} from "@shared/category.type";
+} from "@/shared/types/category.type";
+
+import { Category as CategoryEntity } from "./entities/category.entity";
 
 @Injectable()
 export class CategoriesService {

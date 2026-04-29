@@ -1,12 +1,13 @@
 {
 	"compilerOptions": {
-		"module": "commonjs",
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
 		"declaration": true,
 		"removeComments": true,
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"allowSyntheticDefaultImports": true,
-		"target": "ES2021",
+		"target": "esnext",
 		"sourceMap": true,
 		"outDir": "./dist",
 		"rootDir": "../",
@@ -18,12 +19,10 @@
 		"strict": true,
 		"strictBindCallApply": false,
 		"noFallthroughCasesInSwitch": false,
+		"types": ["node", "express", "multer"],
 		"paths": {
-			"@*": ["./src/*"],
-			"@modules/*": ["./src/_modules/*"],
-			"@decorators/*": ["./src/_decorators/*"],
-			"@interfaces/*": ["./src/_interfaces/*"],
-			"@shared/*": ["../shared/src/*"]
+			"@/*": ["./src/*"],
+			"@/shared/types/*": ["../shared/src/*"]
 		}
 	},
 	"include": ["src/**/*", "../shared/src/**/*"]

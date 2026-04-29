@@ -9,13 +9,14 @@ import {
 	UploadedFile,
 	UseInterceptors,
 } from "@nestjs/common";
+import { FileInterceptor } from "@nestjs/platform-express";
 import { ApiOperation, ApiTags } from "@nestjs/swagger";
+
+import { CategoriesService } from "@/modules/categories/categories.service";
+import { CloudinaryService } from "@/modules/cloudinary/cloudinary.service";
 
 import { CreateCategoryDto } from "./dto/create-category.dto";
 import { UpdateCategoryDto } from "./dto/update-category.dto";
-import { CategoriesService } from "@modules/categories/categories.service";
-import { CloudinaryService } from "@modules/cloudinary/cloudinary.service";
-import { FileInterceptor } from "@nestjs/platform-express";
 
 @Controller("admin/categories")
 @ApiTags("Admin Categories")

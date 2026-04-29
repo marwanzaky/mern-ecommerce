@@ -1,12 +1,13 @@
 import { Body, Controller, Post } from "@nestjs/common";
 import { ApiOperation } from "@nestjs/swagger";
 
-import { PaymentsService } from "./payments.service";
-import { CreateCheckoutSessionDto } from "./dto/create-checkout-session.dto";
-import { ProductsService } from "@products/products.service";
-
 import Stripe from "stripe";
-import { Public } from "@auth/auth.guard";
+
+import { Public } from "@/auth/auth.guard";
+import { ProductsService } from "@/products/products.service";
+
+import { CreateCheckoutSessionDto } from "./dto/create-checkout-session.dto";
+import { PaymentsService } from "./payments.service";
 
 @Controller("payments")
 export class PaymentsController {
@@ -35,7 +36,7 @@ export class PaymentsController {
 					return {
 						price_data: {
 							currency: "usd",
-							product_data: { name: matchProduct.name },
+							product_data: { name: matchProduct.name.en },
 							unit_amount: matchProduct.price,
 						},
 						quantity: item.quantity,

@@ -3,9 +3,11 @@ import { Product, WithContext } from "schema-dts";
 import { ProductWithReviewsEntity } from "@/shared/types/product.types";
 
 import config from "./config";
+import { Locale } from "./i18n";
 
 export function generateProductStructuredData(
 	product: ProductWithReviewsEntity,
+	locale: Locale,
 ): WithContext<Product> {
 	const productUrl = `${config.clientUrl}/products/${product._id}`;
 	const offerId = `${productUrl}#offer`;
@@ -14,8 +16,8 @@ export function generateProductStructuredData(
 		"@context": "https://schema.org",
 		"@type": "Product",
 		"@id": productUrl,
-		name: product.name,
-		description: product.description,
+		name: product.name[locale],
+		description: product.description[locale],
 		image: product.imgUrls,
 		category: product.category ?? undefined,
 		offers: {
@@ -55,7 +57,7 @@ export function generateProductStructuredData(
 				"@type": "Person",
 				name: review.user.name,
 			},
-			reviewBody: review.description,
+			reviewBody: review.description?.[locale],
 			datePublished: review.createdAt,
 		})),
 	};

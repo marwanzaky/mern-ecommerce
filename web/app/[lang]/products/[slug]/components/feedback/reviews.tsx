@@ -81,7 +81,7 @@ export default function Reviews({
 								displayTotal={false}
 							/>
 							<TypographyMuted className="text-sm">
-								{review.description}
+								{review.description?.[locale]}
 							</TypographyMuted>
 						</div>
 					</div>

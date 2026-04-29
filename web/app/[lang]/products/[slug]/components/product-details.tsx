@@ -61,9 +61,9 @@ export default function ProductDetails({
 	const [quantity, setQuantity] = useState(1);
 
 	const descriptionHtml = useMemo(() => {
-		const parsed = JSON.parse(product.description);
+		const parsed = JSON.parse(product.description[locale]);
 		return renderLexicalJSONToHTML(parsed.root.children);
-	}, [product.description]);
+	}, [product.description, locale]);
 
 	useEffect(() => {
 		sendGTMEvent({
@@ -90,7 +90,7 @@ export default function ProductDetails({
 
 				<div className="space-y-1 lg:space-y-2">
 					<h1 className="scroll-m-20 text-4xl tracking-tight lg:text-5xl">
-						{product.name}
+						{product.name[locale]}
 					</h1>
 
 					<div className="flex items-center gap-3 overflow-hidden">

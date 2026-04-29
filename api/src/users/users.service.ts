@@ -1,21 +1,30 @@
 import {
 	ConflictException,
+	forwardRef,
+	Inject,
 	Injectable,
 	NotFoundException,
 	UnauthorizedException,
 } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import { User } from "./entities/user.entity";
-import { Model } from "mongoose";
+
 import { compare } from "bcrypt";
-import { AuthService } from "@auth/auth.service";
-import { CreateUser, UpdateUser, UpdateUserPassword } from "@shared/user.type";
+import { Model } from "mongoose";
+
+import { AuthService } from "@/auth/auth.service";
+import {
+	CreateUser,
+	UpdateUser,
+	UpdateUserPassword,
+} from "@/shared/types/user.type";
+
+import { User } from "./entities/user.entity";
 
 @Injectable()
 export class UsersService {
 	constructor(
 		@InjectModel(User.name) private userModel: Model<User>,
-		private authService: AuthService,
+		@Inject(forwardRef(() => AuthService)) private authService: AuthService,
 	) {}
 
 	async updateUserPassword(

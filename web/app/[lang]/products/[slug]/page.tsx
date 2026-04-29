@@ -24,12 +24,12 @@ interface Props {
 export default async function Page({ params }: Props) {
 	cacheLife("minutes");
 
-	const { slug } = await params;
+	const { slug, lang } = await params;
 	const id = slug.split("-").pop()!;
 
 	const product = await getProduct(id);
 
-	const structuredData = generateProductStructuredData(product);
+	const structuredData = generateProductStructuredData(product, lang);
 
 	return (
 		<>
@@ -55,7 +55,7 @@ export async function generateStaticParams() {
 	const data = await productsService.getAllProducts();
 
 	return data.map((product) => ({
-		slug: createProductSlug(product.name, product._id),
+		slug: createProductSlug(product.name.en, product._id),
 	}));
 }
 
@@ -73,13 +73,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		};
 	}
 
-	const path = `/products/${createProductSlug(product.name, product._id)}`;
+	const path = `/products/${createProductSlug(product.name.en, product._id)}`;
 
 	return {
-		title: `${product.name} - Best Price & Reviews | ${config.websiteName}`,
-		description: `${product.description.slice(0, 155)}...`,
+		title: `${product.name.en} - Best Price & Reviews | ${config.websiteName}`,
+		description: `${product.description.en.slice(0, 155)}...`,
 		keywords: [
-			product.name,
+			product.name.en,
 			...(product.tags || []),
 			"shop",
 			"buy online",
@@ -87,15 +87,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		].filter(Boolean),
 		authors: [{ name: config.websiteName }],
 		openGraph: generateOgMetadata({
-			title: product.name,
-			description: product.description,
+			title: product.name.en,
+			description: product.description.en,
 			path: localizePath(path, lang),
 			image: product.imgUrls[0],
 			type: "website",
 		}),
 		twitter: generateTwitterMetadata({
-			title: product.name,
-			description: product.description,
+			title: product.name.en,
+			description: product.description.en,
 			image: product.imgUrls[0],
 		}),
 		alternates: generateLocaleAlternates(path, lang),

@@ -1,5 +1,6 @@
-import { UserRole } from "@shared/user.type";
 import { Request } from "express";
+
+import { UserRole } from "@/shared/types/user.type";
 
 export interface IRequest extends Request {
 	user: {

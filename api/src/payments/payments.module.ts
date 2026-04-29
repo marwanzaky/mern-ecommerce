@@ -1,7 +1,9 @@
 import { forwardRef, Module } from "@nestjs/common";
-import { PaymentsService } from "./payments.service";
+
+import { ProductsModule } from "@/products/products.module";
+
 import { PaymentsController } from "./payments.controller";
-import { ProductsModule } from "@products/products.module";
+import { PaymentsService } from "./payments.service";
 
 @Module({
 	imports: [forwardRef(() => ProductsModule)],

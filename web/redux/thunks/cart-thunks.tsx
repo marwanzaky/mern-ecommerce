@@ -6,8 +6,8 @@ import { cartsService } from "@/redux/services/carts-service";
 import { guestCartService } from "@/redux/services/guest-cart-service";
 import { RootState } from "@/redux/store";
 
-import { ProductEntity } from "@/shared/types/product.types";
 import { CartProductEntity } from "@/shared/types/cart.type";
+import { ProductEntity } from "@/shared/types/product.types";
 
 export const getCartMeAsync = createAsyncThunk(
 	"cart/getCartMe",

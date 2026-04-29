@@ -1,20 +1,23 @@
 import {
-	Controller,
-	Post,
 	Body,
+	Controller,
 	Get,
-	UseGuards,
+	Post,
 	Req,
 	Res,
+	UseGuards,
 } from "@nestjs/common";
-import { AuthService } from "./auth.service";
-import { SignUpDto } from "./dto/signup.dto";
-import { LoginDto } from "./dto/login.dto";
-import { Public } from "./auth.guard";
-import { ApiOperation } from "@nestjs/swagger";
 import { AuthGuard } from "@nestjs/passport";
-import { IRequest } from "@interfaces/request.interface";
+import { ApiOperation } from "@nestjs/swagger";
+
 import { Response } from "express";
+
+import { IRequest } from "@/types/request.type";
+
+import { Public } from "./auth.guard";
+import { AuthService } from "./auth.service";
+import { LoginDto } from "./dto/login.dto";
+import { SignUpDto } from "./dto/signup.dto";
 
 @Public()
 @Controller("auth")

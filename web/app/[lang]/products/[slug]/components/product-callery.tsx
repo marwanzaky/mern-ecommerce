@@ -26,7 +26,7 @@ export default function ProductCallery({
 }: {
 	product: ProductWithReviewsEntity;
 }) {
-	const { dir, t } = useI18n();
+	const { dir, t, locale } = useI18n();
 	const { isFavorite, addToFavorites, removeFromFavorites } =
 		useToggleFavorite(product);
 
@@ -72,7 +72,7 @@ export default function ProductCallery({
 							<Image
 								className="w-full rounded-lg"
 								src={src}
-								alt={product.name}
+								alt={product.name[locale]}
 								width={512}
 								height={512}
 								priority={i === 0}

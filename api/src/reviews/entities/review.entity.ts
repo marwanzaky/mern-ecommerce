@@ -1,12 +1,16 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+
 import mongoose, { Document } from "mongoose";
-import { Product } from "@products/entities/product.entity";
-import { User } from "@users/entities/user.entity";
-import { ReviewEntity } from "@shared/review.type";
+
+import { Product } from "@/products/entities/product.entity";
+import { WithoutMongoMeta } from "@/shared/types/mongoose.type";
+import { ReviewEntity } from "@/shared/types/review.type";
+import { User } from "@/users/entities/user.entity";
+import { TranslatedText } from "@/shared/types/product.types";
 
 type ReviewDocumentType = Omit<
-	ReviewEntity,
-	"_id" | "createdAt" | "updatedAt" | "product" | "user"
+	WithoutMongoMeta<ReviewEntity>,
+	"product" | "user"
 > & {
 	product: mongoose.Schema.Types.ObjectId;
 	user: mongoose.Schema.Types.ObjectId;
@@ -27,10 +31,13 @@ export class Review extends Document implements ReviewDocumentType {
 	rating!: number;
 
 	@Prop({
-		type: String,
-		trim: true,
+		type: {
+			en: { type: String, trim: true },
+			fr: { type: String, trim: true },
+			ar: { type: String, trim: true },
+		},
 	})
-	description?: string;
+	description?: TranslatedText;
 
 	@Prop({
 		type: mongoose.Schema.ObjectId,

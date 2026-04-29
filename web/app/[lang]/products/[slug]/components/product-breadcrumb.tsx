@@ -103,10 +103,10 @@ export default function ProductBreadcrumb({
 					<Tooltip>
 						<TooltipTrigger asChild>
 							<BreadcrumbPage className="truncate">
-								{product.name}
+								{product.name[locale]}
 							</BreadcrumbPage>
 						</TooltipTrigger>
-						<TooltipContent>{product.name}</TooltipContent>
+						<TooltipContent>{product.name[locale]}</TooltipContent>
 					</Tooltip>
 				</BreadcrumbItem>
 			</BreadcrumbList>

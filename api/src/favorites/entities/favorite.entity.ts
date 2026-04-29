@@ -1,17 +1,21 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+
 import mongoose, { Document } from "mongoose";
 
-import { IFavorite } from "@interfaces/favorite.interface";
+import { Product } from "@/products/entities/product.entity";
+import { User } from "@/users/entities/user.entity";
 
-import { User } from "../../users/entities/user.entity";
-import { Product } from "@products/entities/product.entity";
+type FavoriteDocumentType = {
+	user: mongoose.Schema.Types.ObjectId;
+	product: mongoose.Schema.Types.ObjectId;
+};
 
 @Schema({
 	timestamps: true,
 	toJSON: { virtuals: true },
 	toObject: { virtuals: true },
 })
-export class Favorite extends Document implements Omit<IFavorite, "_id"> {
+export class Favorite extends Document implements FavoriteDocumentType {
 	@Prop({
 		type: mongoose.Schema.ObjectId,
 		ref: User.name,

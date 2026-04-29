@@ -56,7 +56,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const products = await productsService.getAllProducts();
 	const productPages = products.flatMap((product) => {
 		return getLocalizedEntries({
-			pathname: `/products/${createProductSlug(product.name, product._id)}`,
+			pathname: `/products/${createProductSlug(product.name.en, product._id)}`,
 			lastModified: new Date(product.updatedAt),
 			changeFrequency: "weekly" as const,
 			priority: 0.9,

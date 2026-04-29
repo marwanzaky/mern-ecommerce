@@ -1,16 +1,16 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+
+import { hash } from "bcrypt";
 import { isEmail } from "class-validator";
 import { Document } from "mongoose";
-import { hash } from "bcrypt";
-import { UserRole, User as UserType } from "@shared/user.type";
+
+import { WithoutMongoMeta } from "@/shared/types/mongoose.type";
+import { User as UserType, UserRole } from "@/shared/types/user.type";
 
 @Schema({
 	timestamps: true,
 })
-export class User
-	extends Document
-	implements Omit<UserType, "_id" | "updatedAt" | "createdAt">
-{
+export class User extends Document implements WithoutMongoMeta<UserType> {
 	@Prop({ required: true, enum: ["user", "admin"], default: "user" })
 	role!: UserRole;
 

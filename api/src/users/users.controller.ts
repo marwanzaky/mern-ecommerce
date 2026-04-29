@@ -1,26 +1,28 @@
 import {
-	Controller,
-	Get,
-	Post,
 	Body,
-	Patch,
-	Param,
+	Controller,
 	Delete,
+	Get,
+	Param,
+	Patch,
+	Post,
 	Req,
-	UseInterceptors,
 	UploadedFile,
+	UseInterceptors,
 } from "@nestjs/common";
-import { UsersService } from "./users.service";
+import { FileInterceptor } from "@nestjs/platform-express";
+import { ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
+
+import { Public } from "@/auth/auth.guard";
+import { Roles } from "@/decorators/roles.decorator";
+import { CloudinaryService } from "@/modules/cloudinary/cloudinary.service";
+import { ProductsService } from "@/products/products.service";
+import { IRequest } from "@/types/request.type";
+
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
-import { ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { IRequest } from "@interfaces/request.interface";
 import { UpdateUserPasswordDto } from "./dto/update-user-password.dto";
-import { ProductsService } from "@products/products.service";
-import { Roles } from "@decorators/roles.decorator";
-import { Public } from "@auth/auth.guard";
-import { FileInterceptor } from "@nestjs/platform-express";
-import { CloudinaryService } from "@modules/cloudinary/cloudinary.service";
+import { UsersService } from "./users.service";
 
 @Controller("users")
 @ApiBearerAuth("Authorization")

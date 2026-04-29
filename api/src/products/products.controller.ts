@@ -1,29 +1,31 @@
 import {
-	Controller,
-	Get,
-	Post,
 	Body,
-	Patch,
-	Param,
+	Controller,
 	Delete,
+	Get,
+	NotFoundException,
+	Param,
+	Patch,
+	Post,
 	Query,
 	Req,
-	UseInterceptors,
 	UploadedFiles,
-	NotFoundException,
+	UseInterceptors,
 } from "@nestjs/common";
+import { FilesInterceptor } from "@nestjs/platform-express";
+import { ApiBearerAuth, ApiConsumes, ApiOperation } from "@nestjs/swagger";
 
-import { ProductsService } from "./products.service";
-import { UpdateProductDto } from "./dto/update-product.dto";
+import { Types } from "mongoose";
+
+import { Public } from "@/auth/auth.guard";
+import { CloudinaryService } from "@/modules/cloudinary/cloudinary.service";
+import { UpdateProductEntity } from "@/types/product.type";
+import { IRequest } from "@/types/request.type";
+
 import { CreateProductDto } from "./dto/create-product.dto";
 import { GetAllProductsDto } from "./dto/get-all-products.dto";
-import { Public } from "@auth/auth.guard";
-import { IRequest } from "@interfaces/request.interface";
-import { ApiBearerAuth, ApiConsumes, ApiOperation } from "@nestjs/swagger";
-import { FilesInterceptor } from "@nestjs/platform-express";
-import { CloudinaryService } from "@modules/cloudinary/cloudinary.service";
-import { UpdateProductEntity } from "@interfaces/product.interface";
-import { Types } from "mongoose";
+import { UpdateProductDto } from "./dto/update-product.dto";
+import { ProductsService } from "./products.service";
 
 @Controller("products")
 @ApiBearerAuth("Authorization")
@@ -49,6 +51,30 @@ export class ProductsController {
 		return {
 			success: true,
 			message: `Successfully recalculate all product "avgRatings" and "ratingDistribution" (${products.length})`,
+		};
+	}
+
+	@Post("admin/retranslate")
+	@Public()
+	async retranslate() {
+		const products = await this.productsService.find();
+
+		for (const product of products) {
+			const updatedProduct: UpdateProductEntity = {
+				name: product.name.en,
+				description: product.description.en,
+				shortDescription: product.shortDescription?.en,
+			};
+
+			await this.productsService.findByIdAndUpdate(
+				product?._id as string,
+				updatedProduct,
+			);
+		}
+
+		return {
+			success: true,
+			message: `Successfully translated all products (${products.length})`,
 		};
 	}
 
@@ -156,7 +182,7 @@ export class ProductsController {
 			});
 		}
 
-		let newImgsIndexArray = Array.isArray(newImgsIndex)
+		const newImgsIndexArray = Array.isArray(newImgsIndex)
 			? newImgsIndex.filter((el) => el !== undefined)
 			: [newImgsIndex].filter((el) => el !== undefined);
 
@@ -177,6 +203,9 @@ export class ProductsController {
 		}
 		if (dto.description !== undefined) {
 			updatedProduct.description = dto.description;
+		}
+		if (dto.shortDescription !== undefined) {
+			updatedProduct.shortDescription = dto.shortDescription;
 		}
 		if (dto.price !== undefined) {
 			updatedProduct.price = dto.price;

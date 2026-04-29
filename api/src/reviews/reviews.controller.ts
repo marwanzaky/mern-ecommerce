@@ -1,9 +1,10 @@
-import { Controller, Get, Post, Body, Param, Req } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Req } from "@nestjs/common";
 import { ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
 
-import { ReviewsService } from "./reviews.service";
+import { IRequest } from "@/types/request.type";
+
 import { CreateProductReviewDto } from "./dto/create-product-review.dto";
-import { IRequest } from "@interfaces/request.interface";
+import { ReviewsService } from "./reviews.service";
 
 @Controller("products/:id/reviews")
 @ApiBearerAuth("Authorization")

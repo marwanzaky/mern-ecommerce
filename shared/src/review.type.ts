@@ -1,8 +1,9 @@
 import { EntityBase } from "./entity.type";
+import { TranslatedText } from "./product.types";
 
 export type ReviewEntity = EntityBase & {
 	rating: number;
-	description?: string;
+	description?: TranslatedText;
 	product: string;
 	user: string;
 };

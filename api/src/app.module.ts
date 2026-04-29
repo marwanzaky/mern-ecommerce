@@ -1,22 +1,23 @@
 import { Module } from "@nestjs/common";
-import { MongooseModule } from "@nestjs/mongoose";
 import { ConfigModule, ConfigService } from "@nestjs/config";
-import { UsersModule } from "./users/users.module";
-import { AuthModule } from "./auth/auth.module";
 import { APP_GUARD } from "@nestjs/core";
-import { AuthGuard } from "./auth/auth.guard";
 import { JwtService } from "@nestjs/jwt";
+import { MongooseModule } from "@nestjs/mongoose";
+
+import { AdminCategoriesModule } from "./admin/admin-categories/admin-categories.module";
+import { ContactMessagesModule } from "./admin/contact-messages/contact-messages.module";
+import { AuthGuard } from "./auth/auth.guard";
+import { AuthModule } from "./auth/auth.module";
+import { CartsModule } from "./carts/carts.module";
+import { CategoriesModule } from "./categories/categories.module";
+import { ChatModule } from "./chat/chat.module";
+import { FavoritesModule } from "./favorites/favorites.module";
+import { RolesGuard } from "./guards/roles.guard";
+import { PaymentsModule } from "./payments/payments.module";
 import { ProductsModule } from "./products/products.module";
 import { ReviewsModule } from "./reviews/reviews.module";
-import { CartsModule } from "./carts/carts.module";
-import { FavoritesModule } from "./favorites/favorites.module";
-import { RolesGuard } from "./_guards/roles.guard";
-import { PaymentsModule } from "./payments/payments.module";
-import { ContactMessagesModule } from "./admin/contact-messages/contact-messages.module";
-import { ChatModule } from "./chat/chat.module";
 import { UploadsModule } from "./uploads/uploads.module";
-import { AdminCategoriesModule } from "./admin/admin-categories/admin-categories.module";
-import { CategoriesModule } from "./categories/categories.module";
+import { UsersModule } from "./users/users.module";
 
 @Module({
 	imports: [

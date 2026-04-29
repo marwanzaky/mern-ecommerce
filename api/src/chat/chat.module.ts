@@ -1,10 +1,11 @@
 import { Module } from "@nestjs/common";
-import { GeminiService } from "./gemini.service";
+
+import { GeminiModule } from "@/modules/gemini/gemini.module";
+
 import { ChatController } from "./chat.controller";
 
 @Module({
-	imports: [],
+	imports: [GeminiModule],
 	controllers: [ChatController],
-	providers: [GeminiService],
 })
 export class ChatModule {}

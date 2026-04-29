@@ -1,12 +1,14 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import { ContactMessage } from "./entities/contact-message.entity";
 
 import mongoose, { Model } from "mongoose";
+
 import {
-	IContactMessageStatus,
-	ICreateContactMessage,
-} from "@interfaces/contact-message.interface";
+	ContactMessageStatus,
+	CreateContactMessage,
+} from "@/shared/types/contact-message.type";
+
+import { ContactMessage } from "./entities/contact-message.entity";
 
 @Injectable()
 export class ContactMessagesService {
@@ -15,7 +17,7 @@ export class ContactMessagesService {
 		private contactMessage: Model<ContactMessage>,
 	) {}
 
-	async create(params: ICreateContactMessage): Promise<ContactMessage> {
+	async create(params: CreateContactMessage): Promise<ContactMessage> {
 		const { name, email, subject, message } = params;
 
 		const contactMessage = await this.contactMessage.create({
@@ -34,7 +36,7 @@ export class ContactMessagesService {
 
 	findByIdAndUpdate(
 		id: string,
-		status: IContactMessageStatus,
+		status: ContactMessageStatus,
 	): Promise<ContactMessage | null> {
 		return this.contactMessage.findByIdAndUpdate(
 			id,

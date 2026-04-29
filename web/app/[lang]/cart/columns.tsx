@@ -7,6 +7,7 @@ import { LogoCell } from "@/components/ui/table/cells/logo-cell";
 
 import { Button } from "@/shadcn/components/ui/button";
 
+import { CartProductEntity } from "@/shared/types/cart.type";
 import { PublicCategoryTree } from "@/shared/types/category.type";
 
 import { Locale, localizePath } from "@/lib/i18n";
@@ -15,7 +16,6 @@ import { formatPrice } from "@/utils/format";
 import { createProductSlug } from "@/utils/string-utils";
 
 import { DictionaryKeys } from "@/types/i18n.type";
-import { CartProductEntity } from "@/shared/types/cart.type";
 
 export type CartItem = CartProductEntity & {
 	imgUrl: string;
@@ -47,10 +47,10 @@ export const getCartColumns = ({
 			return (
 				<LogoCell
 					href={localizePath(
-						`/products/${createProductSlug(row.original.name, row.original._id)}`,
+						`/products/${createProductSlug(row.original.name.en, row.original._id)}`,
 						locale,
 					)}
-					label={row.original.name}
+					label={row.original.name[locale]}
 					imgUrl={row.original.imgUrl}
 					subcategory={subcategory}
 				/>

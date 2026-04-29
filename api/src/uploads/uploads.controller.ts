@@ -4,11 +4,11 @@ import {
 	UploadedFile,
 	UseInterceptors,
 } from "@nestjs/common";
+import { FileInterceptor } from "@nestjs/platform-express";
 import { ApiOperation } from "@nestjs/swagger";
 
-import { Public } from "@auth/auth.guard";
-import { FileInterceptor } from "@nestjs/platform-express";
-import { CloudinaryService } from "@modules/cloudinary/cloudinary.service";
+import { Public } from "@/auth/auth.guard";
+import { CloudinaryService } from "@/modules/cloudinary/cloudinary.service";
 
 @Controller("uploads")
 @Public()

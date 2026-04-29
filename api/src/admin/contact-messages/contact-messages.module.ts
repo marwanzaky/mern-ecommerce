@@ -1,7 +1,8 @@
 import { Module } from "@nestjs/common";
-import { ContactMessagesService } from "./contact-messages.service";
-import { ContactMessagesController } from "./contact-messages.controller";
 import { MongooseModule } from "@nestjs/mongoose";
+
+import { ContactMessagesController } from "./contact-messages.controller";
+import { ContactMessagesService } from "./contact-messages.service";
 import {
 	ContactMessage,
 	ContactMessageSchema,

@@ -1,35 +1,48 @@
-// @ts-check
-import eslint from "@eslint/js";
-import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
-import globals from "globals";
+import js from "@eslint/js";
 import tseslint from "typescript-eslint";
+import simpleImportSort from "eslint-plugin-simple-import-sort";
 
 export default tseslint.config(
 	{
-		ignores: ["eslint.config.mjs"],
+		ignores: ["node_modules", "dist"],
 	},
-	eslint.configs.recommended,
-	...tseslint.configs.recommendedTypeChecked,
-	eslintPluginPrettierRecommended,
+	js.configs.recommended,
+	...tseslint.configs.recommended,
 	{
+		files: ["src/**/*.ts"],
+		plugins: {
+			"simple-import-sort": simpleImportSort,
+		},
 		languageOptions: {
-			globals: {
-				...globals.node,
-				...globals.jest,
-			},
-			ecmaVersion: 5,
-			sourceType: "module",
 			parserOptions: {
 				projectService: true,
 				tsconfigRootDir: import.meta.dirname,
 			},
 		},
-	},
-	{
 		rules: {
+			"simple-import-sort/imports": [
+				"warn",
+				{
+					groups: [
+						["^\\u0000"],
+
+						["^@nestjs"],
+
+						["^[^@./]"],
+
+						// e.g "@nestjs/..." etc...
+						["^@"],
+
+						// e.g "@/users/...", "@/products/..." etc...
+						["^@/"],
+
+						// e.g "./users/...", "./products/..." etc...
+						["^\\."],
+					],
+				},
+			],
+			"simple-import-sort/exports": "warn",
 			"@typescript-eslint/no-explicit-any": "off",
-			"@typescript-eslint/no-floating-promises": "warn",
-			"@typescript-eslint/no-unsafe-argument": "warn",
 		},
 	},
 );

@@ -1,7 +1,8 @@
 import { Body, Controller, Post } from "@nestjs/common";
 
-import { Public } from "@auth/auth.guard";
-import { GeminiService } from "./gemini.service";
+import { Public } from "@/auth/auth.guard";
+import { GeminiService } from "@/modules/gemini/gemini.service";
+
 import { ChatSendMessageDto } from "./dto/chat-send-message.dto";
 
 @Controller("chat")

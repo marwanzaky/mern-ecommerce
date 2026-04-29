@@ -1,11 +1,13 @@
 import { forwardRef, Module } from "@nestjs/common";
-import { UsersService } from "./users.service";
-import { UsersController } from "./users.controller";
 import { MongooseModule } from "@nestjs/mongoose";
+
+import { AuthModule } from "@/auth/auth.module";
+import { CloudinaryModule } from "@/modules/cloudinary/cloudinary.module";
+import { ProductsModule } from "@/products/products.module";
+
 import { User, UserSchema } from "./entities/user.entity";
-import { AuthModule } from "@auth/auth.module";
-import { ProductsModule } from "@products/products.module";
-import { CloudinaryModule } from "@modules/cloudinary/cloudinary.module";
+import { UsersController } from "./users.controller";
+import { UsersService } from "./users.service";
 
 @Module({
 	imports: [

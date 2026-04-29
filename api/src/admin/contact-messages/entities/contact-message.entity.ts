@@ -1,16 +1,18 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+
 import { Document } from "mongoose";
 
-import { IContactMessage } from "@interfaces/contact-message.interface";
+import { ContactMessage as ContactMessageType } from "@/shared/types/contact-message.type";
+import { WithoutMongoMeta } from "@/shared/types/mongoose.type";
 
 @Schema({
-	timestamps: true,
 	toJSON: { virtuals: true },
 	toObject: { virtuals: true },
+	timestamps: true,
 })
 export class ContactMessage
 	extends Document
-	implements Omit<IContactMessage, "_id">
+	implements WithoutMongoMeta<ContactMessageType>
 {
 	@Prop({
 		type: String,

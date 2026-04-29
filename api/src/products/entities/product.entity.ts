@@ -1,13 +1,17 @@
 import { Prop, Schema, SchemaFactory, Virtual } from "@nestjs/mongoose";
-import mongoose, { Document } from "mongoose";
-import { Category } from "@modules/categories/entities/category.entity";
-import { User } from "@users/entities/user.entity";
-import { ProductEntity, RatingDistribution } from "@shared/product.types";
 
-type ProductDocumentType = Omit<
+import mongoose, { Document } from "mongoose";
+
+import { Category } from "@/modules/categories/entities/category.entity";
+import { WithoutMongoMeta } from "@/shared/types/mongoose.type";
+import {
 	ProductEntity,
-	"_id" | "category" | "createdAt" | "updatedAt"
-> & {
+	RatingDistribution,
+	TranslatedText,
+} from "@/shared/types/product.types";
+import { User } from "@/users/entities/user.entity";
+
+type ProductDocumentType = Omit<WithoutMongoMeta<ProductEntity>, "category"> & {
 	category: mongoose.Types.ObjectId | null;
 };
 
@@ -18,11 +22,14 @@ type ProductDocumentType = Omit<
 })
 export class Product extends Document implements ProductDocumentType {
 	@Prop({
-		type: String,
-		required: [true, "A product must have a name"],
-		trim: true,
+		type: {
+			en: { type: String, required: true, trim: true },
+			fr: { type: String, required: true, trim: true },
+			ar: { type: String, required: true, trim: true },
+		},
+		required: [true, "A product must have a name in all languages"],
 	})
-	name!: string;
+	name!: TranslatedText;
 
 	@Prop({
 		type: Number,
@@ -85,17 +92,23 @@ export class Product extends Document implements ProductDocumentType {
 	imgUrls!: string[];
 
 	@Prop({
-		type: String,
-		required: [true, "A product must have a description"],
-		trim: true,
+		type: {
+			en: { type: String, required: true, trim: true },
+			fr: { type: String, required: true, trim: true },
+			ar: { type: String, required: true, trim: true },
+		},
+		required: [true, "A product must have a description in all languages"],
 	})
-	description!: string;
+	description!: TranslatedText;
 
 	@Prop({
-		type: String,
-		trim: true,
+		type: {
+			en: { type: String, trim: true },
+			fr: { type: String, trim: true },
+			ar: { type: String, trim: true },
+		},
 	})
-	shortDescription?: string;
+	shortDescription?: TranslatedText;
 
 	@Prop({
 		type: [String],

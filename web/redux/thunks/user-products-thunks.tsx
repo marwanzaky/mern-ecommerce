@@ -4,6 +4,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { productsService } from "@/redux/services/products-service";
 import { usersService } from "@/redux/services/users-service";
+
 import { CreateProduct, UpdateProduct } from "@/shared/types/product.types";
 
 export const getUserProductsAsync = createAsyncThunk(

@@ -1,6 +1,8 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { UpdateUserPassword } from "@shared/user.type";
+
 import { IsNotEmpty } from "class-validator";
+
+import { UpdateUserPassword } from "@/shared/types/user.type";
 
 export class UpdateUserPasswordDto implements UpdateUserPassword {
 	@ApiProperty()

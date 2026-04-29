@@ -1,6 +1,8 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { CreateUser } from "@shared/user.type";
+
 import { IsEmail, IsNotEmpty } from "class-validator";
+
+import { CreateUser } from "@/shared/types/user.type";
 
 export class CreateUserDto implements CreateUser {
 	@ApiProperty()

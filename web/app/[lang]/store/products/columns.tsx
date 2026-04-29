@@ -89,14 +89,14 @@ export const getSellColumns = ({
 							<AvatarImage
 								className="rounded-none"
 								src={row.original.imgUrl}
-								alt={`Photo of "${row.original.name}"`}
+								alt={`${t("photoOf").replace("{{name}}", row.original.name[locale])}`}
 							/>
 						</Avatar>
 					</Link>
 
 					<div>
 						<div className="font-medium hover:text-primary transition-colors max-w-60 truncate">
-							<Link href={href}>{row.original.name}</Link>
+							<Link href={href}>{row.original.name[locale]}</Link>
 						</div>
 						<span className="text-muted-foreground text-xs">
 							{subcategory?.name}
@@ -202,7 +202,7 @@ const ActionsCell = ({
 					onClick={() => {
 						router.push(
 							localizePath(
-								`/products/${createProductSlug(row.original.name, row.original._id)}`,
+								`/products/${createProductSlug(row.original.name.en, row.original._id)}`,
 								locale,
 							),
 						);

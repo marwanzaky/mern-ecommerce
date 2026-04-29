@@ -1,5 +1,6 @@
-import { clientFetch } from "@/lib/api-client";
 import { CartEntity } from "@/shared/types/cart.type";
+
+import { clientFetch } from "@/lib/api-client";
 
 export const cartsService = {
 	getMe: () => clientFetch<CartEntity>("/carts"),

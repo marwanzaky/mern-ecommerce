@@ -5,11 +5,23 @@ import { User } from "./user.type";
 export type Rating = 1 | 2 | 3 | 4 | 5;
 export type RatingDistribution = Record<Rating, number>;
 
+export type TranslatedText = {
+	en: string;
+	fr: string;
+	ar: string;
+};
+
+export type OptionalTranslatedText = {
+	en?: string;
+	fr?: string;
+	ar?: string;
+};
+
 /**
  * Mongodb product document entity
  */
 export type ProductEntity = EntityBase & {
-	name: string;
+	name: TranslatedText;
 	price: number;
 	priceCompare: number;
 	isHero: boolean;
@@ -19,8 +31,8 @@ export type ProductEntity = EntityBase & {
 	numReviews: number;
 	ratingDistribution: RatingDistribution;
 	imgUrls: string[];
-	description: string;
-	shortDescription?: string;
+	description: TranslatedText;
+	shortDescription?: OptionalTranslatedText;
 	tags: string[];
 	featured: boolean;
 	category: string | null;
@@ -31,35 +43,33 @@ export type ProductWithReviewsEntity = ProductEntity & {
 		ReviewEntity,
 		"_id" | "createdAt" | "description" | "rating"
 	> & {
-		product: { name: string };
+		product: { name: TranslatedText };
 		user: { _id: string; name: string; photoUrl: string };
 	})[];
 	user: Pick<User, "_id" | "name" | "photoUrl" | "updatedAt" | "createdAt">;
 };
 
-export type CreateProduct = Pick<
-	ProductEntity,
-	| "name"
-	| "price"
-	| "priceCompare"
-	| "description"
-	| "tags"
-	| "stock"
-	| "category"
-> & {
+export type CreateProduct = {
+	name: string;
+	price: number;
+	priceCompare: number;
+	description: string;
+	shortDescription?: string;
+	tags?: string[];
+	stock?: number;
+	category?: string | null;
 	imgFiles?: File[];
 };
 
-export type UpdateProduct = Pick<
-	Partial<ProductEntity>,
-	| "name"
-	| "price"
-	| "priceCompare"
-	| "description"
-	| "tags"
-	| "stock"
-	| "category"
-> & {
+export type UpdateProduct = {
+	name?: string;
+	price?: number;
+	priceCompare?: number;
+	description?: string;
+	shortDescription?: string;
+	tags?: string[];
+	stock?: number;
+	category?: string | null;
 	newImgs?: {
 		file: File;
 		index: number;

@@ -1,5 +1,5 @@
 import { ApiPropertyOptional } from "@nestjs/swagger";
-import { UpdateCategory } from "@shared/category.type";
+
 import { Transform, Type } from "class-transformer";
 import {
 	IsBoolean,
@@ -8,6 +8,8 @@ import {
 	IsOptional,
 	IsString,
 } from "class-validator";
+
+import { UpdateCategory } from "@/shared/types/category.type";
 
 export class UpdateCategoryDto implements UpdateCategory {
 	@ApiPropertyOptional()

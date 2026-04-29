@@ -1,12 +1,15 @@
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
-import { ReviewsService } from "./reviews.service";
-import { ReviewsController } from "./reviews.controller";
-import { ProductsService } from "@products/products.service";
+
+import { CategoriesModule } from "@/modules/categories/categories.module";
+import { TranslationModule } from "@/modules/translation/translation.module";
+import { Product, ProductSchema } from "@/products/entities/product.entity";
+import { ProductsService } from "@/products/products.service";
+import { User, UserSchema } from "@/users/entities/user.entity";
+
 import { Review, ReviewSchema } from "./entities/review.entity";
-import { Product, ProductSchema } from "@products/entities/product.entity";
-import { User, UserSchema } from "@users/entities/user.entity";
-import { CategoriesModule } from "@modules/categories/categories.module";
+import { ReviewsController } from "./reviews.controller";
+import { ReviewsService } from "./reviews.service";
 
 @Module({
 	imports: [
@@ -16,6 +19,7 @@ import { CategoriesModule } from "@modules/categories/categories.module";
 			{ name: User.name, schema: UserSchema },
 		]),
 		CategoriesModule,
+		TranslationModule,
 	],
 	controllers: [ReviewsController],
 	providers: [ReviewsService, ProductsService],

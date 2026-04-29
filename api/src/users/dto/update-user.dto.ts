@@ -1,6 +1,8 @@
 import { ApiPropertyOptional } from "@nestjs/swagger";
-import { UpdateUser } from "@shared/user.type";
+
 import { IsEmail, IsOptional } from "class-validator";
+
+import { UpdateUser } from "@/shared/types/user.type";
 
 export class UpdateUserDto implements UpdateUser {
 	@ApiPropertyOptional()

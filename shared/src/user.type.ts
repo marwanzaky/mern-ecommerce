@@ -1,17 +1,12 @@
+import { EntityBase } from "./entity.type";
+
 export type UserRole = "user" | "admin";
 
-export type User = {
-	_id: string;
+export type User = EntityBase & {
 	role: UserRole;
 
-	/**
-	 * User's full name
-	 */
 	name: string;
 	email: string;
-
-	updatedAt: string;
-	createdAt: string;
 
 	photoUrl?: string;
 };

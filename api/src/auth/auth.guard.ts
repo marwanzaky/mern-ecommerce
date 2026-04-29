@@ -4,12 +4,13 @@ import {
 	Injectable,
 	UnauthorizedException,
 } from "@nestjs/common";
+import { SetMetadata } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { Reflector } from "@nestjs/core";
 import { JwtService } from "@nestjs/jwt";
 
-import { SetMetadata } from "@nestjs/common";
-import { IRequest } from "@interfaces/request.interface";
+import { IRequest } from "@/types/request.type";
+
 import { AuthService } from "./auth.service";
 
 export const IS_PUBLIC_KEY = "isPublic";
